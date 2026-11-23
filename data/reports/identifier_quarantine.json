@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T10:21:39Z",
+  "generated_at": "2026-11-23T17:59:25Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2091,
   "decision_rows": 6851,
@@ -27244,8 +27244,8 @@
       "exchange": "ATHEX",
       "name": "HELLENiQ ENERGY Holdings S.A.",
       "asset_type": "Stock",
-      "action": "proposed_clear_conflicting_identifier",
-      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "GRS298343005"
     },
@@ -27255,7 +27255,7 @@
       "listing_key": "LSE::0K9U",
       "ticker": "0K9U",
       "exchange": "LSE",
-      "name": "Hellenic Petroleum Holdings S.A.",
+      "name": "HELLENiQ ENERGY Holdings S.A.",
       "asset_type": "Stock",
       "action": "kept_listing_keyed_identifier",
       "reason": "One coherent identity family has decisive listing-keyed evidence.",
@@ -27270,8 +27270,8 @@
       "exchange": "OTC",
       "name": "Hellenic Petroleum S.A",
       "asset_type": "Stock",
-      "action": "kept_listing_keyed_identifier",
-      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "GRS298343005"
     },

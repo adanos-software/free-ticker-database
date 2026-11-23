@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-23T10:22:14Z",
+    "generated_at": "2026-11-23T18:02:43Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -26,31 +26,31 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63563,
-    "joined_listings": 63563,
-    "scope_rows": 63563
+    "rows": 63564,
+    "joined_listings": 63564,
+    "scope_rows": 63564
   },
   "completeness": {
     "isin": {
-      "n": 63563,
-      "filled": 62918,
+      "n": 63564,
+      "filled": 62919,
       "missing": 645,
       "pct": 98.99,
       "fills_needed_for_99": 10,
       "pass": false
     },
     "country": {
-      "n": 63563,
-      "filled": 63520,
+      "n": 63564,
+      "filled": 63521,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63563,
-      "filled": 62931,
-      "missing": 632,
+      "n": 63564,
+      "filled": 62935,
+      "missing": 629,
       "pct": 99.01,
       "fills_needed_for_99": 0,
       "pass": true
@@ -70,10 +70,10 @@
       "SZSE": 11
     },
     "missing_sector_by_exchange": {
-      "FSX": 221,
+      "FSX": 220,
       "NSE_IN": 45,
       "XSTU": 44,
-      "HKEX": 42,
+      "HKEX": 43,
       "NASDAQ": 24,
       "XETRA": 19,
       "BSE_IN": 17,
@@ -81,7 +81,7 @@
       "BVB": 15,
       "BIST": 14,
       "PSE": 12,
-      "SGX": 11
+      "HNX": 10
     },
     "missing_category_by_exchange": {
       "AMS": 17,
@@ -95,17 +95,17 @@
     }
   },
   "identity": {
-    "official_isin_mismatch": 9,
+    "official_isin_mismatch": 10,
     "official_name_mismatch": 11,
     "open_collision_groups": 11,
     "quarantine_unresolved": 1231,
-    "quarantine_proposed_clear": 286,
-    "quarantine_kept": 550
+    "quarantine_proposed_clear": 285,
+    "quarantine_kept": 551
   },
   "entry_quality_status": {
-    "pass": 59815,
-    "source_gap": 3719,
-    "warn": 21,
+    "pass": 59817,
+    "source_gap": 3717,
+    "warn": 22,
     "notice": 8
   },
   "checks": [
@@ -113,9 +113,9 @@
       "name": "core_identity_known_bugs_zero",
       "status": "fail",
       "details": {
-        "official_isin_mismatch": 9,
+        "official_isin_mismatch": 10,
         "official_isin_mismatch_unexpected": 0,
-        "official_isin_mismatch_reviewed_holds": 9,
+        "official_isin_mismatch_reviewed_holds": 10,
         "open_collision_groups": 11,
         "sample_mismatch": [],
         "sample_collision_isins": [
@@ -136,8 +136,8 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63563,
-        "filled": 62918,
+        "n": 63564,
+        "filled": 62919,
         "missing": 645,
         "pct": 98.99,
         "fills_needed_for_99": 10,
@@ -148,9 +148,9 @@
       "name": "core_taxonomy_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63563,
-        "filled": 62931,
-        "missing": 632,
+        "n": 63564,
+        "filled": 62935,
+        "missing": 629,
         "pct": 99.01,
         "fills_needed_for_99": 0,
         "pass": true
@@ -160,8 +160,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63563,
-        "filled": 63520,
+        "n": 63564,
+        "filled": 63521,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
@@ -192,7 +192,7 @@
       "status": "fail",
       "details": {
         "status": "blocked_wrong_denominator",
-        "collision_adjusted_recall_pct": 79.27,
+        "collision_adjusted_recall_pct": 79.26,
         "reason": "Official recall still uses all-tradable directories, not common-stock+ETF."
       }
     },
