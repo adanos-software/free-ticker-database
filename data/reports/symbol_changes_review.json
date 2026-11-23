@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-20T15:23:26Z",
+    "generated_at": "2026-11-23T18:00:12Z",
     "source_url": "https://stockanalysis.com/actions/changes/",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -10,18 +10,18 @@
     "policy": "Secondary symbol-change feed for review only. No ticker, name, listing, or corporate-action data is applied without listing-keyed official exchange or issuer evidence."
   },
   "summary": {
-    "fetched_rows": 243,
-    "merged_history_rows": 405,
-    "review_rows": 405,
+    "fetched_rows": 242,
+    "merged_history_rows": 407,
+    "review_rows": 407,
     "match_status_counts": {
-      "new_symbol_present_old_symbol_missing": 319,
+      "new_symbol_present_old_symbol_missing": 321,
       "no_matching_listing": 16,
       "old_and_new_symbols_present": 32,
       "old_symbol_present_new_symbol_missing": 8,
       "symbol_present_only_outside_source_scope": 30
     },
     "symbol_change_workflow_queue_counts": {
-      "audit_already_reflected": 317,
+      "audit_already_reflected": 319,
       "blocked_missing_source_scope_mapping": 14,
       "blocked_out_of_scope_symbol_collision": 31,
       "document_no_dataset_match": 12,
@@ -30,10 +30,10 @@
     },
     "symbol_change_backlog": {
       "status": "listing_keyed_symbol_change_review_queue_open",
-      "rows": 405,
+      "rows": 407,
       "verified_rename_or_delisting_review_rows": 4,
       "duplicate_or_cross_listing_review_rows": 27,
-      "already_reflected_audit_rows": 317,
+      "already_reflected_audit_rows": 319,
       "out_of_scope_collision_blocked_rows": 31,
       "missing_source_scope_mapping_rows": 14,
       "no_dataset_match_documentation_rows": 12,
@@ -46,7 +46,7 @@
       "action_required_duplicate_or_cross_listing": 27,
       "action_required_possible_rename_or_delisting": 4,
       "already_reflected_in_scope_with_global_symbol_collision": 73,
-      "already_reflected_in_source_scope": 244,
+      "already_reflected_in_source_scope": 246,
       "hold_out_of_scope_symbol_collision": 30,
       "manual_review_due_to_out_of_scope_collision": 1,
       "manual_scope_mapping_required": 14,
@@ -56,7 +56,7 @@
       "P1": 31,
       "P2": 45,
       "P3": 12,
-      "P4": 317
+      "P4": 319
     },
     "review_bucket_priorities": {
       "action_required_duplicate_or_cross_listing": "P1",
@@ -69,8 +69,8 @@
       "no_dataset_match_for_source_scope": "P3"
     },
     "recency_bucket_counts": {
-      "older_than_90d": 235,
-      "recent_30d": 42,
+      "older_than_90d": 236,
+      "recent_30d": 43,
       "recent_7d": 77,
       "recent_90d": 51
     },
@@ -86,14 +86,14 @@
       "P3:older_than_90d": 8,
       "P3:recent_7d": 2,
       "P3:recent_90d": 2,
-      "P4:older_than_90d": 190,
-      "P4:recent_30d": 31,
+      "P4:older_than_90d": 191,
+      "P4:recent_30d": 32,
       "P4:recent_7d": 58,
       "P4:recent_90d": 38
     },
     "workflow_queue_recency_counts": {
-      "audit_already_reflected:older_than_90d": 190,
-      "audit_already_reflected:recent_30d": 31,
+      "audit_already_reflected:older_than_90d": 191,
+      "audit_already_reflected:recent_30d": 32,
       "audit_already_reflected:recent_7d": 58,
       "audit_already_reflected:recent_90d": 38,
       "blocked_missing_source_scope_mapping:older_than_90d": 11,
@@ -116,7 +116,7 @@
       "review_verified_rename_or_delisting:recent_90d": 1
     },
     "workflow_queue_priority_counts": {
-      "audit_already_reflected:P4": 317,
+      "audit_already_reflected:P4": 319,
       "blocked_missing_source_scope_mapping:P2": 14,
       "blocked_out_of_scope_symbol_collision:P2": 31,
       "document_no_dataset_match:P3": 12,
@@ -125,7 +125,7 @@
     },
     "workflow_queue_scope_counts": {
       "audit_already_reflected:global_symbol_collision_outside_source_scope": 73,
-      "audit_already_reflected:matches_within_source_scope": 244,
+      "audit_already_reflected:matches_within_source_scope": 246,
       "blocked_missing_source_scope_mapping:unscoped_source_hint": 14,
       "blocked_out_of_scope_symbol_collision:global_symbol_collision_outside_source_scope": 31,
       "document_no_dataset_match:matches_within_source_scope": 12,
@@ -133,7 +133,7 @@
       "review_verified_rename_or_delisting:matches_within_source_scope": 4
     },
     "workflow_queue_match_status_counts": {
-      "audit_already_reflected:new_symbol_present_old_symbol_missing": 317,
+      "audit_already_reflected:new_symbol_present_old_symbol_missing": 319,
       "blocked_missing_source_scope_mapping:new_symbol_present_old_symbol_missing": 2,
       "blocked_missing_source_scope_mapping:no_matching_listing": 4,
       "blocked_missing_source_scope_mapping:old_and_new_symbols_present": 5,
@@ -147,7 +147,7 @@
     "workflow_queue_source_hint_counts": {
       "audit_already_reflected": {
         "OTC": 13,
-        "US_LISTED": 304
+        "US_LISTED": 306
       },
       "blocked_missing_source_scope_mapping": {
         "missing": 14
@@ -169,7 +169,7 @@
     },
     "workflow_queue_source_confidence_counts": {
       "audit_already_reflected": {
-        "secondary_review": 317
+        "secondary_review": 319
       },
       "blocked_missing_source_scope_mapping": {
         "secondary_review": 14
@@ -191,7 +191,7 @@
       "audit_already_reflected": {
         "feed_name_differs_from_scoped_listing_name": 31,
         "feed_name_exactly_matches_scoped_listing_name": 164,
-        "feed_name_partially_overlaps_scoped_listing_name": 122
+        "feed_name_partially_overlaps_scoped_listing_name": 124
       },
       "blocked_missing_source_scope_mapping": {
         "feed_name_differs_from_scoped_listing_name": 4,
@@ -208,17 +208,18 @@
       },
       "review_duplicate_or_cross_listing": {
         "feed_name_differs_from_scoped_listing_name": 1,
-        "feed_name_exactly_matches_scoped_listing_name": 7,
-        "feed_name_partially_overlaps_scoped_listing_name": 19
+        "feed_name_exactly_matches_scoped_listing_name": 6,
+        "feed_name_partially_overlaps_scoped_listing_name": 20
       },
       "review_verified_rename_or_delisting": {
-        "feed_name_exactly_matches_scoped_listing_name": 3,
+        "feed_name_differs_from_scoped_listing_name": 1,
+        "feed_name_exactly_matches_scoped_listing_name": 2,
         "feed_name_partially_overlaps_scoped_listing_name": 1
       }
     },
     "workflow_queue_listing_key_review_counts": {
       "audit_already_reflected": {
-        "new_scoped_listing_key_only": 317
+        "new_scoped_listing_key_only": 319
       },
       "blocked_missing_source_scope_mapping": {
         "new_scoped_listing_key_only": 2,
@@ -242,7 +243,7 @@
     },
     "workflow_queue_review_strategy_counts": {
       "audit_already_reflected": {
-        "audit_already_reflected_no_canonical_change": 317
+        "audit_already_reflected_no_canonical_change": 319
       },
       "blocked_missing_source_scope_mapping": {
         "map_source_exchange_scope_before_symbol_review": 14
@@ -486,7 +487,7 @@
         "review_priority": "P4",
         "recency_bucket": "recent_30d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 26,
+        "rows": 27,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
         "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
@@ -530,7 +531,7 @@
         "review_priority": "P4",
         "recency_bucket": "older_than_90d",
         "exchange_scope_status": "matches_within_source_scope",
-        "rows": 144,
+        "rows": 145,
         "review_strategy": "audit_already_reflected_no_canonical_change",
         "evidence_required": "audit_only_confirm_no_canonical_change_needed",
         "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
@@ -538,19 +539,19 @@
       }
     ],
     "apply_eligibility_counts": {
-      "audit_only_no_apply": 317,
+      "audit_only_no_apply": 319,
       "blocked_until_exchange_scope_resolved": 45,
       "no_dataset_action_without_scope_mapping": 12,
       "requires_official_venue_confirmation": 31
     },
     "symbol_change_apply_readiness_counts": {
-      "audit_only_no_canonical_change": 317,
+      "audit_only_no_canonical_change": 319,
       "blocked_until_listing_keyed_official_symbol_change_evidence": 31,
       "blocked_until_source_exchange_scope_and_non_symbol_identity_evidence": 45,
       "document_or_ignore_until_scoped_official_dataset_match": 12
     },
     "verification_evidence_required_counts": {
-      "audit_only_confirm_no_canonical_change_needed": 317,
+      "audit_only_confirm_no_canonical_change_needed": 319,
       "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition": 27,
       "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer": 4,
       "official_exchange_scope_and_non_symbol_identity_evidence_before_apply": 31,
@@ -620,7 +621,7 @@
       }
     ],
     "recommended_action_counts": {
-      "already_reflected_or_new_symbol_added_in_source_scope": 319,
+      "already_reflected_or_new_symbol_added_in_source_scope": 321,
       "do_not_apply_from_symbol_match_review_exchange_scope_first": 30,
       "ignore_or_map_exchange_scope_before_applying": 16,
       "review_duplicate_or_cross_listing_state_in_source_scope": 32,
@@ -628,7 +629,7 @@
     },
     "exchange_scope_status_counts": {
       "global_symbol_collision_outside_source_scope": 104,
-      "matches_within_source_scope": 287,
+      "matches_within_source_scope": 289,
       "unscoped_source_hint": 14
     }
   },
@@ -638,20 +639,20 @@
       "effective_date": "2026-11-17",
       "old_symbol": "VBNK",
       "new_symbol": "VRSA",
-      "new_company_name": "Versabank",
+      "new_company_name": "Versa Bancorp",
       "source": "stockanalysis_symbol_changes",
       "source_url": "https://stockanalysis.com/actions/changes/",
       "new_symbol_url": "/stocks/vrsa/",
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-11-20T15:23:26Z",
+      "observed_at": "2026-11-23T18:00:12Z",
       "match_status": "old_and_new_symbols_present",
       "symbol_change_workflow_queue": "review_duplicate_or_cross_listing",
       "review_bucket": "action_required_duplicate_or_cross_listing",
       "review_priority": "P1",
       "review_strategy": "resolve_duplicate_cross_listing_or_transition_before_any_symbol_change",
-      "effective_age_days": 3,
+      "effective_age_days": 6,
       "recency_bucket": "recent_7d",
       "apply_eligibility": "requires_official_venue_confirmation",
       "verification_evidence_required": "official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
@@ -665,7 +666,7 @@
       "new_scoped_listing_keys": "NASDAQ::VRSA",
       "listing_key_review_status": "old_and_new_scoped_listing_keys_present",
       "scoped_listing_names": "Versa Bancorp - Common Stock|VersaBank",
-      "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
+      "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
       "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=2;new_match_count=2;old_scoped_match_count=1;new_scoped_match_count=1;old_scoped_listing_keys=NASDAQ::VBNK;new_scoped_listing_keys=NASDAQ::VRSA",
       "workflow_review_context": "workflow_queue=review_duplicate_or_cross_listing;review_bucket=action_required_duplicate_or_cross_listing;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_directory_plus_listing_key_review_to_distinguish_duplicate_cross_listing_or_transition",
@@ -1007,20 +1008,20 @@
       "effective_date": "2026-11-09",
       "old_symbol": "INM",
       "new_symbol": "MTRI",
-      "new_company_name": "Inmed Pharmaceuticals Inc",
+      "new_company_name": "Mentari Therapeutics Inc",
       "source": "stockanalysis_symbol_changes",
       "source_url": "https://stockanalysis.com/actions/changes/",
       "new_symbol_url": "/stocks/mtri/",
       "source_exchange_hint": "US_LISTED",
       "source_confidence": "secondary_review",
       "review_needed": "true",
-      "observed_at": "2026-11-19T15:41:16Z",
+      "observed_at": "2026-11-23T18:00:12Z",
       "match_status": "old_symbol_present_new_symbol_missing",
       "symbol_change_workflow_queue": "review_verified_rename_or_delisting",
       "review_bucket": "action_required_possible_rename_or_delisting",
       "review_priority": "P1",
       "review_strategy": "verify_rename_or_delisting_with_official_venue_or_issuer_evidence",
-      "effective_age_days": 10,
+      "effective_age_days": 14,
       "recency_bucket": "recent_30d",
       "apply_eligibility": "requires_official_venue_confirmation",
       "verification_evidence_required": "official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
@@ -1034,7 +1035,7 @@
       "new_scoped_listing_keys": "",
       "listing_key_review_status": "old_scoped_listing_key_only",
       "scoped_listing_names": "InMed Pharmaceuticals Inc",
-      "issuer_name_review_status": "feed_name_exactly_matches_scoped_listing_name",
+      "issuer_name_review_status": "feed_name_differs_from_scoped_listing_name",
       "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
       "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=1;new_match_count=0;old_scoped_match_count=1;new_scoped_match_count=0;old_scoped_listing_keys=NASDAQ::INM;new_scoped_listing_keys=none",
       "workflow_review_context": "workflow_queue=review_verified_rename_or_delisting;review_bucket=action_required_possible_rename_or_delisting;apply_eligibility=requires_official_venue_confirmation;verification_evidence_required=official_exchange_notice_or_current_directory_showing_old_symbol_inactive_new_symbol_active_same_issuer",
@@ -1042,6 +1043,47 @@
       "new_match_count": 0,
       "old_scoped_match_count": 1,
       "new_scoped_match_count": 0
+    },
+    {
+      "change_id": "09ccc257da948cf6",
+      "effective_date": "2026-11-05",
+      "old_symbol": "CCXI",
+      "new_symbol": "AGLT",
+      "new_company_name": "Agility Robotics Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/aglt/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-11-23T18:00:12Z",
+      "match_status": "new_symbol_present_old_symbol_missing",
+      "symbol_change_workflow_queue": "audit_already_reflected",
+      "review_bucket": "already_reflected_in_source_scope",
+      "review_priority": "P4",
+      "review_strategy": "audit_already_reflected_no_canonical_change",
+      "effective_age_days": 18,
+      "recency_bucket": "recent_30d",
+      "apply_eligibility": "audit_only_no_apply",
+      "verification_evidence_required": "audit_only_confirm_no_canonical_change_needed",
+      "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
+      "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
+      "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "",
+      "new_listing_keys": "NASDAQ::AGLT",
+      "old_scoped_listing_keys": "",
+      "new_scoped_listing_keys": "NASDAQ::AGLT",
+      "listing_key_review_status": "new_scoped_listing_key_only",
+      "scoped_listing_names": "Agility Robotics, Inc. - Ordinary Shares",
+      "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::AGLT",
+      "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
+      "old_match_count": 0,
+      "new_match_count": 1,
+      "old_scoped_match_count": 0,
+      "new_scoped_match_count": 1
     },
     {
       "change_id": "e6c886f7206136a4",
@@ -8748,6 +8790,47 @@
       "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
       "old_match_count": 0,
       "new_match_count": 4,
+      "old_scoped_match_count": 0,
+      "new_scoped_match_count": 1
+    },
+    {
+      "change_id": "26f6ce7f7afc3227",
+      "effective_date": "2026-02-09",
+      "old_symbol": "CCXIU",
+      "new_symbol": "AGLT",
+      "new_company_name": "Agility Robotics Inc",
+      "source": "stockanalysis_symbol_changes",
+      "source_url": "https://stockanalysis.com/actions/changes/",
+      "new_symbol_url": "/stocks/aglt/",
+      "source_exchange_hint": "US_LISTED",
+      "source_confidence": "secondary_review",
+      "review_needed": "true",
+      "observed_at": "2026-11-23T18:00:12Z",
+      "match_status": "new_symbol_present_old_symbol_missing",
+      "symbol_change_workflow_queue": "audit_already_reflected",
+      "review_bucket": "already_reflected_in_source_scope",
+      "review_priority": "P4",
+      "review_strategy": "audit_already_reflected_no_canonical_change",
+      "effective_age_days": 287,
+      "recency_bucket": "older_than_90d",
+      "apply_eligibility": "audit_only_no_apply",
+      "verification_evidence_required": "audit_only_confirm_no_canonical_change_needed",
+      "recommended_next_source": "Audit-only confirmation from scoped listing records; no canonical change.",
+      "source_gate": "Audit only; no ticker, listing, or name change is authorized.",
+      "recommended_action": "already_reflected_or_new_symbol_added_in_source_scope",
+      "exchange_scope_status": "matches_within_source_scope",
+      "old_listing_keys": "",
+      "new_listing_keys": "NASDAQ::AGLT",
+      "old_scoped_listing_keys": "",
+      "new_scoped_listing_keys": "NASDAQ::AGLT",
+      "listing_key_review_status": "new_scoped_listing_key_only",
+      "scoped_listing_names": "Agility Robotics, Inc. - Ordinary Shares",
+      "issuer_name_review_status": "feed_name_partially_overlaps_scoped_listing_name",
+      "source_review_context": "source=stockanalysis_symbol_changes;source_exchange_hint=US_LISTED;source_confidence=secondary_review;source_url=https://stockanalysis.com/actions/changes/",
+      "scope_match_context": "exchange_scope_status=matches_within_source_scope;old_match_count=0;new_match_count=1;old_scoped_match_count=0;new_scoped_match_count=1;old_scoped_listing_keys=none;new_scoped_listing_keys=NASDAQ::AGLT",
+      "workflow_review_context": "workflow_queue=audit_already_reflected;review_bucket=already_reflected_in_source_scope;apply_eligibility=audit_only_no_apply;verification_evidence_required=audit_only_confirm_no_canonical_change_needed",
+      "old_match_count": 0,
+      "new_match_count": 1,
       "old_scoped_match_count": 0,
       "new_scoped_match_count": 1
     },
