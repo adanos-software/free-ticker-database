@@ -10,17 +10,17 @@ Free stock and ETF ticker reference data with collision-safe core listings, lega
 | Metric | Value | Meaning |
 |---|---:|---|
 | Core listings | 63,563 | Rows in `data/core_listings.csv`; one collision-safe core row per security keyed by `listing_key`. |
-| Primary tickers | 65,650 | Rows in `data/tickers.csv`; one primary row per security. |
+| Primary tickers | 65,649 | Rows in `data/tickers.csv`; one primary row per security. |
 | Full listing rows | 97,702 | Rows in `data/listings.csv`; venue-level rows keyed by `listing_key`, including cross/secondary listings. |
-| Stocks | 48,846 | Primary ticker rows where `asset_type=Stock`. |
+| Stocks | 48,845 | Primary ticker rows where `asset_type=Stock`. |
 | ETFs | 16,804 | Primary ticker rows where `asset_type=ETF`. |
 | Exchanges | 86 | Distinct primary-listing exchange codes in `data/tickers.csv`. |
 | Countries | 96 | Distinct non-empty `country` values in `data/tickers.csv`. |
-| Aliases | 129,174 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
-| ISIN coverage | 64,354 (98.0%) | Primary ticker rows with a non-empty `isin`. |
-| FIGI coverage | 64,715 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
-| Sector/category coverage | 65,013 (99.0%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
-| Stock sector coverage | 48,269 | Primary ticker rows with a non-empty `stock_sector`. |
+| Aliases | 129,173 | Rows in `data/aliases.csv`; structured alias/name/identifier lookup rows. |
+| ISIN coverage | 64,353 (98.0%) | Primary ticker rows with a non-empty `isin`. |
+| FIGI coverage | 64,714 | Listing-keyed rows in `data/identifiers_extended.csv` with OpenFIGI coverage. |
+| Sector/category coverage | 65,012 (99.0%) | Primary ticker rows with either `stock_sector` or `etf_category`. |
+| Stock sector coverage | 48,268 | Primary ticker rows with a non-empty `stock_sector`. |
 | ETF category coverage | 16,744 | Primary ticker rows with a non-empty `etf_category`. |
 | Core listing-scope rows | 63,563 | Rows in `data/instrument_scopes.csv` where `instrument_scope=core`. |
 | Core primary rows with ISIN | 62,918 | Core primary listing rows with an ISIN; tracked as `scope_reason=primary_listing`. |
@@ -201,7 +201,7 @@ Top exchanges by primary ticker count:
 
 | Exchange | Tickers |
 |---|---:|
-| OTC | 6,924 |
+| OTC | 6,923 |
 | NASDAQ | 4,603 |
 | LSE | 3,546 |
 | TSE | 3,258 |
