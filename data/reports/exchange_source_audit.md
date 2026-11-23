@@ -1,10 +1,10 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-23T20:47:33Z`
+Generated at: `2026-11-23T22:13:23Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
-- Audit outcomes: `{"denominator_missing": 20, "maintain": 23, "official_source_required": 5, "refresh_required": 13, "refresh_unavailable": 27}`
+- Audit outcomes: `{"denominator_missing": 20, "maintain": 23, "official_source_required": 5, "refresh_required": 14, "refresh_unavailable": 26}`
 
 | Exchange | Status | Sources | Missing products | Denominator | Recall | Nonfresh | Outcome | Promotion |
 |---|---|---|---|---:|---:|---|---|---|
@@ -12,7 +12,7 @@ Generated at: `2026-11-23T20:47:33Z`
 | AMS | official_full | euronext_equities|euronext_etfs |  | 615 | 93.01 | euronext_etfs | refresh_required | not_applicable |
 | ASX | official_partial | asx_investment_products|asx_listed_companies |  | 0 |  | asx_investment_products|asx_listed_companies | refresh_unavailable | blocked_source_unavailable |
 | ATHEX | official_partial | athex_sector_classification | ETF | 0 |  | athex_sector_classification | denominator_missing | blocked_nonfresh_source |
-| B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 1353 | 90.76 | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs | refresh_unavailable | not_applicable |
+| B3 | official_full | b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs |  | 548 | 75.0 | b3_bdr_etfs|b3_listed_etfs | refresh_required | not_applicable |
 | BATS | official_full | nasdaq_other_listed |  | 1682 | 79.19 |  | maintain | not_applicable |
 | BCBA | official_partial | byma_equity_details |  | 0 |  | byma_equity_details | denominator_missing | blocked_nonfresh_source |
 | BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 75.61 |  | maintain | not_applicable |

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-23T20:46:24Z",
+    "generated_at": "2026-11-23T22:11:44Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,33 +27,33 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63585,
-    "joined_listings": 63585,
-    "scope_rows": 63585
+    "rows": 63590,
+    "joined_listings": 63590,
+    "scope_rows": 63590
   },
   "completeness": {
     "isin": {
-      "n": 63585,
-      "filled": 62922,
+      "n": 63590,
+      "filled": 62927,
       "missing": 663,
       "pct": 98.96,
       "fills_needed_for_99": 28,
       "pass": false
     },
     "country": {
-      "n": 63585,
-      "filled": 63541,
+      "n": 63590,
+      "filled": 63546,
       "missing": 44,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63585,
+      "n": 63590,
       "filled": 62936,
-      "missing": 649,
-      "pct": 98.98,
-      "fills_needed_for_99": 14,
+      "missing": 654,
+      "pct": 98.97,
+      "fills_needed_for_99": 19,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -99,13 +99,13 @@
     "official_isin_mismatch": 10,
     "official_name_mismatch": 11,
     "open_collision_groups": 11,
-    "quarantine_unresolved": 1232,
+    "quarantine_unresolved": 1233,
     "quarantine_proposed_clear": 285,
-    "quarantine_kept": 551
+    "quarantine_kept": 550
   },
   "entry_quality_status": {
-    "pass": 59813,
-    "source_gap": 3742,
+    "pass": 59281,
+    "source_gap": 4279,
     "warn": 22,
     "notice": 8
   },
@@ -137,8 +137,8 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63585,
-        "filled": 62922,
+        "n": 63590,
+        "filled": 62927,
         "missing": 663,
         "pct": 98.96,
         "fills_needed_for_99": 28,
@@ -149,11 +149,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63585,
+        "n": 63590,
         "filled": 62936,
-        "missing": 649,
-        "pct": 98.98,
-        "fills_needed_for_99": 14,
+        "missing": 654,
+        "pct": 98.97,
+        "fills_needed_for_99": 19,
         "pass": false
       }
     },
@@ -161,8 +161,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63585,
-        "filled": 63541,
+        "n": 63590,
+        "filled": 63546,
         "missing": 44,
         "pct": 99.93,
         "fills_needed_for_99": 0,
@@ -193,7 +193,7 @@
       "status": "fail",
       "details": {
         "status": "blocked_wrong_denominator",
-        "collision_adjusted_recall_pct": 79.27,
+        "collision_adjusted_recall_pct": 79.07,
         "reason": "Official recall still uses all-tradable directories, not common-stock+ETF."
       }
     },

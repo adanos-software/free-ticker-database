@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T20:47:33Z",
+  "generated_at": "2026-11-23T22:13:23Z",
   "summary": {
     "venues": 88,
     "venue_status_counts": {
@@ -11,10 +11,10 @@
       "denominator_missing": 20,
       "maintain": 23,
       "official_source_required": 5,
-      "refresh_required": 13,
-      "refresh_unavailable": 27
+      "refresh_required": 14,
+      "refresh_unavailable": 26
     },
-    "unavailable_venues": 27,
+    "unavailable_venues": 26,
     "nonfresh_venues": 60,
     "denominator_missing_venues": 38,
     "promotion_ready_venues": 0
@@ -116,23 +116,23 @@
       "exchange": "B3",
       "venue_status": "official_full",
       "reference_scopes": "exchange_directory|listed_companies_subset",
-      "current_stock_rows": 695,
+      "current_stock_rows": 700,
       "current_etf_rows": 894,
-      "official_active_stock_rows": 425,
-      "official_active_etf_rows": 1485,
+      "official_active_stock_rows": 190,
+      "official_active_etf_rows": 915,
       "missing_product_classes": "",
       "official_source_keys": "b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs",
-      "unavailable_source_keys": "b3_instruments_equities",
-      "nonfresh_source_keys": "b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs",
-      "source_blocker_classes": "empty_refresh|stale_artifact",
-      "official_denominator": 1353,
-      "official_matches": 1228,
+      "unavailable_source_keys": "",
+      "nonfresh_source_keys": "b3_bdr_etfs|b3_listed_etfs",
+      "source_blocker_classes": "stale_artifact",
+      "official_denominator": 548,
+      "official_matches": 411,
       "official_collisions": 0,
-      "official_missing": 125,
-      "official_recall_pct": 90.76,
-      "collision_adjusted_recall_pct": 90.76,
+      "official_missing": 137,
+      "official_recall_pct": 75.0,
+      "collision_adjusted_recall_pct": 75.0,
       "denominator_status": "available",
-      "audit_outcome": "refresh_unavailable",
+      "audit_outcome": "refresh_required",
       "promotion_readiness": "not_applicable"
     },
     {

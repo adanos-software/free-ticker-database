@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T18:41:42Z",
-  "rows": 171345,
+  "generated_at": "2026-11-23T22:02:20Z",
+  "rows": 170540,
   "exchanges": [
     "ADX",
     "AMS",
@@ -97,7 +97,7 @@
     "athex_sector_classification": 126,
     "b3_listed_etfs": 236,
     "b3_bdr_etfs": 321,
-    "b3_instruments_equities": 1353,
+    "b3_instruments_equities": 548,
     "nasdaq_other_listed": 7701,
     "byma_equity_details": 92,
     "bahrain_bourse_listed_companies": 41,
@@ -465,10 +465,9 @@
       "provider": "B3",
       "reference_scope": "exchange_directory",
       "official": true,
-      "mode": "unavailable",
-      "rows": 1353,
-      "generated_at": "2026-09-13T11:40:38Z",
-      "last_error": "Empty refresh result; preserved 1353 existing rows"
+      "mode": "network",
+      "rows": 548,
+      "generated_at": "2026-11-23T22:02:20Z"
     },
     "b3_listed_etfs": {
       "provider": "B3",
@@ -1392,7 +1391,7 @@
     "six_shares_explorer_full": "unavailable",
     "six_etf_products": "network",
     "six_etp_products": "network",
-    "b3_instruments_equities": "unavailable",
+    "b3_instruments_equities": "network",
     "b3_listed_etfs": "network",
     "b3_bdr_etfs": "network",
     "jse_etf_list": "unavailable",
@@ -1508,10 +1507,6 @@
     {
       "source_key": "asx_listed_companies",
       "error": "Empty refresh result; preserved 1987 existing rows"
-    },
-    {
-      "source_key": "b3_instruments_equities",
-      "error": "Empty refresh result; preserved 1353 existing rows"
     },
     {
       "source_key": "bme_listed_values",
@@ -1663,16 +1658,50 @@
     }
   ],
   "last_refresh": {
-    "generated_at": "2026-11-23T18:41:42Z",
+    "generated_at": "2026-11-23T22:02:20Z",
     "selected_source_keys": [
-      "nasdaq_listed",
-      "nasdaq_other_listed",
-      "sec_company_tickers_exchange"
+      "b3_instruments_equities",
+      "bme_listed_values",
+      "bolsa_santiago_instruments",
+      "bse_india_scrips",
+      "cse_ma_listed_companies",
+      "hnx_listed_securities",
+      "jpx_listed_issues",
+      "jse_instrument_search",
+      "krx_listed_companies",
+      "lse_company_reports",
+      "lse_instrument_directory",
+      "lse_price_explorer",
+      "ngm_market_data_equities",
+      "ngx_company_profile_directory",
+      "otc_markets_stock_screener",
+      "psx_dps_symbols",
+      "set_stock_search",
+      "szse_a_share_list",
+      "tase_foreign_etf_search",
+      "upcom_registered_securities"
     ],
     "source_modes": {
-      "nasdaq_listed": "network",
-      "nasdaq_other_listed": "network",
-      "sec_company_tickers_exchange": "network"
+      "b3_instruments_equities": "network",
+      "bme_listed_values": "unavailable",
+      "bolsa_santiago_instruments": "unavailable",
+      "bse_india_scrips": "unavailable",
+      "cse_ma_listed_companies": "unavailable",
+      "hnx_listed_securities": "unavailable",
+      "jpx_listed_issues": "unavailable",
+      "jse_instrument_search": "cache",
+      "krx_listed_companies": "unavailable",
+      "lse_company_reports": "unavailable",
+      "lse_instrument_directory": "unavailable",
+      "lse_price_explorer": "unavailable",
+      "ngm_market_data_equities": "unavailable",
+      "ngx_company_profile_directory": "unavailable",
+      "otc_markets_stock_screener": "unavailable",
+      "psx_dps_symbols": "unavailable",
+      "set_stock_search": "unavailable",
+      "szse_a_share_list": "unavailable",
+      "tase_foreign_etf_search": "unavailable",
+      "upcom_registered_securities": "unavailable"
     }
   }
 }
