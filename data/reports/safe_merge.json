@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97697,
+    "before_rows": 97702,
     "after_rows": 97702,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 58,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,356 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "AMS::NTM",
+      "field_name": "etf_category",
+      "old_value": "Alternative",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::TOF",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V20A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V20D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V40A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V40D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V60A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V60D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V80A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "AMS::V80D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NYSE ARCA::AOA",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NYSE ARCA::AOK",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NYSE ARCA::AOM",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "NYSE ARCA::AOR",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::CFOD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "TSX::GBAL",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::GCNS",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::GGRO",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::HBAL",
+      "field_name": "etf_category",
+      "old_value": "Alternative",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::HCON",
+      "field_name": "etf_category",
+      "old_value": "Alternative",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::HGRW",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::TBAL",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::TCON",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::TGRO",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::VBAL",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::VCIP",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::VCNS",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::VGRO",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::VRIF",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::XBAL",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::XCNS",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::XGRO",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::XINC",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ZBAL",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ZBAL.T",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ZCON",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ZESG",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ZGRO",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "TSX::ZGRO.T",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::2TCB",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::2TCC",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::2TCD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::DRTD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::DRTN",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::EQAM",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::GURD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::MKIT",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "XETRA::V20A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V20D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V40A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V40D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V60A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V60D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V80A",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::V80D",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Multi-Asset"
+    },
+    {
+      "listing_key": "XETRA::WDRD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::WDRT",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "XETRA::WWLD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -758,7 +1107,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5588,
+      "before_rows": 5593,
       "after_rows": 5593,
       "shrink_pct": 0.0,
       "removed_rows": 0,
