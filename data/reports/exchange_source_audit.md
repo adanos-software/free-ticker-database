@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-23T10:23:11Z`
+Generated at: `2026-11-23T18:03:49Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -16,7 +16,7 @@ Generated at: `2026-11-23T10:23:11Z`
 | BATS | official_full | nasdaq_other_listed |  | 1673 | 79.08 |  | maintain | not_applicable |
 | BCBA | official_partial | byma_equity_details |  | 0 |  | byma_equity_details | denominator_missing | blocked_nonfresh_source |
 | BHB | official_full | bahrain_bourse_listed_companies |  | 41 | 75.61 |  | maintain | not_applicable |
-| BIST | official_full | bist_kap_mkk_listed_securities |  | 663 | 96.68 |  | maintain | not_applicable |
+| BIST | official_full | bist_kap_mkk_listed_securities |  | 662 | 96.83 |  | maintain | not_applicable |
 | BK | official_full | boursa_kuwait_stocks |  | 139 | 79.86 |  | maintain | not_applicable |
 | BME | official_full | bme_etf_list|bme_listed_companies|bme_security_prices_directory |  | 268 | 90.67 | bme_etf_list|bme_listed_companies | refresh_required | not_applicable |
 | BMV | official_partial | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search |  | 0 |  | bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search | refresh_unavailable | blocked_source_unavailable |
@@ -26,7 +26,7 @@ Generated at: `2026-11-23T10:23:11Z`
 | BVB | official_full | bvb_fund_units_directory|bvb_shares_directory |  | 88 | 56.82 | bvb_fund_units_directory | refresh_required | not_applicable |
 | BVC | official_partial | bvc_colombia_issuers |  | 0 |  | bvc_colombia_issuers | refresh_unavailable | blocked_source_unavailable |
 | BVL | official_partial | bvl_issuers_directory |  | 0 |  | bvl_issuers_directory | denominator_missing | blocked_nonfresh_source |
-| Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2977 | 8.23 | euronext_etfs | refresh_required | not_applicable |
+| Borsa Italiana | official_full | euronext_equities|euronext_etfs |  | 2981 | 8.22 | euronext_etfs | refresh_required | not_applicable |
 | Bursa | official_partial | bursa_closing_prices|bursa_equity_isin |  | 0 |  | bursa_closing_prices|bursa_equity_isin | refresh_unavailable | blocked_source_unavailable |
 | CPH | official_partial | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares |  | 0 |  | nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares | denominator_missing | blocked_nonfresh_source |
 | CSE_LK | official_full | cse_lk_all_security_code|cse_lk_company_info_summary |  | 325 | 99.08 |  | maintain | not_applicable |
@@ -42,8 +42,8 @@ Generated at: `2026-11-23T10:23:11Z`
 | HNX | official_full | hnx_listed_securities |  | 299 | 45.48 | hnx_listed_securities | refresh_unavailable | not_applicable |
 | HOSE | official_partial | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks |  | 0 |  | hose_etf_list|hose_fund_certificate_list|hose_listed_stocks | denominator_missing | blocked_nonfresh_source |
 | ICE_IS | official_partial | nasdaq_nordic_iceland_shares |  | 0 |  | nasdaq_nordic_iceland_shares | denominator_missing | blocked_nonfresh_source |
-| IDX | official_full | idx_company_profiles|idx_listed_companies |  | 944 | 78.92 | idx_listed_companies | refresh_required | not_applicable |
-| ISE | official_full | euronext_equities |  | 16 | 56.25 |  | maintain | not_applicable |
+| IDX | official_full | idx_company_profiles|idx_listed_companies |  | 950 | 78.42 | idx_listed_companies | refresh_required | not_applicable |
+| ISE | official_full | euronext_equities |  | 15 | 53.33 |  | maintain | not_applicable |
 | JSE | official_partial | jse_etf_list|jse_etn_list | Stock | 0 |  | jse_etf_list|jse_etn_list | refresh_unavailable | blocked_source_unavailable |
 | KOSDAQ | official_full | krx_listed_companies |  | 1820 | 87.2 | krx_listed_companies | refresh_unavailable | not_applicable |
 | KRX | official_full | krx_etf_finder|krx_listed_companies |  | 2128 | 91.31 | krx_listed_companies | refresh_unavailable | not_applicable |
@@ -56,7 +56,7 @@ Generated at: `2026-11-23T10:23:11Z`
 | NEO | official_full | cboe_canada_listing_directory |  | 451 | 45.9 |  | maintain | not_applicable |
 | NGX | official_full | ngx_company_profile_directory|ngx_equities_price_list | ETF | 130 | 100.0 | ngx_company_profile_directory|ngx_equities_price_list | refresh_unavailable | not_applicable |
 | NMFQS | official_partial | nasdaq_mutual_fund_quotes |  | 0 |  | nasdaq_mutual_fund_quotes | denominator_missing | blocked_nonfresh_source |
-| NSE_IN | official_full | nse_india_securities_available |  | 3573 | 97.96 |  | maintain | not_applicable |
+| NSE_IN | official_full | nse_india_securities_available |  | 3586 | 97.94 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 69 | 65.22 |  | maintain | not_applicable |
 | NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3832 | 51.02 |  | maintain | not_applicable |
 | NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2778 | 95.14 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |

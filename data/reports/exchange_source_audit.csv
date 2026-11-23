@@ -7,7 +7,7 @@ B3,official_full,exchange_directory|listed_companies_subset,695,894,425,1485,,b3
 BATS,official_full,exchange_directory,1,1348,4,1669,,nasdaq_other_listed,,,,1673,1323,58,292,79.08,81.92,available,maintain,not_applicable
 BCBA,official_partial,security_lookup_subset,92,0,92,0,,byma_equity_details,,byma_equity_details,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 BHB,official_full,exchange_directory,31,0,41,0,,bahrain_bourse_listed_companies,,,,41,31,9,1,75.61,96.88,available,maintain,not_applicable
-BIST,official_full,exchange_directory,607,36,627,36,,bist_kap_mkk_listed_securities,,,,663,641,22,0,96.68,100.0,available,maintain,not_applicable
+BIST,official_full,exchange_directory,607,36,626,36,,bist_kap_mkk_listed_securities,,,,662,641,21,0,96.83,100.0,available,maintain,not_applicable
 BK,official_full,exchange_directory,115,0,139,0,,boursa_kuwait_stocks,,,,139,111,28,0,79.86,100.0,available,maintain,not_applicable
 BME,official_full,exchange_directory|listed_companies_subset,271,5,385,10,,bme_etf_list|bme_listed_companies|bme_security_prices_directory,,bme_etf_list|bme_listed_companies,stale_artifact,268,243,0,25,90.67,90.67,available,refresh_required,not_applicable
 BMV,official_partial,listed_companies_subset,189,155,94,8,,bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search,bmv_capital_trust_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search,bmv_capital_trust_search|bmv_etf_search|bmv_issuer_directory|bmv_market_data_securities|bmv_stock_search,empty_refresh|stale_artifact,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
@@ -17,7 +17,7 @@ BSE_IN,official_full,exchange_directory,4854,197,4965,200,,bse_india_scrips,bse_
 BVB,official_full,exchange_directory|listed_companies_subset,242,5,88,11,,bvb_fund_units_directory|bvb_shares_directory,,bvb_fund_units_directory,stale_artifact,88,50,38,0,56.82,100.0,available,refresh_required,not_applicable
 BVC,official_partial,listed_companies_subset,3,0,3,0,,bvc_colombia_issuers,bvc_colombia_issuers,bvc_colombia_issuers,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 BVL,official_partial,security_lookup_subset,31,2,30,1,,bvl_issuers_directory,,bvl_issuers_directory,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
-Borsa Italiana,official_full,exchange_directory,278,0,436,2541,,euronext_equities|euronext_etfs,,euronext_etfs,stale_artifact,2977,245,1936,796,8.23,23.54,available,refresh_required,not_applicable
+Borsa Italiana,official_full,exchange_directory,278,0,440,2541,,euronext_equities|euronext_etfs,,euronext_etfs,stale_artifact,2981,245,1936,800,8.22,23.44,available,refresh_required,not_applicable
 Bursa,official_partial,listed_companies_subset,1035,4,2392,31,,bursa_closing_prices|bursa_equity_isin,bursa_closing_prices|bursa_equity_isin,bursa_closing_prices|bursa_equity_isin,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 CPH,official_partial,listed_companies_subset,150,3,144,1,,nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares,,nasdaq_nordic_copenhagen_etfs|nasdaq_nordic_copenhagen_shares,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 CSE_LK,official_full,exchange_directory,324,0,647,0,,cse_lk_all_security_code|cse_lk_company_info_summary,,,,325,322,0,3,99.08,99.08,available,maintain,not_applicable
@@ -29,12 +29,12 @@ Euronext,official_full,exchange_directory|secondary_listing_subset,863,613,2959,
 FSX,official_full,exchange_directory,8018,125,14592,3609,,deutsche_boerse_frankfurt_all_tradable_equities,,,,18201,7798,4458,5945,42.84,56.74,available,maintain,not_applicable
 GSE,official_partial,listed_companies_subset,19,0,18,0,,gse_listed_companies,,gse_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 HEL,official_partial,listed_companies_subset,198,1,196,2,,nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares,,nasdaq_nordic_helsinki_etfs|nasdaq_nordic_helsinki_shares,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
-HKEX,official_full,exchange_directory,2788,479,2783,458,,hkex_securities_list,,,,3241,3172,68,1,97.87,99.97,available,maintain,not_applicable
+HKEX,official_full,exchange_directory,2789,479,2783,458,,hkex_securities_list,,,,3241,3172,68,1,97.87,99.97,available,maintain,not_applicable
 HNX,official_full,exchange_directory,137,0,299,0,,hnx_listed_securities,hnx_listed_securities,hnx_listed_securities,empty_refresh,299,136,163,0,45.48,100.0,available,refresh_unavailable,not_applicable
 HOSE,official_partial,listed_companies_subset,140,13,411,21,,hose_etf_list|hose_fund_certificate_list|hose_listed_stocks,,hose_etf_list|hose_fund_certificate_list|hose_listed_stocks,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 ICE_IS,official_partial,listed_companies_subset,18,0,32,0,,nasdaq_nordic_iceland_shares,,nasdaq_nordic_iceland_shares,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
-IDX,official_full,exchange_directory|listed_companies_subset,756,0,1906,0,,idx_company_profiles|idx_listed_companies,,idx_listed_companies,stale_artifact,944,745,183,16,78.92,97.9,available,refresh_required,not_applicable
-ISE,official_full,exchange_directory,14,0,16,0,,euronext_equities,,,,16,9,7,0,56.25,100.0,available,maintain,not_applicable
+IDX,official_full,exchange_directory|listed_companies_subset,756,0,1912,0,,idx_company_profiles|idx_listed_companies,,idx_listed_companies,stale_artifact,950,745,186,19,78.42,97.51,available,refresh_required,not_applicable
+ISE,official_full,exchange_directory,14,0,15,0,,euronext_equities,,,,15,8,7,0,53.33,100.0,available,maintain,not_applicable
 JSE,official_partial,listed_companies_subset,85,127,0,245,Stock,jse_etf_list|jse_etn_list,jse_etf_list|jse_etn_list,jse_etf_list|jse_etn_list,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 KOSDAQ,official_full,exchange_directory,1605,0,1820,0,,krx_listed_companies,krx_listed_companies,krx_listed_companies,empty_refresh,1820,1587,3,230,87.2,87.34,available,refresh_unavailable,not_applicable
 KRX,official_full,exchange_directory,904,1087,938,1190,,krx_etf_finder|krx_listed_companies,krx_listed_companies,krx_listed_companies,empty_refresh,2128,1943,14,171,91.31,91.91,available,refresh_unavailable,not_applicable
@@ -47,7 +47,7 @@ NASDAQ,official_full,corporate_action_daily_list|exchange_directory,3525,1249,85
 NEO,official_full,exchange_directory,69,178,107,344,,cboe_canada_listing_directory,,,,451,207,70,174,45.9,54.33,available,maintain,not_applicable
 NGX,official_full,exchange_directory|listed_companies_subset,133,12,258,0,ETF,ngx_company_profile_directory|ngx_equities_price_list,ngx_company_profile_directory,ngx_company_profile_directory|ngx_equities_price_list,empty_refresh|stale_artifact,130,130,0,0,100.0,100.0,available,refresh_unavailable,not_applicable
 NMFQS,official_partial,security_lookup_subset,0,6,0,6,,nasdaq_mutual_fund_quotes,,nasdaq_mutual_fund_quotes,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
-NSE_IN,official_full,exchange_directory,3169,373,3212,361,,nse_india_securities_available,,,,3573,3500,73,0,97.96,100.0,available,maintain,not_applicable
+NSE_IN,official_full,exchange_directory,3170,374,3224,362,,nse_india_securities_available,,,,3586,3512,74,0,97.94,100.0,available,maintain,not_applicable
 NSE_KE,official_full,exchange_directory,77,3,67,2,,nse_ke_listed_companies,,,,69,45,24,0,65.22,100.0,available,maintain,not_applicable
 NYSE,official_full,exchange_directory,1947,79,5486,649,,nasdaq_other_listed|sec_company_tickers_exchange,,,,3832,1955,568,1309,51.02,59.9,available,maintain,not_applicable
 NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2706,17,2763,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_trading_system_adds_deletes,stale_artifact,2778,2643,29,106,95.14,96.14,available,refresh_required,not_applicable

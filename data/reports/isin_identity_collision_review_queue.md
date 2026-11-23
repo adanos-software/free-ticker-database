@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-23T10:22:13Z`
+Generated: `2026-11-23T18:02:42Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -61,7 +61,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
 | DE000A40ZVU2 | Germany | 5 | - | UMT UTD MOB.TECHN.AG \| WAYDEAR AG |
 | US5049221055 | United States | 5 | - | Labcorp Holdings Inc. \| Laboratory Corp. of America Holdings |
-| GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum Holdings S.A. |
+| GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum S.A |
 | HK1097008929 | Hong Kong | 3 | - | CTF Media & Entertainment Limited \| i-CABLE Communications Limited |
 | INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |
 | DE000A12UPJ7 | Germany | 2 | - | SCP Standard Capital Partners AG \| VANEA AG INH O.N. |
