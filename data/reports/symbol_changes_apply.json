@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-11-20T15:23:39Z",
+    "generated_at": "2026-11-23T18:00:32Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 405,
+    "blocked_rows": 407,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 5,
       "blocked_new_symbol_not_active_in_official_master": 4,
-      "blocked_old_symbol_not_unique_in_us_scope": 314,
+      "blocked_old_symbol_not_unique_in_us_scope": 316,
       "blocked_sec_cik_mismatch": 1,
       "manual_cross_venue_ticker_reuse": 6,
       "manual_missing_identity_evidence": 2,
@@ -30,7 +30,7 @@
       "effective_date": "2026-11-17",
       "old_symbol": "VBNK",
       "new_symbol": "VRSA",
-      "new_company_name": "Versabank",
+      "new_company_name": "Versa Bancorp",
       "status": "blocked_sec_cik_mismatch"
     },
     {
@@ -102,7 +102,7 @@
       "effective_date": "2026-11-09",
       "old_symbol": "INM",
       "new_symbol": "MTRI",
-      "new_company_name": "Inmed Pharmaceuticals Inc",
+      "new_company_name": "Mentari Therapeutics Inc",
       "status": "manual_official_successor_name_mismatch",
       "exchange": "NASDAQ",
       "old_listing_key": "NASDAQ::INM",
@@ -110,6 +110,14 @@
       "isin": "CA4576377002",
       "official_name": "Mentari Therapeutics, Inc. - Common Stock",
       "evidence": "official_successor_name_is_different_issuer"
+    },
+    {
+      "change_id": "09ccc257da948cf6",
+      "effective_date": "2026-11-05",
+      "old_symbol": "CCXI",
+      "new_symbol": "AGLT",
+      "new_company_name": "Agility Robotics Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
       "change_id": "e6c886f7206136a4",
@@ -1648,6 +1656,14 @@
       "old_symbol": "NUKK",
       "new_symbol": "DFNS",
       "new_company_name": "T3 Defense Inc",
+      "status": "blocked_old_symbol_not_unique_in_us_scope"
+    },
+    {
+      "change_id": "26f6ce7f7afc3227",
+      "effective_date": "2026-02-09",
+      "old_symbol": "CCXIU",
+      "new_symbol": "AGLT",
+      "new_company_name": "Agility Robotics Inc",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
