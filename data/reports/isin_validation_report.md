@@ -1,40 +1,40 @@
 # ISIN identity validation (OpenFIGI)
 
-Generated: 2026-11-16T17:38:57Z
+Generated: 2026-11-23T19:37:34Z
 
 **isin_issues_detected: True**
 
-ISINs validated: 64321 | match=62534 mismatch=129 no_data=1658
+ISINs validated: 64355 | match=62588 mismatch=128 no_data=1639
 
 Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose ticker AND name differ from ours (likely wrong/stale ISIN) — verify before correcting via the override pipeline. `no_data` = OpenFIGI has no record (coverage gap, not an error).
 
 ## Residual triage
 
-- Mismatch residuals: `129` (review_required_openfigi_resolves_different_security)
-- OpenFIGI no-data residuals: `1658` (provider coverage gap)
+- Mismatch residuals: `128` (review_required_openfigi_resolves_different_security)
+- OpenFIGI no-data residuals: `1639` (provider coverage gap)
 - Remaining unclassified residuals: `0`
 
 ### Mismatch residuals by exchange
 
 | Exchange | Rows |
 |---|---:|
-| NSE_IN | 32 |
+| NSE_IN | 34 |
 | OTC | 27 |
 | BSE_IN | 14 |
-| NASDAQ | 8 |
+| NASDAQ | 7 |
 | Bursa | 6 |
 | LSE | 4 |
 | CSE_LK | 3 |
 | Euronext | 3 |
 | NYSE ARCA | 3 |
 | SGX | 3 |
-| TSX | 3 |
-| TSXV | 3 |
 | B3 | 2 |
 | FSX | 2 |
 | NSE_KE | 2 |
 | NYSE | 2 |
 | TADAWUL | 2 |
+| TSX | 2 |
+| TSXV | 2 |
 | WSE | 2 |
 | AMS | 1 |
 | ASX | 1 |
@@ -49,22 +49,22 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 
 | Exchange | Rows |
 |---|---:|
-| OTC | 595 |
+| OTC | 594 |
 | B3 | 222 |
-| TPEX | 190 |
+| TPEX | 188 |
 | NYSE ARCA | 96 |
-| TSX | 91 |
-| NASDAQ | 85 |
-| TSXV | 68 |
+| TSX | 87 |
+| NASDAQ | 84 |
+| TSXV | 60 |
 | BATS | 40 |
-| ASX | 39 |
+| ASX | 38 |
 | EGX | 28 |
 | BSE_IN | 26 |
-| FSX | 21 |
-| SET | 17 |
+| FSX | 24 |
 | NYSE | 16 |
+| SET | 14 |
 | JSE | 12 |
-| CSE_LK | 10 |
+| CSE_LK | 11 |
 | HKEX | 9 |
 | NGX | 9 |
 | LSE | 6 |
@@ -89,9 +89,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | BRPMSPCPA000 | PMSP11B | PREFEITURA MUNICIPAL DE SAO PA | PMSP11BL | CEPAC - AGUA ESPRAIADA | review_required_openfigi_resolves_different_security |
 | BRPMSPCPA018 | PMSP12B | PREFEITURA MUNICIPAL DE SAO PA | PMSP12BL | CEPAC - FARIA LIMA | review_required_openfigi_resolves_different_security |
 | CA04364G1063 | AOTVF | Cambria Gold Mines Inc. | AOT1EUR | ASCOT RESOURCES LTD | review_required_openfigi_resolves_different_security |
-| CA09173B1076 | KEEL | Keel Infrastructure Corp | 1B2,1B2D | BITFARMS LTD/CANADA | review_required_openfigi_resolves_different_security |
 | CA17165J2020 | CGQD | CI Global Quality Dividend Gro | CGQD/B | CI GL QUTY DIV GRWTH ETF | review_required_openfigi_resolves_different_security |
-| CA29408C1005 | NVRO | NVRO MetaNVRO | RGO/XEUR | ENVIROGOLD GLOBAL LTD | review_required_openfigi_resolves_different_security |
 | CA30219M1059 | NFLDF | Epic Gold Corp. | NFLDGBP,NFLDUSD | EXPLOITS DISCOVERY CORP | review_required_openfigi_resolves_different_security |
 | CA33732U1093 | AUGB | First Trust Vest U.S. Equity B | AUGB/F | FT VT US EQ BF ETF-AUG | review_required_openfigi_resolves_different_security |
 | CA45168X1006 | ID | Secure Blockchain Development  | IDCAD,IDEUR,IDGBX | IDENTILLECT TECHNOLOGIES COR | review_required_openfigi_resolves_different_security |
@@ -135,6 +133,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INF200KB1CJ6 | SBIDEFETF | SBIAMC - SBIDEFETF | SBIBSRG | SBI BSE INDIA DEFENCE ETF RG | review_required_openfigi_resolves_different_security |
 | INF204KC1HS1 | FARBEES | NIPPONAMC - FARBEES | NICRFRG | NPN IN CRSL IBX FAR ETF RG | review_required_openfigi_resolves_different_security |
 | INF205KA1CB9 | IVZBANKNF | RELIGARAMC - IVZBANKNF | INIFBRG | INV IND NIF BK ETF RG | review_required_openfigi_resolves_different_security |
+| INF205KA1CP9 | IVZSILVER | RELIGARAMC - IVZSILVER | ISETFRG | INVESCO INDIA SILVER ETFRG | review_required_openfigi_resolves_different_security |
 | INF209KC1134 | ABGSEC | Aditya Birla Sun Life CRISIL B | ACBRGLT | AB CRSL BRD GLT ETF | review_required_openfigi_resolves_different_security |
 | INF209KC1746 | BIRLATOTAL | BIRLASLAMC - BIRLATOTAL | ABSLTRG | ADITYA BIRLA SUN BSE ETF RG | review_required_openfigi_resolves_different_security |
 | INF247L01EV3 | MOCAPITAL | Motilal Oswal Nifty Capital Ma | MONCARG | MOTI OSW NIF CAP MAR ETF-RG | review_required_openfigi_resolves_different_security |
@@ -153,6 +152,7 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | INF740KA1ZR8 | INSURADD | DSPAMC - INSURADD | DINSURE | DSP BSE INSURANCE ETF RG | review_required_openfigi_resolves_different_security |
 | INF754K01TF1 | EMULTIMQ | Edelweiss Nifty500 Multicap Mo | EDENM50 | EDEL NF500 MLT MOM QLT50 ETF | review_required_openfigi_resolves_different_security |
 | INF754K01XG1 | EMETAL | EDELAMC - EMETAL | EDNMERG | EDELWEISS NIFTY METAL ETF RG | review_required_openfigi_resolves_different_security |
+| INF754K01XZ1 | EENERGY | EDELAMC - EENERGY | ELNEERG | EDELWEISS NIFTY ENERGY ETF | review_required_openfigi_resolves_different_security |
 | INF767K01SM1 | LICMFGOLD | LICMF LICGoldETF | LICMFGLD | LIC MF GOLD ETF | review_required_openfigi_resolves_different_security |
 | INF769K01LJ8 | MIDSMALL | Mirae Asset Nifty Midsmallcap4 | MS400MQ | MA MS400 MOM QUAL | review_required_openfigi_resolves_different_security |
 | INF769K01RJ5 | HYBRIDETF | MIRAEAMC - HYBRIDETF | MANMPRG | MIRAE AST N200 PLS 8-13 G 50 | review_required_openfigi_resolves_different_security |
@@ -172,7 +172,6 @@ Detection only. `mismatch` = OpenFIGI resolves the ISIN to a security whose tick
 | MYQ0245OO009 | 0245 | MN Holdings Berhad | MNHLDG | MN HOLDINGS BHD | review_required_openfigi_resolves_different_security |
 | MYQ0296OO002 | 0296 | HE Group Berhad | HEGROUP | HE GROUP SDN BHD | review_required_openfigi_resolves_different_security |
 | MYQ0327OO005 | 0327 | OB Holdings Berhad | OBHB | OB HOLDINGS BHD | review_required_openfigi_resolves_different_security |
-| NL0015000DX5 | ATAI | AtaiBeckley Inc. | ATAI1EUR,ATAI1GBP,ATAI1USD | ATAI LIFE SCIENCES NV | review_required_openfigi_resolves_different_security |
 | NL0015000H56 | BNJW | BANIJAY GROUP WARR | FLEW | FL ENTERTAINMENT N.V.-CW24 | review_required_openfigi_resolves_different_security |
 | PLDRD2400010 | DRF | Dr.Finance SA | D24,D241PLN,D24PLN | DORADCY24 SA | review_required_openfigi_resolves_different_security |
 | PLPZUGD00010 | ETFPZUGOLD | ETFPZUGOLD | ETFP2PLN,ETFPZUG | PZU ETF GOLD PORTFELOWY FIZ | review_required_openfigi_resolves_different_security |
