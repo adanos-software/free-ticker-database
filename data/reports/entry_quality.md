@@ -1,25 +1,25 @@
 # Entry Quality Report
 
-Generated at: `2026-11-23T18:03:44Z`
+Generated at: `2026-11-23T18:46:00Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,671 |
-| source_gap | 10,988 |
+| pass | 86,665 |
+| source_gap | 11,017 |
 | warn | 36 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 6,745 |
+| official_reference_gap | 6,753 |
 | venue_missing_official_source | 3,287 |
-| expected_missing_primary_isin | 645 |
-| missing_stock_sector | 563 |
-| missing_etf_category | 66 |
+| expected_missing_primary_isin | 666 |
+| missing_stock_sector | 564 |
+| missing_etf_category | 86 |
 | official_name_mismatch | 24 |
 | official_isin_mismatch | 12 |
 | low_company_name_overlap | 10 |
@@ -29,25 +29,25 @@ Generated at: `2026-11-23T18:03:44Z`
 
 | Exchange | Pass | Notice | Source Gap | Warn | Quarantine |
 |---|---:|---:|---:|---:|---:|
-| OTC | 8,485 | 2 | 3,253 | 12 | 0 |
+| OTC | 8,484 | 2 | 3,254 | 12 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | FSX | 7,628 | 0 | 515 | 0 | 0 |
 | B3 | 1,247 | 0 | 342 | 0 | 0 |
-| NASDAQ | 4,500 | 4 | 267 | 3 | 0 |
+| NASDAQ | 4,497 | 4 | 282 | 3 | 0 |
 | BMV | 91 | 0 | 253 | 0 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | XETRA | 5,399 | 0 | 194 | 0 | 0 |
 | AMS | 554 | 0 | 194 | 0 | 0 |
 | BVB | 55 | 0 | 192 | 0 | 0 |
-| NYSE ARCA | 2,522 | 0 | 183 | 1 | 0 |
+| NYSE ARCA | 2,521 | 0 | 186 | 1 | 0 |
 | TSX | 2,269 | 0 | 167 | 1 | 0 |
 | ASX | 2,100 | 2 | 156 | 1 | 0 |
 | LSE | 6,880 | 0 | 142 | 2 | 0 |
 | Euronext | 1,333 | 0 | 142 | 1 | 0 |
 | TSXV | 1,279 | 0 | 140 | 3 | 0 |
 | HKEX | 3,148 | 0 | 117 | 3 | 0 |
-| NYSE | 1,929 | 0 | 96 | 1 | 0 |
+| NYSE | 1,928 | 0 | 97 | 1 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 
 ## Notes

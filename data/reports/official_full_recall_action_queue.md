@@ -10,18 +10,18 @@ Rows: `23`
 | 1 | FSX | 56.74 | 5945 | 4458 | refresh_only |
 | 2 | OTC | 69.47 | 3633 | 25 | not_in_supplement_allowlist |
 | 3 | LSE | 66.06 | 3501 | 869 | not_in_supplement_allowlist |
-| 4 | NYSE | 59.9 | 1309 | 568 | not_in_supplement_allowlist |
-| 5 | NASDAQ | 82.44 | 978 | 59 | not_in_supplement_allowlist |
+| 4 | NYSE | 59.85 | 1311 | 568 | not_in_supplement_allowlist |
+| 5 | NASDAQ | 82.5 | 975 | 59 | not_in_supplement_allowlist |
 | 6 | Borsa Italiana | 23.44 | 800 | 1936 | not_in_supplement_allowlist |
 | 7 | Euronext | 79.39 | 340 | 372 | not_in_supplement_allowlist |
 | 8 | UPCOM | 0.68 | 294 | 522 | not_in_supplement_allowlist |
-| 9 | BATS | 81.92 | 292 | 58 | not_in_supplement_allowlist |
+| 9 | BATS | 82.02 | 292 | 58 | not_in_supplement_allowlist |
 | 10 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
 | 11 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
-| 12 | NEO | 54.33 | 174 | 70 | not_in_supplement_allowlist |
+| 12 | NEO | 54.47 | 173 | 71 | not_in_supplement_allowlist |
 | 13 | KRX | 91.91 | 171 | 14 | not_in_supplement_allowlist |
 | 14 | B3 | 90.76 | 125 | 0 | collision_free_supplement |
-| 15 | NYSE ARCA | 96.14 | 106 | 29 | not_in_supplement_allowlist |
+| 15 | NYSE ARCA | 96.15 | 106 | 29 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 82.12 | 49 | 34 | not_in_supplement_allowlist |
 | 18 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |

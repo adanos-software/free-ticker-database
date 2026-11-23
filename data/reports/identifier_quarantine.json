@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-23T17:59:25Z",
+  "generated_at": "2026-11-23T18:43:45Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2091,
-  "decision_rows": 6851,
+  "conflict_count": 2092,
+  "decision_rows": 6854,
   "action_counts": {
     "kept_listing_keyed_identifier": 1345,
     "proposed_clear_conflicting_identifier": 1079,
-    "quarantined_unresolved_identifier": 4427
+    "quarantined_unresolved_identifier": 4430
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1079,
-  "quarantined_rows": 4427,
+  "quarantined_rows": 4430,
   "retained_rows": 1345,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -44681,6 +44681,45 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "KYG1145N1144"
+    },
+    {
+      "conflict_id": "79d00f014edf7f4a7e68",
+      "isin": "KYG1148A1013",
+      "listing_key": "NASDAQ::AVZO",
+      "ticker": "AVZO",
+      "exchange": "NASDAQ",
+      "name": "Avenzo Therapeutics, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "KYG1148A1013"
+    },
+    {
+      "conflict_id": "79d00f014edf7f4a7e68",
+      "isin": "KYG1148A1013",
+      "listing_key": "NASDAQ::CLYD",
+      "ticker": "CLYD",
+      "exchange": "NASDAQ",
+      "name": "Clywedog Therapeutics Holdings, Inc. - Common Stock",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "KYG1148A1013"
+    },
+    {
+      "conflict_id": "79d00f014edf7f4a7e68",
+      "isin": "KYG1148A1013",
+      "listing_key": "NASDAQ::VESI",
+      "ticker": "VESI",
+      "exchange": "NASDAQ",
+      "name": "Vesicor Therapeutics Holdings, Inc. - Class A Ordinary Shares",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "KYG1148A1013"
     },
     {
       "conflict_id": "231f450279dc5657d426",

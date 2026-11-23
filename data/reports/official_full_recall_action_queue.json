@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T18:02:30Z",
+  "generated_at": "2026-11-23T18:44:13Z",
   "rows": [
     {
       "exchange": "FSX",
@@ -33,20 +33,20 @@
     },
     {
       "exchange": "NYSE",
-      "collision_adjusted_recall_pct": 59.9,
-      "true_missing_excluding_collisions": 1309,
+      "collision_adjusted_recall_pct": 59.85,
+      "true_missing_excluding_collisions": 1311,
       "collision_hidden_missing": 568,
-      "official_recall_pct": 51.02,
+      "official_recall_pct": 50.98,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 4
     },
     {
       "exchange": "NASDAQ",
-      "collision_adjusted_recall_pct": 82.44,
-      "true_missing_excluding_collisions": 978,
+      "collision_adjusted_recall_pct": 82.5,
+      "true_missing_excluding_collisions": 975,
       "collision_hidden_missing": 59,
-      "official_recall_pct": 81.57,
+      "official_recall_pct": 81.64,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 5
@@ -83,10 +83,10 @@
     },
     {
       "exchange": "BATS",
-      "collision_adjusted_recall_pct": 81.92,
+      "collision_adjusted_recall_pct": 82.02,
       "true_missing_excluding_collisions": 292,
       "collision_hidden_missing": 58,
-      "official_recall_pct": 79.08,
+      "official_recall_pct": 79.19,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
       "rank": 9
@@ -113,9 +113,9 @@
     },
     {
       "exchange": "NEO",
-      "collision_adjusted_recall_pct": 54.33,
-      "true_missing_excluding_collisions": 174,
-      "collision_hidden_missing": 70,
+      "collision_adjusted_recall_pct": 54.47,
+      "true_missing_excluding_collisions": 173,
+      "collision_hidden_missing": 71,
       "official_recall_pct": 45.9,
       "supplement_lane": "not_in_supplement_allowlist",
       "next_action": "repair parser/source coverage or add reviewed official evidence for true missing active symbols.",
@@ -143,7 +143,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "collision_adjusted_recall_pct": 96.14,
+      "collision_adjusted_recall_pct": 96.15,
       "true_missing_excluding_collisions": 106,
       "collision_hidden_missing": 29,
       "official_recall_pct": 95.14,
