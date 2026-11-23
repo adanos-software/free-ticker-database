@@ -1,6 +1,23 @@
 {
-  "generated_at": "2026-11-16T17:12:08Z",
+  "generated_at": "2026-11-23T19:22:28Z",
   "manual_review_items": [
+    {
+      "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
+      "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::ACH",
+      "effective_date": "2026-11-17",
+      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
+      "match_status": "symbol_present_only_outside_source_scope",
+      "new_company_name": "Accendra Health Inc",
+      "new_listing_keys": "",
+      "new_symbol": "ACCH",
+      "old_listing_keys": "NYSE::ACH",
+      "old_symbol": "ACH",
+      "source_exchange_hint": "OTC",
+      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
     {
       "apply_status": "blocked_new_symbol_not_active_in_official_master",
       "apply_status_source": "available",
@@ -55,17 +72,17 @@
     {
       "apply_status": "manual_non_us_or_unscoped_source",
       "apply_status_source": "available",
-      "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::GWH",
+      "blocker_reason": "manual: source exchange scope is not mapped to a safe listing-keyed apply path",
       "effective_date": "2026-10-06",
-      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
-      "match_status": "symbol_present_only_outside_source_scope",
+      "exchange_scope_status": "unscoped_source_hint",
+      "match_status": "old_symbol_present_new_symbol_missing",
       "new_company_name": "Ess Tech Inc",
       "new_listing_keys": "",
       "new_symbol": "GWHT",
       "old_listing_keys": "NYSE::GWH",
       "old_symbol": "GWH",
-      "source_exchange_hint": "OTC",
-      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "source_exchange_hint": "",
+      "symbol_change_workflow_queue": "blocked_missing_source_scope_mapping",
       "triage_source": "symbol_changes_review",
       "triage_status": "blocked_or_manual"
     },
@@ -242,6 +259,23 @@
     {
       "apply_status": "manual_non_us_or_unscoped_source",
       "apply_status_source": "available",
+      "blocker_reason": "blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: TSXV::OMI",
+      "effective_date": "2026-01-02",
+      "exchange_scope_status": "global_symbol_collision_outside_source_scope",
+      "match_status": "symbol_present_only_outside_source_scope",
+      "new_company_name": "Accendra Health Inc",
+      "new_listing_keys": "",
+      "new_symbol": "ACCH",
+      "old_listing_keys": "TSXV::OMI",
+      "old_symbol": "OMI",
+      "source_exchange_hint": "OTC",
+      "symbol_change_workflow_queue": "blocked_out_of_scope_symbol_collision",
+      "triage_source": "symbol_changes_review",
+      "triage_status": "blocked_or_manual"
+    },
+    {
+      "apply_status": "manual_non_us_or_unscoped_source",
+      "apply_status_source": "available",
       "blocker_reason": "manual: source exchange scope is not mapped to a safe listing-keyed apply path",
       "effective_date": "2025-11-20",
       "exchange_scope_status": "unscoped_source_hint",
@@ -326,5 +360,5 @@
     }
   ],
   "policy": "Blocked/manual rename rows are not canonical ticker changes. Apply only after listing-keyed official old-inactive/new-active same-issuer evidence, with no collision.",
-  "rows": 19
+  "rows": 21
 }
