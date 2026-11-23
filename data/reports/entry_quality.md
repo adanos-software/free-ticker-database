@@ -1,15 +1,15 @@
 # Entry Quality Report
 
-Generated at: `2026-11-23T13:24:25Z`
+Generated at: `2026-11-23T14:26:06Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,658 |
-| source_gap | 10,999 |
-| warn | 35 |
+| pass | 86,659 |
+| source_gap | 10,997 |
+| warn | 36 |
 
 ## Issue Counts
 
@@ -18,10 +18,10 @@ Generated at: `2026-11-23T13:24:25Z`
 | official_reference_gap | 6,753 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 645 |
-| missing_stock_sector | 565 |
+| missing_stock_sector | 563 |
 | missing_etf_category | 66 |
 | official_name_mismatch | 24 |
-| official_isin_mismatch | 11 |
+| official_isin_mismatch | 12 |
 | low_company_name_overlap | 10 |
 | country_isin_mismatch | 1 |
 
@@ -31,7 +31,7 @@ Generated at: `2026-11-23T13:24:25Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 8,485 | 2 | 3,253 | 12 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
-| FSX | 7,627 | 0 | 516 | 0 | 0 |
+| FSX | 7,628 | 0 | 515 | 0 | 0 |
 | B3 | 1,247 | 0 | 342 | 0 | 0 |
 | NASDAQ | 4,500 | 4 | 267 | 3 | 0 |
 | BMV | 91 | 0 | 253 | 0 | 0 |
@@ -47,7 +47,7 @@ Generated at: `2026-11-23T13:24:25Z`
 | Euronext | 1,333 | 0 | 142 | 1 | 0 |
 | TSXV | 1,279 | 0 | 140 | 3 | 0 |
 | HKEX | 3,148 | 0 | 116 | 3 | 0 |
-| NYSE | 1,928 | 0 | 97 | 1 | 0 |
+| NYSE | 1,929 | 0 | 96 | 1 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 
 ## Notes
