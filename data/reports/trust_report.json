@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-23T18:44:30Z",
+    "generated_at": "2026-11-23T20:46:24Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,10 +34,10 @@
   "completeness": {
     "isin": {
       "n": 63585,
-      "filled": 62919,
-      "missing": 666,
-      "pct": 98.95,
-      "fills_needed_for_99": 31,
+      "filled": 62922,
+      "missing": 663,
+      "pct": 98.96,
+      "fills_needed_for_99": 28,
       "pass": false
     },
     "country": {
@@ -50,17 +50,17 @@
     },
     "taxonomy": {
       "n": 63585,
-      "filled": 62935,
-      "missing": 650,
+      "filled": 62936,
+      "missing": 649,
       "pct": 98.98,
-      "fills_needed_for_99": 15,
+      "fills_needed_for_99": 14,
       "pass": false
     },
     "missing_isin_by_exchange": {
       "NYSE ARCA": 116,
       "ASX": 98,
       "NASDAQ": 95,
-      "TSX": 78,
+      "TSX": 75,
       "BATS": 57,
       "TSXV": 56,
       "SSE": 33,
@@ -91,8 +91,8 @@
       "XETRA": 14,
       "BATS": 11,
       "TSE": 7,
-      "TSX": 2,
-      "Euronext": 1
+      "Euronext": 1,
+      "TSX": 1
     }
   },
   "identity": {
@@ -104,8 +104,8 @@
     "quarantine_kept": 551
   },
   "entry_quality_status": {
-    "pass": 59810,
-    "source_gap": 3745,
+    "pass": 59813,
+    "source_gap": 3742,
     "warn": 22,
     "notice": 8
   },
@@ -138,10 +138,10 @@
       "status": "fail",
       "details": {
         "n": 63585,
-        "filled": 62919,
-        "missing": 666,
-        "pct": 98.95,
-        "fills_needed_for_99": 31,
+        "filled": 62922,
+        "missing": 663,
+        "pct": 98.96,
+        "fills_needed_for_99": 28,
         "pass": false
       }
     },
@@ -150,10 +150,10 @@
       "status": "fail",
       "details": {
         "n": 63585,
-        "filled": 62935,
-        "missing": 650,
+        "filled": 62936,
+        "missing": 649,
         "pct": 98.98,
-        "fills_needed_for_99": 15,
+        "fills_needed_for_99": 14,
         "pass": false
       }
     },

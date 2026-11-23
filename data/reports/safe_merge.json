@@ -6,46 +6,63 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97705,
+    "before_rows": 97728,
     "after_rows": 97728,
     "overall_shrink_pct": 0.0,
-    "removed_rows": 1,
-    "evidenced_removed_rows": 1,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 6,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 1
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "NASDAQ::BKHA"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
-  "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
+  "critical_field_changes": [
     {
-      "listing_key": "NASDAQ::BKHA",
-      "ticker": "BKHA",
-      "exchange": "NASDAQ",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "BKHA",
-      "new_value": "AVZO",
-      "before_row_sha256": "6ead98db76b3abc3072596a9db5b5438837a7abf9c17172a484fa933835d2313",
-      "effective_at": "",
-      "observed_at": "2026-11-23T18:43:45Z",
-      "source_key": "nasdaq_listed",
-      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "eb5f91c7569943b79c6e56eb",
-      "evidence_status": "reviewed"
+      "listing_key": "OTC::CTIHY",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "OTC::NPKYY",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "TSX::GLDX",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA37965M1068"
+    },
+    {
+      "listing_key": "TSX::GLDX",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "TSX::MMEM",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA55454G1090"
+    },
+    {
+      "listing_key": "TSX::NICC",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "CA6389751026"
     }
   ],
+  "generated_official_change_evidence": [],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -94,7 +111,7 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1349,
+      "before_rows": 1358,
       "after_rows": 1358,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -445,10 +462,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4774,
+      "before_rows": 4786,
       "after_rows": 4786,
       "shrink_pct": 0.0,
-      "removed_rows": 1,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },
@@ -508,7 +525,7 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2706,
+      "before_rows": 2708,
       "after_rows": 2708,
       "shrink_pct": 0.0,
       "removed_rows": 0,

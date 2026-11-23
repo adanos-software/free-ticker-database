@@ -1,23 +1,23 @@
 {
   "summary": {
-    "generated_at": "2026-11-23T18:46:12Z",
-    "rows": 8072,
+    "generated_at": "2026-11-23T20:47:36Z",
+    "rows": 8066,
     "field_totals": {
-      "missing_etf_category": 77,
-      "missing_isin_primary": 666,
-      "missing_sector_stock": 576,
+      "missing_etf_category": 76,
+      "missing_isin_primary": 663,
+      "missing_sector_stock": 574,
       "official_reference_gap": 6753
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 30,
-      "commodity_etf_category_gap": 6,
+      "commodity_etf_category_gap": 5,
       "debt_or_securitized_identifier_gap": 91,
       "equity_etf_category_gap": 18,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 4,
-      "fund_or_trust_identifier_gap": 356,
+      "fund_or_trust_identifier_gap": 353,
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -28,18 +28,18 @@
       "official_product_taxonomy_unavailable_gap": 49,
       "official_reference_symbol_collision_gap": 1170,
       "official_reference_unmatched_source_gap": 5583,
-      "otc_sector_source_gap": 90,
+      "otc_sector_source_gap": 88,
       "shell_or_cpc_sector_gap": 7
     },
     "class_by_field": {
-      "missing_etf_category:commodity_etf_category_gap": 6,
+      "missing_etf_category:commodity_etf_category_gap": 5,
       "missing_etf_category:equity_etf_category_gap": 18,
       "missing_etf_category:fixed_income_etf_category_gap": 4,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 49,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 91,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 356,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 353,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
@@ -49,7 +49,7 @@
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 403,
-      "missing_sector_stock:otc_sector_source_gap": 90,
+      "missing_sector_stock:otc_sector_source_gap": 88,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1170,
       "official_reference_gap:official_reference_unmatched_source_gap": 5583
@@ -81,11 +81,11 @@
           "rows": 7
         },
         {
-          "exchange": "TSX",
-          "rows": 2
+          "exchange": "Euronext",
+          "rows": 1
         },
         {
-          "exchange": "Euronext",
+          "exchange": "TSX",
           "rows": 1
         },
         {
@@ -108,7 +108,7 @@
         },
         {
           "exchange": "TSX",
-          "rows": 78
+          "rows": 75
         },
         {
           "exchange": "BATS",
@@ -142,7 +142,7 @@
         },
         {
           "exchange": "OTC",
-          "rows": 90
+          "rows": 88
         },
         {
           "exchange": "NSE_IN",
@@ -329,7 +329,7 @@
         "field": "missing_sector_stock",
         "gap_class": "otc_sector_source_gap",
         "exchange": "OTC",
-        "rows": 90,
+        "rows": 88,
         "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
         "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
       },
@@ -1424,23 +1424,6 @@
       "source_gap_context": "listing_key=TSX::CUSD;exchange=TSX;ticker=CUSD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=fixed_income_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=fixed_income_etf_category_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "TSX::GLDX",
-      "ticker": "GLDX",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Global X Gold Producers Index ETF",
-      "gap_class": "commodity_etf_category_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require official fund asset class or deterministic product evidence; commodity tokens alone need review if ambiguous.",
-      "recommended_next_source": "Official fund asset class or reviewed product profile.",
-      "source_gate": "Exact ETF symbol/name and deterministic commodity exposure evidence.",
-      "source_gap_context": "listing_key=TSX::GLDX;exchange=TSX;ticker=GLDX;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=commodity_etf_category_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=commodity_etf_category_gap"
     },
     {
       "field": "missing_etf_category",
@@ -10948,23 +10931,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::GLDX",
-      "ticker": "GLDX",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Global X Gold Producers Index ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::GLDX;exchange=TSX;ticker=GLDX;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::HISU",
       "ticker": "HISU",
       "exchange": "TSX",
@@ -11152,23 +11118,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "TSX::MMEM",
-      "ticker": "MMEM",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "Mackenzie Modus Emerging Markets Equity ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::MMEM;exchange=TSX;ticker=MMEM;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "TSX::MPCT",
       "ticker": "MPCT",
       "exchange": "TSX",
@@ -11214,23 +11163,6 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=TSX::NBUE.F;exchange=TSX;ticker=NBUE.F;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::NICC",
-      "ticker": "NICC",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "NBI SmartData International Equity Covered Call Fund",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=TSX::NICC;exchange=TSX;ticker=NICC;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -20281,23 +20213,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "OTC::CTIHY",
-      "ticker": "CTIHY",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "China Taiping Insurance Holdings Co Ltd ADR",
-      "gap_class": "otc_sector_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
-      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
-      "source_gap_context": "listing_key=OTC::CTIHY;exchange=OTC;ticker=CTIHY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "OTC::DBSDY",
       "ticker": "DBSDY",
       "exchange": "OTC",
@@ -20819,23 +20734,6 @@
       "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
       "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
       "source_gap_context": "listing_key=OTC::NISUY;exchange=OTC;ticker=NISUY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OTC::NPKYY",
-      "ticker": "NPKYY",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "Nippon Kayaku Co Ltd ADR",
-      "gap_class": "otc_sector_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require SEC SIC, issuer filing, OTCMarkets profile, or reviewed secondary profile data; no name-only sector guesses.",
-      "recommended_next_source": "SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference.",
-      "source_gap_context": "listing_key=OTC::NPKYY;exchange=OTC;ticker=NPKYY;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=otc_sector_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=otc_sector_source_gap"
     },

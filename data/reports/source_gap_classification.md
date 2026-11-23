@@ -1,15 +1,15 @@
 # Source Gap Classification
 
-Generated at: `2026-11-23T18:46:12Z`
+Generated at: `2026-11-23T20:47:36Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Official reference-gap rows classified: `6753`
-- Missing primary ISIN rows classified: `666`
-- Missing stock-sector rows classified: `576`
-- Missing ETF-category rows classified: `77`
+- Missing primary ISIN rows classified: `663`
+- Missing stock-sector rows classified: `574`
+- Missing ETF-category rows classified: `76`
 
 ## Top Classes
 
@@ -18,10 +18,10 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_unmatched_source_gap | 5583 |
 | official_reference_symbol_collision_gap | 1170 |
 | official_industry_taxonomy_unavailable_gap | 403 |
-| fund_or_trust_identifier_gap | 356 |
+| fund_or_trust_identifier_gap | 353 |
 | official_identifier_not_exposed_source_gap | 138 |
 | debt_or_securitized_identifier_gap | 91 |
-| otc_sector_source_gap | 90 |
+| otc_sector_source_gap | 88 |
 | official_product_taxonomy_unavailable_gap | 49 |
 | exchange_industry_source_gap | 41 |
 | capital_pool_or_halted_identifier_gap | 30 |
@@ -31,8 +31,8 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | adr_cdr_or_depositary_identifier_gap | 16 |
 | official_identifier_reference_unmatched_gap | 15 |
 | shell_or_cpc_sector_gap | 7 |
-| commodity_etf_category_gap | 6 |
 | adr_cdr_or_depositary_sector_gap | 5 |
+| commodity_etf_category_gap | 5 |
 | fixed_income_etf_category_gap | 4 |
 | official_current_directory_absent_identifier_gap | 2 |
 
@@ -53,7 +53,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 109 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | official_reference_gap | official_reference_unmatched_source_gap | TSX | 94 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | HKEX | 92 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
-| missing_sector_stock | otc_sector_source_gap | OTC | 90 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
+| missing_sector_stock | otc_sector_source_gap | OTC | 88 | SEC SIC, issuer filings, OTCMarkets profile, or reviewed secondary company profile. | Canonical stock sector only after exchange/name gate; no ticker/name-only inference. |
 | official_reference_gap | official_reference_unmatched_source_gap | Euronext | 87 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | TSXV | 86 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | BMV | 85 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
