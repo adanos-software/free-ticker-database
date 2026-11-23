@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 100428,
-    "matched": 70271,
-    "collisions": 11773,
-    "missing": 18384
+    "official_symbols": 100443,
+    "matched": 70287,
+    "collisions": 11774,
+    "missing": 18382
   },
   "exchanges": [
     {
@@ -287,8 +287,8 @@
     },
     {
       "exchange": "BATS",
-      "official_symbols": 1673,
-      "matched": 1323,
+      "official_symbols": 1682,
+      "matched": 1332,
       "collisions": 58,
       "missing": 292,
       "collision_examples": [
@@ -2581,10 +2581,10 @@
     },
     {
       "exchange": "NASDAQ",
-      "official_symbols": 5627,
-      "matched": 4590,
+      "official_symbols": 5631,
+      "matched": 4597,
       "collisions": 59,
-      "missing": 978,
+      "missing": 975,
       "collision_examples": [
         {
           "ticker": "AINF",
@@ -2726,8 +2726,8 @@
       "exchange": "NEO",
       "official_symbols": 451,
       "matched": 207,
-      "collisions": 70,
-      "missing": 174,
+      "collisions": 71,
+      "missing": 173,
       "collision_examples": [
         {
           "ticker": "ABB",
@@ -2759,6 +2759,14 @@
           "existing_exchanges": [
             "Euronext",
             "SIX"
+          ]
+        },
+        {
+          "ticker": "ANTY",
+          "name": "PURPOSE ANTHROPIC (ANT) YIELD SHARES ETF",
+          "target_exchange": "NEO",
+          "existing_exchanges": [
+            "NASDAQ"
           ]
         },
         {
@@ -2813,25 +2821,12 @@
           "existing_exchanges": [
             "BATS"
           ]
-        },
-        {
-          "ticker": "BUFR",
-          "name": "FIRST TRUST VEST FUND OF BUFFER ETFS (CANADA) ETF",
-          "target_exchange": "NEO",
-          "existing_exchanges": [
-            "BATS"
-          ]
         }
       ],
       "missing_examples": [
         {
           "ticker": "ALIZ",
           "name": "ALLIANZ CDR (CAD HEDGED)",
-          "exchange": "NEO"
-        },
-        {
-          "ticker": "ANTY",
-          "name": "PURPOSE ANTHROPIC (ANT) YIELD SHARES ETF",
           "exchange": "NEO"
         },
         {
@@ -2872,6 +2867,11 @@
         {
           "ticker": "BSAN",
           "name": "SANTANDER CDR (CAD HEDGED)",
+          "exchange": "NEO"
+        },
+        {
+          "ticker": "BYLD.B",
+          "name": "MANULIFE SMART ENHANCED YIELD BOND ETF - UNHEDGED UNITS",
           "exchange": "NEO"
         }
       ]
@@ -3082,10 +3082,10 @@
     },
     {
       "exchange": "NYSE",
-      "official_symbols": 3832,
-      "matched": 1955,
+      "official_symbols": 3833,
+      "matched": 1954,
       "collisions": 568,
-      "missing": 1309,
+      "missing": 1311,
       "collision_examples": [
         {
           "ticker": "AB",
@@ -3231,8 +3231,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2778,
-      "matched": 2643,
+      "official_symbols": 2779,
+      "matched": 2644,
       "collisions": 29,
       "missing": 106,
       "collision_examples": [
