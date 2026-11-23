@@ -1,15 +1,16 @@
 # Pending Renames Manual Review
 
-Generated: 2026-11-16T17:12:08Z
+Generated: 2026-11-23T19:22:28Z
 
 Rows here are explicitly blocked or manual-review only; no ticker change is authorized by this report.
 
 | Old | New | Effective | Queue | Apply status | Blocker |
 |---|---|---|---|---|---|
+| ACH | ACCH | 2026-11-17 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::ACH |
 | TCBI | TXCP | 2026-11-09 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | INM | MTRI | 2026-11-09 | review_verified_rename_or_delisting | manual_official_successor_name_mismatch | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
 | PAPL | PTIV | 2026-10-26 | review_verified_rename_or_delisting | blocked_new_symbol_not_active_in_official_master | Do not rename until official listing-keyed evidence proves old inactive and new active for the same issuer. |
-| GWH | GWHT | 2026-10-06 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE::GWH |
+| GWH | GWHT | 2026-10-06 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
 | BGI | BGICF | 2026-08-27 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: TSX::BGI |
 | EQR | VRMK | 2026-08-18 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
 | NCL | NCLX | 2026-08-13 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: FSX::NCL|NYSE::NCL|SET::NCL|WSE::NCL|XSTU::NCL |
@@ -20,6 +21,7 @@ Rows here are explicitly blocked or manual-review only; no ticker change is auth
 | QH | QHUOY | 2026-04-02 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NASDAQ::QH|SET::QH |
 | KBFR | LVROF | 2026-02-23 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: NYSE ARCA::KBFR |
 | ABP | ABPO | 2026-02-20 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: Borsa Italiana::ABP |
+| OMI | ACCH | 2026-01-02 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: TSXV::OMI |
 | OPT | OPTEY | 2025-11-20 | blocked_missing_source_scope_mapping | manual_non_us_or_unscoped_source | manual: source exchange scope is not mapped to a safe listing-keyed apply path |
 | EBR | AXIAY | 2025-11-10 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::EBR |
 | PET | PETXQ | 2025-07-29 | blocked_out_of_scope_symbol_collision | manual_non_us_or_unscoped_source | blocked: secondary feed scope is OTC, but old symbol matches dataset listing(s) outside that scope: ASX::PET|LSE::PET|TSX::PET |
