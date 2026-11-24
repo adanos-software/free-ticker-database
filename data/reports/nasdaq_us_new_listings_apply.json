@@ -1,7 +1,7 @@
 {
   "summary": {
-    "generated_at": "2026-11-24T17:34:30Z",
-    "previous_reference_csv": "/tmp/reference-before-masterfile-rotation.csv",
+    "generated_at": "2026-11-24T18:12:35Z",
+    "previous_reference_csv": "/tmp/reference-before-nasdaq-us.csv",
     "current_reference_csv": "data/masterfiles/reference.csv",
     "supplement_csv": "data/masterfiles/supplemental_listings.csv",
     "coverage_expansion_csv": "data/coverage_expansion_listings.csv",
@@ -11,16 +11,94 @@
       "ETF",
       "Stock"
     ],
-    "new_supported_rows": 0,
-    "accepted_rows": 0,
-    "skipped_rows": 0,
+    "new_supported_rows": 5,
+    "accepted_rows": 4,
+    "skipped_rows": 1,
     "detected_symbol_changes": 0,
     "detected_venue_changes": 0,
     "review_override_files_rekeyed": [],
-    "accepted_by_exchange": {},
-    "accepted_by_target": {},
-    "skipped_by_reason": {}
+    "accepted_by_exchange": {
+      "NASDAQ": 1,
+      "NYSE": 1,
+      "NYSE ARCA": 2
+    },
+    "accepted_by_target": {
+      "supplement": 4
+    },
+    "skipped_by_reason": {
+      "excluded_non_common_stock": 1
+    }
   },
-  "accepted": [],
-  "skipped": []
+  "accepted": [
+    {
+      "ticker": "OBMT",
+      "name": "Opportunity Bancorp, Inc. - Common Stock",
+      "exchange": "NASDAQ",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "QSPC",
+      "name": "Quantum Space, Inc. Class A-1 Common Stock",
+      "exchange": "NYSE",
+      "asset_type": "Stock",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "IVEA",
+      "name": "Dan IVES Wedbush AI Autocallable Income ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    },
+    {
+      "ticker": "YANT",
+      "name": "YieldMax ANT Option Income Strategy ETF",
+      "exchange": "NYSE ARCA",
+      "asset_type": "ETF",
+      "sector": "",
+      "country": "United States",
+      "country_code": "US",
+      "isin": "",
+      "aliases": "",
+      "source_key": "nasdaq_other_listed",
+      "source_url": "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt",
+      "reference_scope": "exchange_directory",
+      "apply_target": "supplement"
+    }
+  ],
+  "skipped": [
+    {
+      "ticker": "QSPC.W",
+      "exchange": "NYSE MKT",
+      "name": "Quantum Space, Inc. Warrants, each whole warrant exercisable for one share of Class A-1 Common Stock at an exercise price of $11.50 per share",
+      "asset_type": "Stock",
+      "source_key": "nasdaq_other_listed",
+      "skip_reason": "excluded_non_common_stock"
+    }
+  ]
 }

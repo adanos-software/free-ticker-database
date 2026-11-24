@@ -1,19 +1,19 @@
 {
   "summary": {
-    "active_official_reference_rows": 170419,
-    "source_specific_reference_keys": 170418,
+    "active_official_reference_rows": 170416,
+    "source_specific_reference_keys": 170415,
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12513,
-      "exact_match": 99404,
-      "missing_from_database": 44926,
+      "exact_match": 99403,
+      "missing_from_database": 44924,
       "normalization_candidate": 1856,
       "out_of_scope": 8128
     },
-    "coverage_credited_keys": 99404,
+    "coverage_credited_keys": 99403,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 44926,
+    "in_scope_missing_rows": 44924,
     "identity_conflict_rows": 12513,
     "mapping_candidate_rows": 1856
   },
@@ -1511619,22 +1511619,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::CPHY",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::CPHY",
-      "exchange": "NASDAQ",
-      "ticker": "CPHY",
-      "asset_types": "ETF",
-      "names": "F/m Compoundr High Yield Bond ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: bond"
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CPIX",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::CPIX",
@@ -1516736,22 +1516720,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::EBIZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::EBMT",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::EBMT",
-      "exchange": "NASDAQ",
-      "ticker": "EBMT",
-      "asset_types": "Stock",
-      "names": "Eagle Bancorp Montana, Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::EBMT",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1533923,54 +1533891,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::IPFX",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::IPFX",
-      "exchange": "NASDAQ",
-      "ticker": "IPFX",
-      "asset_types": "Stock",
-      "names": "Inflection Point Acquisition Corp. VI - Class A Ordinary Shares",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::IPFX",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::IPFXU",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::IPFXU",
-      "exchange": "NASDAQ",
-      "ticker": "IPFXU",
-      "asset_types": "Stock",
-      "names": "Inflection Point Acquisition Corp. VI - Units",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::IPFXW",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::IPFXW",
-      "exchange": "NASDAQ",
-      "ticker": "IPFXW",
-      "asset_types": "Stock",
-      "names": "Inflection Point Acquisition Corp. VI - Warrant",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "out_of_scope",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "name indicates non-target instrument: warrant"
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::IPGP",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::IPGP",
@@ -1549651,6 +1549571,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::OBMT",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::OBMT",
+      "exchange": "NASDAQ",
+      "ticker": "OBMT",
+      "asset_types": "Stock",
+      "names": "Opportunity Bancorp, Inc. - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::OBMT",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::OBT",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::OBT",
@@ -1559248,22 +1559184,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::RCAT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::RCAX",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::RCAX",
-      "exchange": "NASDAQ",
-      "ticker": "RCAX",
-      "asset_types": "ETF",
-      "names": "Defiance Daily Target 2x Long RCAT ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::RCAX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1613187,22 +1613107,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::BATS::KEEX",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "BATS::KEEX",
-      "exchange": "BATS",
-      "ticker": "KEEX",
-      "asset_types": "ETF",
-      "names": "Defiance Daily Target 2x Long KEEL ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::BATS::KEO",
       "source_key": "nasdaq_other_listed",
       "reference_key": "BATS::KEO",
@@ -1633411,22 +1633315,6 @@
       "evidence": "No venue-specific identity-compatible listing was found."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::COPZ",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::COPZ",
-      "exchange": "NYSE ARCA",
-      "ticker": "COPZ",
-      "asset_types": "ETF",
-      "names": "Defiance Daily Target 2X Long Copper Miners ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NYSE ARCA::COPZ",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::CORB",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::CORB",
@@ -1648576,6 +1648464,22 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::IVE",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IVEA",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::IVEA",
+      "exchange": "NYSE ARCA",
+      "ticker": "IVEA",
+      "asset_types": "ETF",
+      "names": "Dan IVES Wedbush AI Autocallable Income ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE ARCA::IVEA",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1671203,6 +1671107,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YANT",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE ARCA::YANT",
+      "exchange": "NYSE ARCA",
+      "ticker": "YANT",
+      "asset_types": "ETF",
+      "names": "YieldMax ANT Option Income Strategy ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: option"
+    },
+    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::YASX",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::YASX",
@@ -1675457,6 +1675377,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NYSE MKT::QNC",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE MKT::QSPC.W",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE MKT::QSPC.W",
+      "exchange": "NYSE MKT",
+      "ticker": "QSPC.W",
+      "asset_types": "Stock",
+      "names": "Quantum Space, Inc. Warrants, each whole warrant exercisable for one share of Class A-1 Common Stock at an exercise price of $11.50 per share",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: warrants"
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE MKT::RCG",
@@ -1710833,6 +1710769,22 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: right"
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::NYSE::QSPC",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "NYSE::QSPC",
+      "exchange": "NYSE",
+      "ticker": "QSPC",
+      "asset_types": "Stock",
+      "names": "Quantum Space, Inc. Class A-1 Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NYSE::QSPC",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE::QSR",
