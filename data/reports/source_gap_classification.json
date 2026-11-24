@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-23T22:13:27Z",
-    "rows": 8604,
+    "generated_at": "2026-11-24T06:20:50Z",
+    "rows": 8602,
     "field_totals": {
       "missing_etf_category": 76,
       "missing_isin_primary": 663,
-      "missing_sector_stock": 579,
+      "missing_sector_stock": 577,
       "official_reference_gap": 7286
     },
     "class_totals": {
@@ -24,7 +24,7 @@
       "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 408,
+      "official_industry_taxonomy_unavailable_gap": 406,
       "official_product_taxonomy_unavailable_gap": 49,
       "official_reference_symbol_collision_gap": 1171,
       "official_reference_unmatched_source_gap": 6115,
@@ -48,7 +48,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 408,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 406,
       "missing_sector_stock:otc_sector_source_gap": 88,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1171,
@@ -138,7 +138,7 @@
       "missing_sector_stock": [
         {
           "exchange": "FSX",
-          "rows": 205
+          "rows": 203
         },
         {
           "exchange": "OTC",
@@ -249,7 +249,7 @@
         "field": "missing_sector_stock",
         "gap_class": "official_industry_taxonomy_unavailable_gap",
         "exchange": "FSX",
-        "rows": 200,
+        "rows": 198,
         "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
         "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
       },
@@ -16677,23 +16677,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::IPHB",
-      "ticker": "IPHB",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Impala Platinum Holdings Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::IPHB;exchange=FSX;ticker=IPHB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::IQ70",
       "ticker": "IQ70",
       "exchange": "FSX",
@@ -17030,23 +17013,6 @@
       "source_gap_context": "listing_key=FSX::M3C;exchange=FSX;ticker=M3C;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "FSX::M3K0",
-      "ticker": "M3K0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "MIG Holdings S.A.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=FSX::M3K0;exchange=FSX;ticker=M3K0;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -136752,7 +136718,7 @@
       "ticker": "TERRNT-B",
       "exchange": "STO",
       "asset_type": "Stock",
-      "name": "Terranet AB",
+      "name": "BlincVision AB",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
