@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-24T09:52:02Z",
+  "generated_at": "2026-11-24T17:36:26Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1926,
+  "reconciled_rows": 1925,
   "applied_rows": 0,
-  "proposed_rows": 1926,
+  "proposed_rows": 1925,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -24874,21 +24874,6 @@
       "reference_scope": "listed_companies_subset",
       "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
       "observation_id": "e29a67f02dd2853a1323ae17",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "STO::NOSA",
-      "action": "proposed",
-      "ticker": "NOSA",
-      "exchange": "STO",
-      "asset_type": "Stock",
-      "isin": "SE0006994539",
-      "old_name": "Nosa Med AB",
-      "new_name": "Nosa Plugs",
-      "source_key": "nasdaq_nordic_stockholm_shares",
-      "reference_scope": "listed_companies_subset",
-      "source_url": "https://api.nasdaq.com/api/nordic/screener/shares",
-      "observation_id": "5c2868243db20dcbd0bc9168",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

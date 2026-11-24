@@ -1,6 +1,6 @@
 # Source Inventory Gap
 
-Generated at: `2026-11-23T22:13:23Z`
+Generated at: `2026-11-24T17:43:06Z`
 
 ## Summary
 
@@ -17,7 +17,7 @@ Generated at: `2026-11-23T22:13:23Z`
 
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
-| 1 | XSTU | missing | 2773 | 0 | 225 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
+| 1 | XSTU | missing | 2773 | 0 | 223 | stuttgart_stock_exchange_directory | Boerse Stuttgart |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | No free official Stuttgart cash-market directory CSV is published; master data is sold through Boerse Stuttgart market-data contracts. |
 | 2 | Munich | missing | 223 | 0 | 9 | munich_stock_exchange_directory | Boerse Muenchen |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 3 | XDUS | missing | 199 | 0 | 5 | duesseldorf_stock_exchange_directory | Boerse Duesseldorf |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
 | 4 | XHAM | missing | 12 | 0 | 5 | hamburg_stock_exchange_directory | Boersen AG |  | implement_curated_official_candidate_then_regenerate_reference_and_recall |  | Official venue directory candidate is not yet parsed; current listings remain source-gapped until listing-keyed official coverage is implemented. |
@@ -28,10 +28,10 @@ Generated at: `2026-11-23T22:13:23Z`
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
 | 6 | EGX | official_partial | 223 | 0 | 0 | egx_listed_securities | EGX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 7 | ASX | official_partial | 2259 | 98 | 8 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 7 | ASX | official_partial | 2259 | 98 | 7 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 8 | ATHEX | official_partial | 162 | 0 | 0 | athex_sector_classification | ATHEX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 9 | SZSE | official_partial | 3150 | 11 | 0 | szse_industry_classification | SZSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SZSE report-list industry fields |
-| 10 | SSE | official_partial | 2795 | 33 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 10 | SSE | official_partial | 2795 | 32 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 11 | STO | official_partial | 876 | 0 | 1 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 12 | SIX | official_partial | 1263 | 0 | 0 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 13 | TPEX | official_partial | 1119 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
@@ -67,10 +67,10 @@ _No rows._
 | Rank | Exchange | Status | Tickers | ISIN gap | Metadata gap | Candidate | Provider | Source Mode | Upgrade Plan | Last Error | Blocker |
 |---|---|---|---:|---:|---:|---|---|---|---|---|---|
 | 6 | EGX | official_partial | 223 | 0 | 0 | egx_listed_securities | EGX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via browser-captured official ASP.NET ViewState; raw non-browser requests still hit the EGX/TSPD challenge |
-| 7 | ASX | official_partial | 2259 | 98 | 8 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
+| 7 | ASX | official_partial | 2259 | 98 | 7 | asx_cash_market_directory | ASX |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented by mapping the existing official ASX listed-companies CSV GICS industry-group column to canonical stock_sector values |
 | 8 | ATHEX | official_partial | 162 | 0 | 0 | athex_sector_classification | ATHEX | network | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | active stock-market pages are Incapsula-blocked from this environment; implemented reachable official sector-classification PDF as a conservative listed-company subset |
 | 9 | SZSE | official_partial | 3150 | 11 | 0 | szse_industry_classification | SZSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SZSE report-list industry fields |
-| 10 | SSE | official_partial | 2795 | 33 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
+| 10 | SSE | official_partial | 2795 | 32 | 0 | sse_industry_classification | SSE |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | implemented via existing official SSE stock-list CSRC_CODE fields |
 | 11 | STO | official_partial | 876 | 0 | 1 | nasdaq_nordic_stockholm_full_search | Nasdaq Nordic |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | reconciled through existing official Nasdaq Nordic Stockholm shares, share-search, ETF, tracker, Spotlight, and NGM feeds |
 | 12 | SIX | official_partial | 1263 | 0 | 0 | six_shares_explorer_full | SIX | unavailable | expand_subset_to_active_exchange_directory_or_document_scope_exception | Empty refresh result; preserved 1 existing rows | implemented via the official SIX FQS ref.json detail endpoint; residual gaps are now data-level taxonomy mapping only |
 | 13 | TPEX | official_partial | 1119 | 0 | 0 | stockanalysis_tpex_company_profiles | StockAnalysis |  | expand_subset_to_active_exchange_directory_or_document_scope_exception |  | resolved by scripts/backfill_stockanalysis_metadata.py as a reviewed secondary company-profile source because official TPEX/MOPS feeds identify the KY issuers but do not expose their foreign ISINs |
