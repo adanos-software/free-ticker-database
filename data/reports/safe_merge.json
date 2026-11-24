@@ -6,1214 +6,165 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97733,
+    "before_rows": 97731,
     "after_rows": 97731,
-    "overall_shrink_pct": 0.002046,
-    "removed_rows": 2,
-    "evidenced_removed_rows": 2,
+    "overall_shrink_pct": 0.0,
+    "removed_rows": 0,
+    "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 183,
+    "critical_field_changes": 23,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
     "generated_official_change_evidence_rows": 0,
-    "generated_reviewed_transition_evidence_rows": 5
+    "generated_reviewed_transition_evidence_rows": 0
   },
   "failures": [],
   "unevidenced_removed_listing_keys": [],
-  "evidenced_removed_listing_keys": [
-    "TSX::TOCC",
-    "TSX::TOCM"
-  ],
+  "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "AMS::MACU",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Conservative Portfolio UCITS ETF USD Hedged (Acc)",
-      "new_value": "iShares Conservative Portfolio UCITS ETF USD Hedged (Acc)"
-    },
-    {
-      "listing_key": "AMS::MACU",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "AMS::MAGU",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Growth Portfolio UCITS ETF USD Hedged (Acc)",
-      "new_value": "iShares Growth Portfolio UCITS ETF USD Hedged (Acc)"
-    },
-    {
-      "listing_key": "AMS::MAGU",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "ASX::VDBA",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "ASX::VDCO",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "ASX::VDGR",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "ASX::VDHG",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "BATS::HYBL",
-      "field_name": "name",
-      "old_value": "SSGA Active Trust - SPDR Blackstone High Income ETF",
-      "new_value": "State Street Blackstone High Income ETF"
-    },
-    {
-      "listing_key": "BATS::MBND",
-      "field_name": "name",
-      "old_value": "SPDR Nuveen Municipal Bond ETF",
-      "new_value": "State Street Nuveen Municipal Bond ETF"
-    },
-    {
-      "listing_key": "BATS::OBND",
-      "field_name": "name",
-      "old_value": "SSGA Active Trust - SPDR Loomis Sayles Opportunistic Bond ETF",
-      "new_value": "State Street Loomis Sayles Opportunistic Bond ETF"
-    },
-    {
-      "listing_key": "BATS::STOT",
-      "field_name": "name",
-      "old_value": "SPDR® DoubleLine Short Duration Total Return Tactical ETF",
-      "new_value": "State Street DoubleLine Short Duration Total Return Tactical ETF"
-    },
-    {
-      "listing_key": "LSE::MACG",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Conservative Portfolio UCITS ETF GBP Hedged (Acc)",
-      "new_value": "iShares Conservative Portfolio UCITS ETF GBP Hedged (Acc)"
-    },
-    {
-      "listing_key": "LSE::MACG",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "LSE::MAMG",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Moderate Portfolio UCITS ETF GBP Hedged (Acc)",
-      "new_value": "iShares Moderate Portfolio UCITS ETF GBP Hedged (Acc)"
-    },
-    {
-      "listing_key": "LSE::MAMG",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "NASDAQ::ALLW",
-      "field_name": "name",
-      "old_value": "SPDR Bridgewater All Weather ETF",
-      "new_value": "State Street Bridgewater All Weather ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCF",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2026 Corporate Bond ETF",
-      "new_value": "State Street My2026 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCG",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2027 Corporate Bond ETF",
-      "new_value": "State Street My2027 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCH",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2028 Corporate Bond ETF",
-      "new_value": "State Street My2028 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCI",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2029 Corporate Bond ETF",
-      "new_value": "State Street My2029 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCJ",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2030 Corporate Bond ETF",
-      "new_value": "State Street My2030 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCK",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2031 Corporate Bond ETF",
-      "new_value": "State Street My2031 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCL",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2032 Corporate Bond ETF",
-      "new_value": "State Street My2032 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCM",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2033 Corporate Bond ETF",
-      "new_value": "State Street My2033 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCN",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2034 Corporate Bond ETF",
-      "new_value": "State Street My2034 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYCO",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2035 Corporate Bond ETF",
-      "new_value": "State Street My2035 Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYMF",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2026 Municipal Bond ETF",
-      "new_value": "State Street My2026 Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYMG",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2027 Municipal Bond ETF",
-      "new_value": "State Street My2027 Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYMH",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2028 Municipal Bond ETF",
-      "new_value": "State Street My2028 Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYMI",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2029 Municipal Bond ETF",
-      "new_value": "State Street My2029 Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYMJ",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2030 Municipal Bond ETF",
-      "new_value": "State Street My2030 Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::MYMK",
-      "field_name": "name",
-      "old_value": "SPDR SSGA My2031 Municipal Bond ETF",
-      "new_value": "State Street My2031 Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NASDAQ::NZAC",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI ACWI Climate Paris Aligned ETF",
-      "new_value": "State Street SPDR MSCI ACWI Climate Paris Aligned ETF"
-    },
-    {
-      "listing_key": "NASDAQ::TEKX",
-      "field_name": "name",
-      "old_value": "SPDR Galaxy Transformative Tech Accelerators ETF",
-      "new_value": "State Street Galaxy Transformative Tech Accelerators ETF"
-    },
-    {
-      "listing_key": "NASDAQ::XCNY",
-      "field_name": "name",
-      "old_value": "SPDR S&P Emerging Markets ex-China ETF",
-      "new_value": "State Street SPDR S&P Emerging Markets ex-China ETF"
-    },
-    {
-      "listing_key": "NEO::FBAL",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "NYSE ARCA::AOA",
-      "field_name": "name",
-      "old_value": "iShares Core Aggressive Allocation ETF",
-      "new_value": "iShares Core 80/20 Aggressive Allocation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::AOK",
-      "field_name": "name",
-      "old_value": "iShares Core Conservative Allocation ETF",
-      "new_value": "iShares Core 30/70 Conservative Allocation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::AOM",
-      "field_name": "name",
-      "old_value": "iShares Core Moderate Allocation ETF",
-      "new_value": "iShares Core 40/60 Moderate Allocation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::AOR",
-      "field_name": "name",
-      "old_value": "iShares Core Growth Allocation ETF",
-      "new_value": "iShares Core 60/40 Balanced Allocation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::AVMA",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "NYSE ARCA::BIL",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg 1-3 Month T-Bill ETF",
-      "new_value": "State Street SPDR Bloomberg 1-3 Month T-Bill ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BILS",
-      "field_name": "name",
-      "old_value": "SPDR Series Trust - SPDR Bloomberg Barclays 3-12 Month T-Bill ETF",
-      "new_value": "State Street SPDR Bloomberg 3-12 Month T-Bill ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BWX",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg International Treasury Bond ETF",
-      "new_value": "State Street SPDR Bloomberg International Treasury Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::BWZ",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg Short Term International Treasury Bond ETF",
-      "new_value": "State Street SPDR Bloomberg Short Term International Treasury Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::CERY",
-      "field_name": "name",
-      "old_value": "SPDR Bloomberg Enhanced Roll Yield Commodity Strategy No K-1 ETF",
-      "new_value": "State Street SPDR Bloomberg Enhanced Roll Yield Commodity Strategy No K-1 ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::CNRG",
-      "field_name": "name",
-      "old_value": "SPDR® Kensho Clean Power ETF",
-      "new_value": "State Street SPDR S&P Kensho Grid Innovation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::CWB",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg Convertible Securities ETF",
-      "new_value": "State Street SPDR Bloomberg Convertible Securities ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::CWI",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI ACWI ex-US ETF",
-      "new_value": "State Street SPDR MSCI ACWI ex-US ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DGT",
-      "field_name": "name",
-      "old_value": "SPDR® Global Dow ETF",
-      "new_value": "State Street SPDR Global Dow ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::DIA",
-      "field_name": "name",
-      "old_value": "SPDR Dow Jones Industrial Average ETF Trust",
-      "new_value": "State Street SPDR Dow Jones Industrial Average ETF Trust"
-    },
-    {
-      "listing_key": "NYSE ARCA::DWX",
-      "field_name": "name",
-      "old_value": "SPDR® S&P International Dividend ETF",
-      "new_value": "State Street SPDR S&P International Dividend ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::EDIV",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Emerging Markets Dividend ETF",
-      "new_value": "State Street SPDR S&P Emerging Markets Dividend ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::EEMX",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI Emerging Markets Fossil Fuel Reserves Free ETF",
-      "new_value": "State Street SPDR MSCI Emerging Markets Fossil Fuel Reserves Free ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::EFAX",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI EAFE Fossil Fuel Reserves Free ETF",
-      "new_value": "State Street SPDR MSCI EAFE Fossil Fuel Reserves Free ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::EMHC",
-      "field_name": "name",
-      "old_value": "SPDR Bloomberg Barclays Emerging Markets USD Bond ETF",
-      "new_value": "State Street SPDR Bloomberg Emerging Markets USD Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::EWX",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Emerging Markets Small Cap ETF",
-      "new_value": "State Street SPDR S&P Emerging Markets Small Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::FISR",
-      "field_name": "name",
-      "old_value": "SPDR® SSGA Fixed Income Sector Rotation ETF",
-      "new_value": "State Street Fixed Income Sector Rotation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::FITE",
-      "field_name": "name",
-      "old_value": "SPDR S&P Kensho Future Security",
-      "new_value": "State Street SPDR S&P Kensho Future Security ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::FLRN",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg Investment Grade Floating Rate ETF",
-      "new_value": "State Street SPDR Bloomberg Investment Grade Floating Rate ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GAL",
-      "field_name": "name",
-      "old_value": "SPDR® SSgA Global Allocation ETF",
-      "new_value": "State Street Global Allocation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GAL",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "NYSE ARCA::GII",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Global Infrastructure ETF",
-      "new_value": "State Street SPDR S&P Global Infrastructure ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GMF",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Emerging Asia Pacific ETF",
-      "new_value": "State Street SPDR S&P Emerging Asia Pacific ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GNR",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Global Natural Resources ETF",
-      "new_value": "State Street SPDR S&P Global Natural Resources ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GWX",
-      "field_name": "name",
-      "old_value": "SPDR® S&P International Small Cap ETF",
-      "new_value": "State Street SPDR S&P International Small Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::GXC",
-      "field_name": "name",
-      "old_value": "SPDR® S&P China ETF",
-      "new_value": "State Street SPDR S&P China ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::HYMB",
-      "field_name": "name",
-      "old_value": "SPDR® Nuveen Bloomberg High Yield Municipal Bond ETF",
-      "new_value": "State Street SPDR Nuveen ICE High Yield Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::IBND",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg International Corporate Bond ETF",
-      "new_value": "State Street SPDR Bloomberg International Corporate Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::INKM",
-      "field_name": "name",
-      "old_value": "SPDR® SSgA Income Allocation ETF",
-      "new_value": "State Street Income Allocation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::INKM",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "NYSE ARCA::JNK",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg High Yield Bond ETF",
-      "new_value": "State Street SPDR Bloomberg High Yield Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::KBE",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Bank ETF",
-      "new_value": "State Street SPDR S&P Bank ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::KCE",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Capital Markets ETF",
-      "new_value": "State Street SPDR S&P Capital Markets ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::KIE",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Insurance ETF",
-      "new_value": "State Street SPDR S&P Insurance ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::KOMP",
-      "field_name": "name",
-      "old_value": "SPDR Kensho New Economies Composite",
-      "new_value": "State Street SPDR S&P Kensho New Economies Composite ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::KRE",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Regional Banking ETF",
-      "new_value": "State Street SPDR S&P Regional Banking ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::LGLV",
-      "field_name": "name",
-      "old_value": "SPDR® SSGA US Large Cap Low Volatility Index ETF",
-      "new_value": "State Street SPDR US Large Cap Low Volatility Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::MDY",
-      "field_name": "name",
-      "old_value": "SPDR® S&P MIDCAP 400 ETF Trust",
-      "new_value": "State Street SPDR S&P MIDCAP 400 ETF Trust"
-    },
-    {
-      "listing_key": "NYSE ARCA::MDYG",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 400 Mid Cap Growth ETF",
-      "new_value": "State Street SPDR S&P 400 Mid Cap Growth ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::MDYV",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 400 Mid Cap Value ETF",
-      "new_value": "State Street SPDR S&P 400 Mid Cap Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::MMTM",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 1500 Momentum Tilt ETF",
-      "new_value": "State Street SPDR S&P 1500 Momentum Tilt ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::NANR",
-      "field_name": "name",
-      "old_value": "SPDR S&P® North American Natural Resources ETF",
-      "new_value": "State Street SPDR S&P North American Natural Resources ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ONEO",
-      "field_name": "name",
-      "old_value": "SPDR® Russell 1000 Momentum Focus ETF",
-      "new_value": "State Street SPDR Russell 1000 Momentum Focus ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ONEV",
-      "field_name": "name",
-      "old_value": "SPDR® Russell 1000 Low Volatility Focus ETF",
-      "new_value": "State Street SPDR Russell 1000 Low Volatility Focus ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ONEY",
-      "field_name": "name",
-      "old_value": "SPDR® Russell 1000® Yield Focus ETF",
-      "new_value": "State Street SPDR Russell 1000 Yield Focus ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::PSK",
-      "field_name": "name",
-      "old_value": "SPDR® ICE Preferred Securities ETF",
-      "new_value": "State Street SPDR ICE Preferred Securities ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::QEFA",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI EAFE StrategicFactors ETF",
-      "new_value": "State Street SPDR MSCI EAFE StrategicFactors ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::QEMM",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI Emerging Markets StrategicFactors ETF",
-      "new_value": "State Street SPDR MSCI Emerging Markets StrategicFactors ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::QUS",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI USA StrategicFactors ETF",
-      "new_value": "State Street SPDR MSCI USA StrategicFactors ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::QWLD",
-      "field_name": "name",
-      "old_value": "SPDR® MSCI World StrategicFactors ETF",
-      "new_value": "State Street SPDR MSCI World StrategicFactors ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::RLY",
-      "field_name": "name",
-      "old_value": "SPDR® SSgA Multi-Asset Real Return ETF",
-      "new_value": "State Street Multi-Asset Real Return ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ROKT",
-      "field_name": "name",
-      "old_value": "SPDR S&P Kensho Final Frontiers",
-      "new_value": "State Street SPDR S&P Kensho Final Frontiers ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::RWR",
-      "field_name": "name",
-      "old_value": "SPDR® Dow Jones REIT ETF",
-      "new_value": "State Street SPDR Dow Jones REIT ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::RWX",
-      "field_name": "name",
-      "old_value": "SPDR® Dow Jones International Real Estate ETF",
-      "new_value": "State Street SPDR Dow Jones International Real Estate ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SDY",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Dividend ETF",
-      "new_value": "State Street SPDR S&P Dividend ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SHE",
-      "field_name": "name",
-      "old_value": "SPDR® SSGA Gender Diversity Index ETF",
-      "new_value": "State Street SPDR MSCI USA Gender Diversity ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SHM",
-      "field_name": "name",
-      "old_value": "SPDR® Nuveen Bloomberg Short Term Municipal Bond ETF",
-      "new_value": "State Street SPDR Nuveen ICE Short Term Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SIMS",
-      "field_name": "name",
-      "old_value": "SPDR S&P Kensho Intelligent Structures",
-      "new_value": "State Street SPDR S&P Kensho Intelligent Structures ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SJNK",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg Short Term High Yield Bond ETF",
-      "new_value": "State Street SPDR Bloomberg Short Term High Yield Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SLYG",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 600 Small Cap Growth ETF",
-      "new_value": "State Street SPDR S&P 600 Small Cap Growth ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SLYV",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 600 Small Cap Value ETF",
-      "new_value": "State Street SPDR S&P 600 Small Cap Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SMLV",
-      "field_name": "name",
-      "old_value": "SPDR® SSGA US Small Cap Low Volatility Index ETF",
-      "new_value": "State Street SPDR US Small Cap Low Volatility Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPDW",
-      "field_name": "name",
-      "old_value": "SPDR S&P World ex US",
-      "new_value": "State Street SPDR Portfolio Developed World ex-US ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPEM",
-      "field_name": "name",
-      "old_value": "SPDR® Portfolio Emerging Markets ETF",
-      "new_value": "State Street SPDR Portfolio Emerging Markets ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPGM",
-      "field_name": "name",
-      "old_value": "SPDR Portfolio MSCI Global Stock Market",
-      "new_value": "State Street SPDR Portfolio MSCI Global Stock Market ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPIB",
-      "field_name": "name",
-      "old_value": "SPDR Barclays Intermediate Term Corporate Bond",
-      "new_value": "State Street SPDR Portfolio Intermediate Term Corporate Bond Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPLB",
-      "field_name": "name",
-      "old_value": "SPDR Barclays Long Term Corporate Bond",
-      "new_value": "State Street SPDR Portfolio Long Term Corporate Bond Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPMB",
-      "field_name": "name",
-      "old_value": "SPDR Portfolio Mortgage Backed Bond",
-      "new_value": "State Street SPDR Portfolio Mortgage Backed Bond Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPMD",
-      "field_name": "name",
-      "old_value": "SPDR Russell Small Cap Completeness",
-      "new_value": "State Street SPDR Portfolio S&P 400 Mid Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPSB",
-      "field_name": "name",
-      "old_value": "SPDR Barclays Short Term Corporate Bond",
-      "new_value": "State Street SPDR Portfolio Short Term Corporate Bond Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPSM",
-      "field_name": "name",
-      "old_value": "SPDR® Portfolio S&P 600 Small Cap ETF",
-      "new_value": "State Street SPDR Portfolio S&P 600 Small Cap ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPTB",
-      "field_name": "name",
-      "old_value": "State Street SPDR Portfolio Treasury ETF",
-      "new_value": "State Street SPDR Portfolio Treasury Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPTI",
-      "field_name": "name",
-      "old_value": "SPDR Portfolio Intermediate Term Treasury",
-      "new_value": "State Street SPDR Portfolio Intermediate Term Treasury Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPTL",
-      "field_name": "name",
-      "old_value": "SPDR Barclays Long Term Treasury",
-      "new_value": "State Street SPDR Portfolio Long Term Treasury Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPTM",
-      "field_name": "name",
-      "old_value": "SPDR® Portfolio S&P 1500 Composite Stock Market ETF",
-      "new_value": "State Street SPDR Portfolio S&P 1500 Composite Stock Market ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPTS",
-      "field_name": "name",
-      "old_value": "SPDR Barclays Short Term Treasury",
-      "new_value": "State Street SPDR Portfolio Short Term Treasury Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPTU",
-      "field_name": "name",
-      "old_value": "State Street SPDR Portfolio Ultra Short T-Bill ETF",
-      "new_value": "State Street SPDR Portfolio Ultra Short T-Bill Index ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPY",
-      "field_name": "name",
-      "old_value": "SPDR S&P 500 ETF Trust",
-      "new_value": "State Street SPDR S&P 500 ETF Trust"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPYD",
-      "field_name": "name",
-      "old_value": "SPDR® Portfolio S&P 500 High Dividend ETF",
-      "new_value": "State Street SPDR Portfolio S&P 500 High Dividend ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPYG",
-      "field_name": "name",
-      "old_value": "SPDR® Portfolio S&P 500 Growth ETF",
-      "new_value": "State Street SPDR Portfolio S&P 500 Growth ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPYV",
-      "field_name": "name",
-      "old_value": "SPDR® Portfolio S&P 500 Value ETF",
-      "new_value": "State Street SPDR Portfolio S&P 500 Value ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SPYX",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 500 Fossil Fuel Reserves Free ETF",
-      "new_value": "State Street SPDR S&P 500 Fossil Fuel Reserves Free ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::SRLN",
-      "field_name": "name",
-      "old_value": "SPDR Blackstone Senior Loan ETF",
-      "new_value": "State Street Blackstone Senior Loan ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TFI",
-      "field_name": "name",
-      "old_value": "SPDR® Nuveen Bloomberg Municipal Bond ETF",
-      "new_value": "State Street SPDR Nuveen ICE Municipal Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TIPX",
-      "field_name": "name",
-      "old_value": "SPDR® Bloomberg 1-10 Year TIPS ETF",
-      "new_value": "State Street SPDR Bloomberg 1-10 Year TIPS ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::TOTL",
-      "field_name": "name",
-      "old_value": "SPDR® DoubleLine Total Return Tactical ETF",
-      "new_value": "State Street DoubleLine Total Return Tactical ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::ULST",
-      "field_name": "name",
-      "old_value": "SPDR® SSgA Ultra Short Term Bond ETF",
-      "new_value": "State Street Ultra Short Term Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::VLU",
-      "field_name": "name",
-      "old_value": "SPDR® S&P 1500 Value Tilt ETF",
-      "new_value": "State Street SPDR S&P 1500 Value Tilt ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::WDIV",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Global Dividend ETF",
-      "new_value": "State Street SPDR S&P Global Dividend ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::WIP",
-      "field_name": "name",
-      "old_value": "SPDR® FTSE International Government Inflation-Protected Bond ETF",
-      "new_value": "State Street SPDR FTSE International Government Inflation-Protected Bond ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XAR",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Aerospace & Defense ETF",
-      "new_value": "State Street SPDR S&P Aerospace & Defense ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XBI",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Biotech ETF",
-      "new_value": "State Street SPDR S&P Biotech ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XES",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Oil & Gas Equipment & Services ETF",
-      "new_value": "State Street SPDR S&P Oil & Gas Equipment & Services ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XHB",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Homebuilders ETF",
-      "new_value": "State Street SPDR S&P Homebuilders ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XHE",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Health Care Equipment ETF",
-      "new_value": "State Street SPDR S&P Health Care Equipment ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XHS",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Health Care Services ETF",
-      "new_value": "State Street SPDR S&P Health Care Services ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XITK",
-      "field_name": "name",
-      "old_value": "SPDR® FactSet Innovative Technology ETF",
-      "new_value": "State Street SPDR FactSet Innovative Technology ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLB",
-      "field_name": "name",
-      "old_value": "Materials Select Sector SPDR® Fund",
-      "new_value": "State Street Materials Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLC",
-      "field_name": "name",
-      "old_value": "Communication Services Select Sector SPDR® Fund",
-      "new_value": "State Street Communication Services Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLE",
-      "field_name": "name",
-      "old_value": "Energy Select Sector SPDR® Fund",
-      "new_value": "State Street Energy Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLF",
-      "field_name": "name",
-      "old_value": "Financial Select Sector SPDR® Fund",
-      "new_value": "State Street Financial Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLI",
-      "field_name": "name",
-      "old_value": "Industrial Select Sector SPDR® Fund",
-      "new_value": "State Street Industrial Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLK",
-      "field_name": "name",
-      "old_value": "Technology Select Sector SPDR® Fund",
-      "new_value": "State Street Technology Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLP",
-      "field_name": "name",
-      "old_value": "Consumer Staples Select Sector SPDR® Fund",
-      "new_value": "State Street Consumer Staples Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLRE",
-      "field_name": "name",
-      "old_value": "The Real Estate Select Sector SPDR Fund",
-      "new_value": "State Street Real Estate Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLSR",
-      "field_name": "name",
-      "old_value": "SPDR® SSGA U.S. Sector Rotation ETF",
-      "new_value": "State Street US Sector Rotation ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLU",
-      "field_name": "name",
-      "old_value": "Utilities Select Sector SPDR® Fund",
-      "new_value": "State Street Utilities Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLV",
-      "field_name": "name",
-      "old_value": "Health Care Select Sector SPDR® Fund",
-      "new_value": "State Street Health Care Select Sector SPDR ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XLY",
-      "field_name": "name",
-      "old_value": "Consumer Discretionary Select Sector SPDR® Fund",
-      "new_value": "State Street Consumer Discretionary Select Sector SPDR ETF"
+      "listing_key": "BIST::SARAE",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
     },
     {
-      "listing_key": "NYSE ARCA::XME",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Metals and Mining ETF",
-      "new_value": "State Street SPDR S&P Metals & Mining ETF"
-    },
-    {
-      "listing_key": "NYSE ARCA::XNTK",
-      "field_name": "name",
-      "old_value": "SPDR Morgan Stanley Technology",
-      "new_value": "State Street SPDR NYSE Technology ETF"
+      "listing_key": "Bursa::1929",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Consumer Staples"
     },
     {
-      "listing_key": "NYSE ARCA::XOP",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Oil & Gas Exploration & Production ETF",
-      "new_value": "State Street SPDR S&P Oil & Gas Exploration & Production ETF"
+      "listing_key": "Euronext::ALMDG",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "NYSE ARCA::XPH",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Pharmaceuticals ETF",
-      "new_value": "State Street SPDR S&P Pharmaceuticals ETF"
+      "listing_key": "FSX::2EI",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "NYSE ARCA::XRT",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Retail ETF",
-      "new_value": "State Street SPDR S&P Retail ETF"
+      "listing_key": "FSX::CRG",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
     },
     {
-      "listing_key": "NYSE ARCA::XSD",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Semiconductor ETF",
-      "new_value": "State Street SPDR S&P Semiconductor ETF"
+      "listing_key": "FSX::YV7",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "NYSE ARCA::XSW",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Software & Services ETF",
-      "new_value": "State Street SPDR S&P Software & Services ETF"
+      "listing_key": "IDX::CLAY",
+      "field_name": "stock_sector",
+      "old_value": "Real Estate",
+      "new_value": "Consumer Discretionary"
     },
     {
-      "listing_key": "NYSE ARCA::XTL",
-      "field_name": "name",
-      "old_value": "SPDR® S&P Telecom ETF",
-      "new_value": "State Street SPDR S&P Telecom ETF"
+      "listing_key": "KRX::0030R0",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Real Estate"
     },
     {
-      "listing_key": "NYSE ARCA::XTN",
+      "listing_key": "KRX::005800",
       "field_name": "name",
-      "old_value": "SPDR® S&P Transportation ETF",
-      "new_value": "State Street SPDR S&P Transportation ETF"
-    },
-    {
-      "listing_key": "TSX::CBAL",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CBGR",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CBIN",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CBLN",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CCNV",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CCON",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CGRO",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::CGRW",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::NBLD",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::NCNS",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::NGRW",
-      "field_name": "etf_category",
-      "old_value": "Alternative",
-      "new_value": "Multi-Asset"
-    },
-    {
-      "listing_key": "TSX::TCON",
-      "field_name": "country",
-      "old_value": "United States",
-      "new_value": "Canada"
+      "old_value": "Shinyoung Waco",
+      "new_value": "Shinyoungwacoal, Inc."
     },
     {
-      "listing_key": "TSX::TCON",
-      "field_name": "country_code",
-      "old_value": "US",
-      "new_value": "CA"
+      "listing_key": "LSE::0D00",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "TSX::TCON",
+      "listing_key": "NASDAQ::MGN",
       "field_name": "isin",
-      "old_value": "US89237H2094",
-      "new_value": "CA87251H1055"
+      "old_value": "KYG5980E1052",
+      "new_value": "KYG5980E1136"
     },
     {
-      "listing_key": "XETRA::JMAC",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
+      "listing_key": "NSE_IN::MITSU",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
     },
     {
-      "listing_key": "XETRA::JMAG",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
+      "listing_key": "OTC::FRIIF",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "XETRA::JMAM",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
+      "listing_key": "SET::SIS",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "XETRA::MACV",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Conservative Portfolio UCITS ETF EUR (Acc)",
-      "new_value": "iShares Conservative Portfolio UCITS ETF EUR (Acc)"
+      "listing_key": "SGX::5F4",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Real Estate"
     },
     {
-      "listing_key": "XETRA::MACV",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
+      "listing_key": "SSE::688665",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "XETRA::MAGR",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Growth Portfolio UCITS ETF EUR (Acc)",
-      "new_value": "iShares Growth Portfolio UCITS ETF EUR (Acc)"
+      "listing_key": "STO::LUMEN",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "XETRA::MAGR",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
+      "listing_key": "TSE::5598",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Information Technology"
     },
     {
-      "listing_key": "XETRA::MODR",
-      "field_name": "name",
-      "old_value": "BlackRock ESG Multi-Asset Moderate Portfolio UCITS ETF EUR (Acc)",
-      "new_value": "iShares Moderate Portfolio UCITS ETF EUR (Acc)"
+      "listing_key": "TSE::6545",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Health Care"
     },
     {
-      "listing_key": "XETRA::MODR",
-      "field_name": "etf_category",
-      "old_value": "Equity",
-      "new_value": "Multi-Asset"
+      "listing_key": "TSXV::AEP",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "WSE::WIS",
+      "field_name": "stock_sector",
+      "old_value": "Communication Services",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "XETRA::AACA",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "XSTU::2EI",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     }
   ],
   "generated_official_change_evidence": [],
-  "generated_reviewed_transition_evidence": [
-    {
-      "listing_key": "TSX::TOCC",
-      "ticker": "TOCC",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "TOCC",
-      "new_value": "TCON",
-      "before_row_sha256": "21f4c55ca0ab19bc9f715946694f731908387f9076c6b4cc7a73a262994cdedc",
-      "effective_at": "",
-      "observed_at": "2026-11-24T08:21:11Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.td.com/ca/en/asset-management/insights/summary/all-in-one-td-etf-portfolio-solutions",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "9cfdf19985e7688bd8ff1f4a",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::TCON",
-      "ticker": "TCON",
-      "exchange": "TSX",
-      "event_type": "identifier_changed",
-      "field_name": "isin",
-      "old_value": "US89237H2094",
-      "new_value": "CA87251H1055",
-      "before_row_sha256": "2cf4da5377743a42750670a6abdd9aaa58b8e9e5d6eeb6d08857253eb5f96ec2",
-      "effective_at": "",
-      "observed_at": "2026-11-24T08:21:11Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.td.com/ca/en/asset-management/insights/summary/all-in-one-td-etf-portfolio-solutions",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "621dae879c7dfadd4e1a6319",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::TCON",
-      "ticker": "TCON",
-      "exchange": "TSX",
-      "event_type": "country_changed",
-      "field_name": "country",
-      "old_value": "United States",
-      "new_value": "Canada",
-      "before_row_sha256": "2cf4da5377743a42750670a6abdd9aaa58b8e9e5d6eeb6d08857253eb5f96ec2",
-      "effective_at": "",
-      "observed_at": "2026-11-24T08:21:11Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.td.com/ca/en/asset-management/insights/summary/all-in-one-td-etf-portfolio-solutions",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "352621188beb00210c5f2905",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::TCON",
-      "ticker": "TCON",
-      "exchange": "TSX",
-      "event_type": "country_changed",
-      "field_name": "country_code",
-      "old_value": "US",
-      "new_value": "CA",
-      "before_row_sha256": "2cf4da5377743a42750670a6abdd9aaa58b8e9e5d6eeb6d08857253eb5f96ec2",
-      "effective_at": "",
-      "observed_at": "2026-11-24T08:21:11Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.td.com/ca/en/asset-management/insights/summary/all-in-one-td-etf-portfolio-solutions",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "a91f7bc64e2098ef0a4068f9",
-      "evidence_status": "reviewed"
-    },
-    {
-      "listing_key": "TSX::TOCM",
-      "ticker": "TOCM",
-      "exchange": "TSX",
-      "event_type": "symbol_changed",
-      "field_name": "ticker",
-      "old_value": "TOCM",
-      "new_value": "TBAL",
-      "before_row_sha256": "ec988f3cd310a281d0524cfb304f058e1e29210f4c10c8ccdf30859c20e9d10f",
-      "effective_at": "",
-      "observed_at": "2026-11-24T08:21:11Z",
-      "source_key": "issuer_press_release",
-      "source_url": "https://www.td.com/ca/en/asset-management/insights/summary/all-in-one-td-etf-portfolio-solutions",
-      "source_report": "data/review_overrides/listing_transitions.csv",
-      "observation_id": "97826f40ba771a4f1ec10687",
-      "evidence_status": "reviewed"
-    }
-  ],
+  "generated_reviewed_transition_evidence": [],
   "venue_findings": [
     {
       "exchange": "ADX",
@@ -1874,10 +825,10 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2437,
+      "before_rows": 2435,
       "after_rows": 2435,
-      "shrink_pct": 0.082068,
-      "removed_rows": 2,
+      "shrink_pct": 0.0,
+      "removed_rows": 0,
       "unevidenced_removed_rows": 0,
       "status": "pass"
     },

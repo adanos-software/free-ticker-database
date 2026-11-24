@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-24T09:18:59Z",
-    "rows": 8600,
+    "generated_at": "2026-11-24T10:02:00Z",
+    "rows": 8599,
     "field_totals": {
       "missing_etf_category": 76,
       "missing_isin_primary": 663,
-      "missing_sector_stock": 577,
+      "missing_sector_stock": 576,
       "official_reference_gap": 7284
     },
     "class_totals": {
@@ -24,7 +24,7 @@
       "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 406,
+      "official_industry_taxonomy_unavailable_gap": 405,
       "official_product_taxonomy_unavailable_gap": 49,
       "official_reference_symbol_collision_gap": 1171,
       "official_reference_unmatched_source_gap": 6113,
@@ -48,7 +48,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 406,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 405,
       "missing_sector_stock:otc_sector_source_gap": 88,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1171,
@@ -173,7 +173,7 @@
           "rows": 16
         },
         {
-          "exchange": "BIST",
+          "exchange": "BVB",
           "rows": 14
         }
       ],
@@ -13356,23 +13356,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=BIST::QUICK;exchange=BIST;ticker=QUICK;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "BIST::SARAE",
-      "ticker": "SARAE",
-      "exchange": "BIST",
-      "asset_type": "Stock",
-      "name": "ŞA-RA ENERJİ İNŞAAT TİCARET VE SANAYİ A.Ş.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=BIST::SARAE;exchange=BIST;ticker=SARAE;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
