@@ -1,25 +1,25 @@
 # Entry Quality Report
 
-Generated at: `2026-11-24T15:35:47Z`
+Generated at: `2026-11-24T17:42:57Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,145 |
-| source_gap | 11,540 |
+| pass | 86,142 |
+| source_gap | 11,545 |
 | warn | 36 |
 
 ## Issue Counts
 
 | Issue | Rows |
 |---|---:|
-| official_reference_gap | 7,284 |
+| official_reference_gap | 7,289 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 662 |
 | missing_stock_sector | 560 |
-| missing_etf_category | 85 |
+| missing_etf_category | 86 |
 | official_name_mismatch | 24 |
 | official_isin_mismatch | 12 |
 | low_company_name_overlap | 10 |
@@ -32,13 +32,13 @@ Generated at: `2026-11-24T15:35:47Z`
 | OTC | 8,484 | 2 | 3,254 | 12 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
 | B3 | 714 | 0 | 880 | 0 | 0 |
-| FSX | 7,632 | 0 | 511 | 0 | 0 |
+| FSX | 7,628 | 0 | 515 | 0 | 0 |
 | NASDAQ | 4,497 | 4 | 282 | 3 | 0 |
 | BMV | 91 | 0 | 253 | 0 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
 | XDUS | 0 | 0 | 199 | 0 | 0 |
 | AMS | 554 | 0 | 194 | 0 | 0 |
-| XETRA | 5,401 | 0 | 192 | 0 | 0 |
+| XETRA | 5,402 | 0 | 193 | 0 | 0 |
 | BVB | 55 | 0 | 192 | 0 | 0 |
 | NYSE ARCA | 2,521 | 0 | 186 | 1 | 0 |
 | TSX | 2,272 | 0 | 162 | 1 | 0 |

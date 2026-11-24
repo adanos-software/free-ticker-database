@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-24T15:35:47Z",
-    "rows": 97731,
+    "generated_at": "2026-11-24T17:42:57Z",
+    "rows": 97733,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -15,28 +15,28 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86145,
-      "source_gap": 11540,
+      "pass": 86142,
+      "source_gap": 11545,
       "warn": 36
     },
     "evidence_level_counts": {
       "identifier_enriched": 5114,
-      "official_reference": 87160,
+      "official_reference": 87157,
       "scoped_source_gap": 292,
-      "valid_isin": 5165
+      "valid_isin": 5170
     },
     "severity_counts": {
       "high": 13,
       "low": 10,
       "medium": 24,
-      "source_gap": 11878
+      "source_gap": 11884
     },
     "issue_counts": {
-      "official_reference_gap": 7284,
+      "official_reference_gap": 7289,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 662,
       "missing_stock_sector": 560,
-      "missing_etf_category": 85,
+      "missing_etf_category": 86,
       "official_name_mismatch": 24,
       "official_isin_mismatch": 12,
       "low_company_name_overlap": 10,
@@ -61,8 +61,8 @@
       },
       {
         "exchange": "FSX",
-        "source_gap": 511,
-        "pass": 7632
+        "source_gap": 515,
+        "pass": 7628
       },
       {
         "exchange": "NASDAQ",
@@ -91,8 +91,8 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 5401,
-        "source_gap": 192
+        "pass": 5402,
+        "source_gap": 193
       },
       {
         "exchange": "BVB",
@@ -8995,6 +8995,24 @@
       ]
     },
     {
+      "listing_key": "FSX::28L",
+      "ticker": "28L",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "TPEX::2938",
       "ticker": "2938",
       "exchange": "TPEX",
@@ -17863,6 +17881,24 @@
       ]
     },
     {
+      "listing_key": "FSX::6DV0",
+      "ticker": "6DV0",
+      "exchange": "FSX",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "official_reference_gap",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "FSX",
+          "message": "Venue has official source coverage, but this row lacks an active official reference match."
+        }
+      ]
+    },
+    {
       "listing_key": "Munich::6E2",
       "ticker": "6E2",
       "exchange": "Munich",
@@ -18460,42 +18496,6 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::6PU",
-      "ticker": "6PU",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::6R3",
-      "ticker": "6R3",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "official_reference_gap",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "FSX",
-          "message": "Venue has official source coverage, but this row lacks an active official reference match."
         }
       ]
     }
