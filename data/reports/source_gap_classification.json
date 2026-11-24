@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-24T08:26:23Z",
-    "rows": 8602,
+    "generated_at": "2026-11-24T09:18:59Z",
+    "rows": 8600,
     "field_totals": {
       "missing_etf_category": 76,
       "missing_isin_primary": 663,
       "missing_sector_stock": 577,
-      "official_reference_gap": 7286
+      "official_reference_gap": 7284
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
@@ -27,7 +27,7 @@
       "official_industry_taxonomy_unavailable_gap": 406,
       "official_product_taxonomy_unavailable_gap": 49,
       "official_reference_symbol_collision_gap": 1171,
-      "official_reference_unmatched_source_gap": 6115,
+      "official_reference_unmatched_source_gap": 6113,
       "otc_sector_source_gap": 88,
       "shell_or_cpc_sector_gap": 7
     },
@@ -52,7 +52,7 @@
       "missing_sector_stock:otc_sector_source_gap": 88,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1171,
-      "official_reference_gap:official_reference_unmatched_source_gap": 6115
+      "official_reference_gap:official_reference_unmatched_source_gap": 6113
     },
     "top_exchanges_by_field": {
       "missing_etf_category": [
@@ -312,15 +312,15 @@
       {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
-        "exchange": "TSX",
-        "rows": 94,
+        "exchange": "HKEX",
+        "rows": 92,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
       },
       {
         "field": "official_reference_gap",
         "gap_class": "official_reference_unmatched_source_gap",
-        "exchange": "HKEX",
+        "exchange": "TSX",
         "rows": 92,
         "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
         "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
@@ -5461,7 +5461,7 @@
       "ticker": "MYCO",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
-      "name": "SPDR SSGA My2035 Corporate Bond ETF",
+      "name": "State Street My2035 Corporate Bond ETF",
       "gap_class": "debt_or_securitized_identifier_gap",
       "review_needed": "true",
       "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
@@ -5478,7 +5478,7 @@
       "ticker": "MYMK",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
-      "name": "SPDR SSGA My2031 Municipal Bond ETF",
+      "name": "State Street My2031 Municipal Bond ETF",
       "gap_class": "debt_or_securitized_identifier_gap",
       "review_needed": "true",
       "confidence_policy": "Require official debt/structured-product terms, exchange instrument file, or trustee/prospectus identifier; do not fill from issuer equity ISINs.",
@@ -8861,7 +8861,7 @@
       "ticker": "SPMD",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
-      "name": "SPDR Russell Small Cap Completeness",
+      "name": "State Street SPDR Portfolio S&P 400 Mid Cap ETF",
       "gap_class": "fund_or_trust_identifier_gap",
       "review_needed": "true",
       "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
@@ -24008,7 +24008,7 @@
       "ticker": "MACU",
       "exchange": "AMS",
       "asset_type": "ETF",
-      "name": "BlackRock ESG Multi-Asset Conservative Portfolio UCITS ETF USD Hedged (Acc)",
+      "name": "iShares Conservative Portfolio UCITS ETF USD Hedged (Acc)",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -24025,7 +24025,7 @@
       "ticker": "MAGU",
       "exchange": "AMS",
       "asset_type": "ETF",
-      "name": "BlackRock ESG Multi-Asset Growth Portfolio UCITS ETF USD Hedged (Acc)",
+      "name": "iShares Growth Portfolio UCITS ETF USD Hedged (Acc)",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -139836,40 +139836,6 @@
       "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
       "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
       "source_gap_context": "listing_key=TSX::TGEX;exchange=TSX;ticker=TGEX;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "TSX::TOCC",
-      "ticker": "TOCC",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "TD One-Click Conservative ETF Portfolio",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=TSX::TOCC;exchange=TSX;ticker=TOCC;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
-      "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "TSX::TOCM",
-      "ticker": "TOCM",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "TD One-Click Moderate ETF Portfolio",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
-      "recommended_next_source": "Fresh official exchange directory, scoped alias review, or source-of-truth decision.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision.",
-      "source_gap_context": "listing_key=TSX::TOCM;exchange=TSX;ticker=TOCM;asset_type=ETF;field=official_reference_gap;target_field=official_reference",
       "classification_context": "gap_class=official_reference_unmatched_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=official_reference;gap_class=official_reference_unmatched_source_gap"
     },

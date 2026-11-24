@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-24T08:26:24Z",
-    "rows": 8602,
+    "generated_at": "2026-11-24T09:19:00Z",
+    "rows": 8600,
     "outcome_totals": {
       "accepted_source_gap": 4998,
       "core_exclusion_candidate": 549,
-      "official_fill_required": 3055
+      "official_fill_required": 3053
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
@@ -26,7 +26,7 @@
       "official_industry_taxonomy_unavailable_gap": 406,
       "official_product_taxonomy_unavailable_gap": 49,
       "official_reference_symbol_collision_gap": 1171,
-      "official_reference_unmatched_source_gap": 6115,
+      "official_reference_unmatched_source_gap": 6113,
       "otc_sector_source_gap": 88,
       "shell_or_cpc_sector_gap": 7
     },
@@ -39,7 +39,7 @@
       "missing_sector_stock:core_exclusion_candidate": 42,
       "missing_sector_stock:official_fill_required": 41,
       "official_reference_gap:accepted_source_gap": 4273,
-      "official_reference_gap:official_fill_required": 3013
+      "official_reference_gap:official_fill_required": 3011
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -13808,7 +13808,7 @@
       "ticker": "MACU",
       "exchange": "AMS",
       "asset_type": "ETF",
-      "name": "BlackRock ESG Multi-Asset Conservative Portfolio UCITS ETF USD Hedged (Acc)",
+      "name": "iShares Conservative Portfolio UCITS ETF USD Hedged (Acc)",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -13825,7 +13825,7 @@
       "ticker": "MAGU",
       "exchange": "AMS",
       "asset_type": "ETF",
-      "name": "BlackRock ESG Multi-Asset Growth Portfolio UCITS ETF USD Hedged (Acc)",
+      "name": "iShares Growth Portfolio UCITS ETF USD Hedged (Acc)",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -88421,7 +88421,7 @@
       "ticker": "MYCO",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
-      "name": "SPDR SSGA My2035 Corporate Bond ETF",
+      "name": "State Street My2035 Corporate Bond ETF",
       "gap_class": "debt_or_securitized_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
@@ -88438,7 +88438,7 @@
       "ticker": "MYMK",
       "exchange": "NASDAQ",
       "asset_type": "ETF",
-      "name": "SPDR SSGA My2031 Municipal Bond ETF",
+      "name": "State Street My2031 Municipal Bond ETF",
       "gap_class": "debt_or_securitized_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
@@ -90818,7 +90818,7 @@
       "ticker": "SPMD",
       "exchange": "NYSE ARCA",
       "asset_type": "ETF",
-      "name": "SPDR Russell Small Cap Completeness",
+      "name": "State Street SPDR Portfolio S&P 400 Mid Cap ETF",
       "gap_class": "fund_or_trust_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
@@ -142312,40 +142312,6 @@
       "exchange": "TSX",
       "asset_type": "ETF",
       "name": "TD Active Global Enhanced Dividend CAD Hedged ETF",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "TSX::TOCC",
-      "ticker": "TOCC",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "TD One-Click Conservative ETF Portfolio",
-      "gap_class": "official_reference_unmatched_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
-    },
-    {
-      "field": "official_reference_gap",
-      "target_field": "official_reference",
-      "listing_key": "TSX::TOCM",
-      "ticker": "TOCM",
-      "exchange": "TSX",
-      "asset_type": "ETF",
-      "name": "TD One-Click Moderate ETF Portfolio",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",

@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "generated_at": "2026-11-24T08:26:15Z",
-    "rows": 97733,
+    "generated_at": "2026-11-24T09:18:54Z",
+    "rows": 97731,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -16,23 +16,23 @@
     "status_counts": {
       "notice": 10,
       "pass": 86139,
-      "source_gap": 11548,
+      "source_gap": 11546,
       "warn": 36
     },
     "evidence_level_counts": {
       "identifier_enriched": 5114,
       "official_reference": 87160,
       "scoped_source_gap": 292,
-      "valid_isin": 5167
+      "valid_isin": 5165
     },
     "severity_counts": {
       "high": 13,
       "low": 10,
       "medium": 24,
-      "source_gap": 11886
+      "source_gap": 11884
     },
     "issue_counts": {
-      "official_reference_gap": 7286,
+      "official_reference_gap": 7284,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 663,
       "missing_stock_sector": 565,
@@ -108,7 +108,7 @@
       {
         "exchange": "TSX",
         "pass": 2272,
-        "source_gap": 164,
+        "source_gap": 162,
         "warn": 1
       },
       {
