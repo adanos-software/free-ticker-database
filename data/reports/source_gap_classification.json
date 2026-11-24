@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-24T14:40:17Z",
-    "rows": 8596,
+    "generated_at": "2026-11-24T15:35:54Z",
+    "rows": 8595,
     "field_totals": {
       "missing_etf_category": 76,
-      "missing_isin_primary": 663,
+      "missing_isin_primary": 662,
       "missing_sector_stock": 573,
       "official_reference_gap": 7284
     },
@@ -21,7 +21,7 @@
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 138,
+      "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 402,
@@ -42,7 +42,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 353,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -120,7 +120,7 @@
         },
         {
           "exchange": "SSE",
-          "rows": 33
+          "rows": 32
         },
         {
           "exchange": "NEO",
@@ -10024,23 +10024,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=SSE::688573;exchange=SSE;ticker=688573;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "SSE::688592",
-      "ticker": "688592",
-      "exchange": "SSE",
-      "asset_type": "Stock",
-      "name": "COMNAV ORD A (SHH) EQSW Exp:",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=SSE::688592;exchange=SSE;ticker=688592;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
@@ -62258,7 +62241,7 @@
       "ticker": "SK3",
       "exchange": "FSX",
       "asset_type": "Stock",
-      "name": "Smurfit Kappa Group PLC",
+      "name": "Smurfit Westrock PLC",
       "gap_class": "official_reference_unmatched_source_gap",
       "review_needed": "true",
       "confidence_policy": "An official venue source exists, but the row has no active exact official reference match; require refreshed official directory evidence, a scoped alias mapping, or a documented out-of-scope decision before changing the row.",
