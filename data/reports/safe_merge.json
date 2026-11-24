@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97728,
+    "before_rows": 97733,
     "after_rows": 97733,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 11,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,74 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "ASX::FSI",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "BMV::FMTY14",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "Bursa::7252",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "KOSDAQ::394280",
+      "field_name": "name",
+      "old_value": "Openedges Technologies Inc.",
+      "new_value": "Openedges Technology, Inc."
+    },
+    {
+      "listing_key": "KRX::004700",
+      "field_name": "name",
+      "old_value": "Cho Kwang Leat",
+      "new_value": "Chokwang Leather Co., Ltd."
+    },
+    {
+      "listing_key": "KRX::004700",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "NSE_IN::UWCSL",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "OTC::FMTYF",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "OTC::GTMEF",
+      "field_name": "isin",
+      "old_value": "PH0000062093",
+      "new_value": "PHY272571498"
+    },
+    {
+      "listing_key": "PSX::UBDL",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "XETRA::8AC",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Consumer Staples"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -65,7 +132,7 @@
     },
     {
       "exchange": "B3",
-      "before_rows": 1589,
+      "before_rows": 1594,
       "after_rows": 1594,
       "shrink_pct": 0.0,
       "removed_rows": 0,
