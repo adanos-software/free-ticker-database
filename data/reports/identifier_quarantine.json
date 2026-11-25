@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-25T17:32:28Z",
+  "generated_at": "2026-11-25T17:50:55Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2085,
-  "decision_rows": 6833,
+  "conflict_count": 2086,
+  "decision_rows": 6835,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1339,
-    "proposed_clear_conflicting_identifier": 1075,
+    "kept_listing_keyed_identifier": 1340,
+    "proposed_clear_conflicting_identifier": 1076,
     "quarantined_unresolved_identifier": 4419
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1075,
+  "proposed_clear_rows": 1076,
   "quarantined_rows": 4419,
-  "retained_rows": 1339,
+  "retained_rows": 1340,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -4546,9 +4546,9 @@
       "exchange": "B3",
       "name": "BCO BRADESCO S.A.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "BRBBDCACNPR8"
     },
     {
@@ -4559,9 +4559,9 @@
       "exchange": "FSX",
       "name": "Banco Bradesco S.A.",
       "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
       "retained_isin": "BRBBDCACNPR8"
     },
     {
@@ -60255,6 +60255,32 @@
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "TW0002237005"
+    },
+    {
+      "conflict_id": "52677748ec521b29b492",
+      "isin": "TW0004582002",
+      "listing_key": "TPEX::4582",
+      "ticker": "4582",
+      "exchange": "TPEX",
+      "name": "Hengs Technology Co., Ltd.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "TW0004582002"
+    },
+    {
+      "conflict_id": "52677748ec521b29b492",
+      "isin": "TW0004582002",
+      "listing_key": "TWSE::4582",
+      "ticker": "4582",
+      "exchange": "TWSE",
+      "name": "聚恆科技股份有限公司",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "TW0004582002"
     },
     {
       "conflict_id": "c4d9bb39a17daf876a08",
