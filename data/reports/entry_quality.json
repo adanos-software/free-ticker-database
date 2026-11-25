@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-25T12:28:16Z",
+    "generated_at": "2026-11-25T13:12:27Z",
     "rows": 97723,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,9 +15,9 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86154,
+      "pass": 86151,
       "source_gap": 11523,
-      "warn": 36
+      "warn": 39
     },
     "evidence_level_counts": {
       "identifier_enriched": 5102,
@@ -26,19 +26,19 @@
       "valid_isin": 5171
     },
     "severity_counts": {
-      "high": 13,
+      "high": 16,
       "low": 10,
       "medium": 24,
-      "source_gap": 11864
+      "source_gap": 11863
     },
     "issue_counts": {
       "official_reference_gap": 7278,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 654,
-      "missing_stock_sector": 558,
+      "missing_stock_sector": 557,
       "missing_etf_category": 87,
       "official_name_mismatch": 24,
-      "official_isin_mismatch": 12,
+      "official_isin_mismatch": 15,
       "low_company_name_overlap": 10,
       "country_isin_mismatch": 1
     },
@@ -13224,6 +13224,24 @@
       ]
     },
     {
+      "listing_key": "TPEX::4589",
+      "ticker": "4589",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "official_isin_mismatch",
+          "severity": "high",
+          "field": "isin",
+          "value": "TW0004589007",
+          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0004589B18."
+        }
+      ]
+    },
+    {
       "listing_key": "KRX::460280",
       "ticker": "460280",
       "exchange": "KRX",
@@ -17226,6 +17244,24 @@
       ]
     },
     {
+      "listing_key": "TPEX::6610",
+      "ticker": "6610",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "official_isin_mismatch",
+          "severity": "high",
+          "field": "isin",
+          "value": "TW0006610009",
+          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0006610B16."
+        }
+      ]
+    },
+    {
       "listing_key": "TPEX::6618",
       "ticker": "6618",
       "exchange": "TPEX",
@@ -17330,6 +17366,24 @@
           "field": "exchange",
           "value": "XSTU",
           "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "TPEX::6755",
+      "ticker": "6755",
+      "exchange": "TPEX",
+      "asset_type": "Stock",
+      "quality_status": "warn",
+      "quality_score": 40,
+      "recommended_action": "review_or_backfill",
+      "issues": [
+        {
+          "issue_type": "official_isin_mismatch",
+          "severity": "high",
+          "field": "isin",
+          "value": "TW0006755002",
+          "message": "Listing ISIN disagrees with official active reference ISIN(s): TW0006755B11."
         }
       ]
     },
@@ -18430,60 +18484,6 @@
     {
       "listing_key": "XSTU::6MM",
       "ticker": "6MM",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::6NE",
-      "ticker": "6NE",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "venue_missing_official_source",
-          "severity": "source_gap",
-          "field": "exchange",
-          "value": "XSTU",
-          "message": "Venue has no official source coverage in the current masterfile layer."
-        }
-      ]
-    },
-    {
-      "listing_key": "FSX::6NU0",
-      "ticker": "6NU0",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "missing_stock_sector",
-          "severity": "source_gap",
-          "field": "stock_sector",
-          "value": "",
-          "message": "Core stock listing has no stock_sector."
-        }
-      ]
-    },
-    {
-      "listing_key": "XSTU::6P8",
-      "ticker": "6P8",
       "exchange": "XSTU",
       "asset_type": "Stock",
       "quality_status": "source_gap",
