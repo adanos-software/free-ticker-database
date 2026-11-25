@@ -12,7 +12,7 @@
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 10,
+    "critical_field_changes": 12,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,64 +25,76 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "Bursa::5249",
+      "listing_key": "BIST::KARCL",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Materials"
+    },
+    {
+      "listing_key": "Bursa::7253",
+      "field_name": "name",
+      "old_value": "Handal Resources Bhd",
+      "new_value": "Handal Energy Berhad"
+    },
+    {
+      "listing_key": "Bursa::7253",
       "field_name": "stock_sector",
       "old_value": "Consumer Discretionary",
-      "new_value": "Real Estate"
-    },
-    {
-      "listing_key": "HKEX::00727",
-      "field_name": "name",
-      "old_value": "CROWNICORP",
-      "new_value": "SINOPROS CORP"
-    },
-    {
-      "listing_key": "KRX::066970",
-      "field_name": "stock_sector",
-      "old_value": "Materials",
-      "new_value": "Industrials"
-    },
-    {
-      "listing_key": "LSE::0EEV",
-      "field_name": "stock_sector",
-      "old_value": "Industrials",
       "new_value": "Energy"
     },
     {
-      "listing_key": "NSE_IN::ICICIAMC",
+      "listing_key": "FSX::N4T",
       "field_name": "stock_sector",
       "old_value": "",
-      "new_value": "Financials"
+      "new_value": "Utilities"
     },
     {
-      "listing_key": "NYSE::ANDG",
-      "field_name": "stock_sector",
-      "old_value": "Financials",
-      "new_value": "Consumer Discretionary"
-    },
-    {
-      "listing_key": "SGX::JCO",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Real Estate"
-    },
-    {
-      "listing_key": "TPEX::4582",
+      "listing_key": "NASDAQ::LGCL",
       "field_name": "isin",
-      "old_value": "TW0004582B15",
-      "new_value": "TW0004582002"
+      "old_value": "KYG570371149",
+      "new_value": "KYG570371222"
     },
     {
-      "listing_key": "TPEX::6220",
+      "listing_key": "NSE_IN::MUKKA",
       "field_name": "stock_sector",
-      "old_value": "Financials",
+      "old_value": "",
+      "new_value": "Consumer Staples"
+    },
+    {
+      "listing_key": "OTC::STMGF",
+      "field_name": "isin",
+      "old_value": "CA85284P2017",
+      "new_value": "CA85284P3007"
+    },
+    {
+      "listing_key": "PSX::AIRLINK",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
       "new_value": "Information Technology"
     },
     {
-      "listing_key": "WSE::GIF",
+      "listing_key": "SSE::600839",
       "field_name": "stock_sector",
       "old_value": "Information Technology",
-      "new_value": "Communication Services"
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "TASE::ISI",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "TSXV::STMP",
+      "field_name": "isin",
+      "old_value": "CA85284P2017",
+      "new_value": "CA85284P3007"
+    },
+    {
+      "listing_key": "TWSE::2530",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Industrials"
     }
   ],
   "generated_official_change_evidence": [],
