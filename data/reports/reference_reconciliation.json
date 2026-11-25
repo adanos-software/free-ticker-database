@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12500,
-      "exact_match": 100482,
+      "exact_identity_conflict": 12503,
+      "exact_match": 100479,
       "missing_from_database": 45225,
       "normalization_candidate": 1891,
       "out_of_scope": 8167
     },
-    "coverage_credited_keys": 100482,
+    "coverage_credited_keys": 100479,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 45225,
-    "identity_conflict_rows": 12500,
+    "identity_conflict_rows": 12503,
     "mapping_candidate_rows": 1891
   },
   "rows": [
@@ -2670429,10 +2670429,10 @@
       "isins": "TW0006797B11",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TPEX::6797",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=TW0006797B11, current=TW0006797004"
     },
     {
       "reconciliation_key": "tpex_emerging_basic_info::TPEX::6798",
@@ -2670893,10 +2670893,10 @@
       "isins": "TW0006879B12",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TPEX::6879",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=TW0006879B12, current=TW0006879000"
     },
     {
       "reconciliation_key": "tpex_emerging_basic_info::TPEX::6882",
@@ -2674285,10 +2674285,10 @@
       "isins": "TW0009957B11",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TPEX::9957",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=TW0009957B11, current=TW0009957001"
     },
     {
       "reconciliation_key": "tpex_etf_filter::TPEX::00411A",
