@@ -43,14 +43,14 @@ LUSE,official_partial,listed_companies_subset,22,0,15,0,,luse_listed_companies,l
 MSE_MW,official_partial,listed_companies_subset,8,0,8,0,,mse_mw_listed_companies,mse_mw_listed_companies,mse_mw_listed_companies,empty_refresh,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 MSX,official_full,exchange_directory,95,0,109,0,,muscat_securities_companies,,,,109,94,13,2,86.24,97.92,available,maintain,not_applicable
 Munich,missing,,192,31,0,0,ETF|Stock,,,,,0,0,0,0,,,denominator_missing,official_source_required,not_applicable
-NASDAQ,official_full,corporate_action_daily_list|exchange_directory,3529,1255,8564,1394,,nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange,,nasdaq_trading_system_adds_deletes,stale_artifact,5630,4596,59,975,81.63,82.5,available,refresh_required,not_applicable
+NASDAQ,official_full,corporate_action_daily_list|exchange_directory,3531,1255,8563,1395,,nasdaq_listed|nasdaq_trading_system_adds_deletes|sec_company_tickers_exchange,,nasdaq_trading_system_adds_deletes,stale_artifact,5633,4599,59,975,81.64,82.51,available,refresh_required,not_applicable
 NEO,official_full,exchange_directory,69,178,107,344,,cboe_canada_listing_directory,,,,451,207,71,173,45.9,54.47,available,maintain,not_applicable
 NGX,official_full,exchange_directory|listed_companies_subset,133,12,258,0,ETF,ngx_company_profile_directory|ngx_equities_price_list,ngx_company_profile_directory,ngx_company_profile_directory|ngx_equities_price_list,empty_refresh|stale_artifact,130,130,0,0,100.0,100.0,available,refresh_unavailable,not_applicable
 NMFQS,official_partial,security_lookup_subset,0,6,0,6,,nasdaq_mutual_fund_quotes,,nasdaq_mutual_fund_quotes,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 NSE_IN,official_full,exchange_directory,3170,374,3224,362,,nse_india_securities_available,,,,3586,3512,74,0,97.94,100.0,available,maintain,not_applicable
 NSE_KE,official_full,exchange_directory,77,3,67,2,,nse_ke_listed_companies,,,,69,45,24,0,65.22,100.0,available,maintain,not_applicable
 NYSE,official_full,exchange_directory,1948,79,5487,649,,nasdaq_other_listed|sec_company_tickers_exchange,,,,3834,1955,568,1311,50.99,59.86,available,maintain,not_applicable
-NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2703,17,2765,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_trading_system_adds_deletes,stale_artifact,2780,2645,29,106,95.14,96.15,available,refresh_required,not_applicable
+NYSE ARCA,official_full,corporate_action_daily_list|exchange_directory,0,2703,17,2764,,nasdaq_other_listed|nasdaq_trading_system_adds_deletes,,nasdaq_trading_system_adds_deletes,stale_artifact,2779,2645,28,106,95.18,96.15,available,refresh_required,not_applicable
 NYSE MKT,official_full,exchange_directory,228,2,309,0,ETF,nasdaq_other_listed,,,,309,225,34,50,72.82,81.82,available,maintain,not_applicable
 NZX,official_full,exchange_directory,62,23,128,44,,nzx_instruments,,,,172,85,86,1,49.42,98.84,available,maintain,not_applicable
 OSL,official_full,exchange_directory,314,2,291,2,,euronext_equities|euronext_etfs,,euronext_etfs,stale_artifact,293,285,7,1,97.27,99.65,available,refresh_required,not_applicable
@@ -75,7 +75,7 @@ TSE,official_full,exchange_directory|security_identifier_registry_subset,3763,37
 TSX,official_full,exchange_directory|interlisted_subset|listed_companies_subset,666,1769,992,3159,,tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers,,tmx_etf_screener|tmx_interlisted_companies|tmx_listed_issuers,stale_artifact,785,590,189,6,75.16,98.99,available,refresh_required,not_applicable
 TSXV,official_full,exchange_directory|interlisted_subset|listed_companies_subset,1420,2,1572,13,,tmx_interlisted_companies|tmx_listed_issuers,,tmx_interlisted_companies|tmx_listed_issuers,stale_artifact,1518,1322,193,3,87.09,99.77,available,refresh_required,not_applicable
 TWSE,official_full,exchange_directory|listed_companies_subset,1065,222,1098,275,,twse_etf_list|twse_listed_companies,,twse_etf_list,stale_artifact,1098,1062,36,0,96.72,100.0,available,refresh_required,not_applicable
-TXSE,official_full,exchange_directory,0,0,14,11,,nasdaq_other_listed,,,,25,0,15,10,0.0,0.0,available,maintain,not_applicable
+TXSE,official_full,exchange_directory,0,0,14,12,,nasdaq_other_listed,,,,26,0,16,10,0.0,0.0,available,maintain,not_applicable
 UPCOM,official_full,exchange_directory,2,0,818,0,,upcom_registered_securities,upcom_registered_securities,upcom_registered_securities,empty_refresh,818,2,522,294,0.24,0.68,available,refresh_unavailable,not_applicable
 USE_UG,official_partial,listed_companies_subset,7,0,7,0,,use_ug_listed_companies,,use_ug_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 VSE,official_partial,listed_companies_subset,83,5,66,0,ETF,vienna_listed_companies,,vienna_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source

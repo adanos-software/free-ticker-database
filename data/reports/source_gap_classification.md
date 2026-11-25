@@ -1,25 +1,25 @@
 # Source Gap Classification
 
-Generated at: `2026-11-25T16:36:04Z`
+Generated at: `2026-11-25T17:38:56Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
-- Official reference-gap rows classified: `7278`
-- Missing primary ISIN rows classified: `654`
-- Missing stock-sector rows classified: `569`
+- Official reference-gap rows classified: `7277`
+- Missing primary ISIN rows classified: `656`
+- Missing stock-sector rows classified: `571`
 - Missing ETF-category rows classified: `78`
 
 ## Top Classes
 
 | Class | Rows |
 |---|---:|
-| official_reference_unmatched_source_gap | 6110 |
+| official_reference_unmatched_source_gap | 6109 |
 | official_reference_symbol_collision_gap | 1168 |
-| official_industry_taxonomy_unavailable_gap | 397 |
+| official_industry_taxonomy_unavailable_gap | 399 |
 | fund_or_trust_identifier_gap | 346 |
-| official_identifier_not_exposed_source_gap | 139 |
+| official_identifier_not_exposed_source_gap | 141 |
 | debt_or_securitized_identifier_gap | 88 |
 | otc_sector_source_gap | 88 |
 | official_product_taxonomy_unavailable_gap | 51 |
@@ -48,7 +48,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_gap | official_reference_symbol_collision_gap | BMV | 165 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
 | official_reference_gap | official_reference_unmatched_source_gap | BVB | 165 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_symbol_collision_gap | OTC | 152 | Official exchange directory plus listing-key review for the row's exchange/security. | Do not close the gap from a same-symbol match on another exchange; require exact exchange/symbol/name/identifier evidence. |
-| official_reference_gap | official_reference_unmatched_source_gap | NASDAQ | 125 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
+| official_reference_gap | official_reference_unmatched_source_gap | NASDAQ | 124 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | official_reference_gap | official_reference_unmatched_source_gap | XETRA | 111 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |
 | missing_isin_primary | fund_or_trust_identifier_gap | NYSE ARCA | 106 | Official fund/trust masterfile, prospectus, or reviewed identifier feed. | Exact fund/trust symbol and product name with checksum. |
 | official_reference_gap | official_reference_unmatched_source_gap | HKEX | 92 | Fresh official exchange directory, scoped alias review, or source-of-truth decision. | Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision. |

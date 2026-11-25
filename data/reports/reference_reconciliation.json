@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12497,
-      "exact_match": 99419,
+      "exact_identity_conflict": 12500,
+      "exact_match": 99415,
       "missing_from_database": 44924,
       "normalization_candidate": 1856,
-      "out_of_scope": 8128
+      "out_of_scope": 8129
     },
-    "coverage_credited_keys": 99419,
+    "coverage_credited_keys": 99415,
     "unclassified_rows": 0,
     "in_scope_missing_rows": 44924,
-    "identity_conflict_rows": 12497,
+    "identity_conflict_rows": 12500,
     "mapping_candidate_rows": 1856
   },
   "rows": [
@@ -1502355,6 +1502355,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::BFLR",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::BFLR",
+      "exchange": "NASDAQ",
+      "ticker": "BFLR",
+      "asset_types": "Stock",
+      "names": "BlueFlare, Inc. - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::BFLR",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::BFLX",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::BFLX",
@@ -1511617,6 +1511633,22 @@
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::CPHC",
       "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::CPHY",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::CPHY",
+      "exchange": "NASDAQ",
+      "ticker": "CPHY",
+      "asset_types": "ETF",
+      "names": "F/m Compoundr High Yield Bond ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "out_of_scope",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "name indicates non-target instrument: bond"
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::CPIX",
@@ -1522449,22 +1522481,6 @@
       "coverage_credit": "false",
       "matched_listing_keys": "",
       "evidence": "name indicates non-target instrument: bond"
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::FNGR",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::FNGR",
-      "exchange": "NASDAQ",
-      "ticker": "FNGR",
-      "asset_types": "Stock",
-      "names": "FingerMotion, Inc. - common stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::FNGR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_listed::NASDAQ::FNK",
@@ -1552547,22 +1552563,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::PASG",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::PASG",
-      "exchange": "NASDAQ",
-      "ticker": "PASG",
-      "asset_types": "Stock",
-      "names": "Passage Bio, Inc. - Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::PASG",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::PASW",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::PASW",
@@ -1560899,6 +1560899,22 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
+      "reconciliation_key": "nasdaq_listed::NASDAQ::RMTX",
+      "source_key": "nasdaq_listed",
+      "reference_key": "NASDAQ::RMTX",
+      "exchange": "NASDAQ",
+      "ticker": "RMTX",
+      "asset_types": "Stock",
+      "names": "Remix Therapeutics, Inc. - Common Stock",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "NASDAQ::RMTX",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
+    },
+    {
       "reconciliation_key": "nasdaq_listed::NASDAQ::RNA",
       "source_key": "nasdaq_listed",
       "reference_key": "NASDAQ::RNA",
@@ -1562320,22 +1562336,6 @@
       "classification": "exact_match",
       "coverage_credit": "true",
       "matched_listing_keys": "NASDAQ::SAFT",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
-    },
-    {
-      "reconciliation_key": "nasdaq_listed::NASDAQ::SAFX",
-      "source_key": "nasdaq_listed",
-      "reference_key": "NASDAQ::SAFX",
-      "exchange": "NASDAQ",
-      "ticker": "SAFX",
-      "asset_types": "Stock",
-      "names": "XCF Global, Inc. - Class A Common Stock",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
-      "matched_listing_keys": "NASDAQ::SAFX",
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
@@ -1654611,22 +1654611,6 @@
       "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
-      "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::NICO",
-      "source_key": "nasdaq_other_listed",
-      "reference_key": "NYSE ARCA::NICO",
-      "exchange": "NYSE ARCA",
-      "ticker": "NICO",
-      "asset_types": "ETF",
-      "names": "Hexis Active Nicotine Engagement ETF",
-      "isins": "",
-      "reference_scopes": "exchange_directory",
-      "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
-    },
-    {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::NISM",
       "source_key": "nasdaq_other_listed",
       "reference_key": "NYSE ARCA::NISM",
@@ -1722922,6 +1722906,22 @@
       "ticker": "MBSX",
       "asset_types": "ETF",
       "names": "Regan Fixed Rate MBS ETF",
+      "isins": "",
+      "reference_scopes": "exchange_directory",
+      "source_row_count": 1,
+      "classification": "missing_from_database",
+      "coverage_credit": "false",
+      "matched_listing_keys": "",
+      "evidence": "No venue-specific identity-compatible listing was found."
+    },
+    {
+      "reconciliation_key": "nasdaq_other_listed::TXSE::NICO",
+      "source_key": "nasdaq_other_listed",
+      "reference_key": "TXSE::NICO",
+      "exchange": "TXSE",
+      "ticker": "NICO",
+      "asset_types": "ETF",
+      "names": "Hexis Active Nicotine Engagement ETF",
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
@@ -1877789,10 +1877789,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "OTC::GPAEF",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "otc_markets_stock_screener::OTC::GPAGF",
@@ -2172253,10 +2172253,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "OTC::GPAEF",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "sec_company_tickers_exchange::OTC::GPGCF",
@@ -2646125,10 +2646125,10 @@
       "isins": "TW0004589B18",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TPEX::4589",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=TW0004589B18, current=TW0004589007"
     },
     {
       "reconciliation_key": "tpex_emerging_basic_info::TPEX::4724",
@@ -2646797,10 +2646797,10 @@
       "isins": "TW0006610B16",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TPEX::6610",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=TW0006610B16, current=TW0006610009"
     },
     {
       "reconciliation_key": "tpex_emerging_basic_info::TPEX::6621",
@@ -2647245,10 +2647245,10 @@
       "isins": "TW0006755B11",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TPEX::6755",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=TW0006755B11, current=TW0006755002"
     },
     {
       "reconciliation_key": "tpex_emerging_basic_info::TPEX::6758",
