@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-24T18:13:43Z",
+  "generated_at": "2026-11-25T09:30:56Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1925,
+  "reconciled_rows": 1924,
   "applied_rows": 0,
-  "proposed_rows": 1925,
+  "proposed_rows": 1924,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -14239,21 +14239,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
       "observation_id": "e4cb505f6dcd0d276eb5f6fc",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "HKEX::00727",
-      "action": "proposed",
-      "ticker": "00727",
-      "exchange": "HKEX",
-      "asset_type": "Stock",
-      "isin": "HK0001131157",
-      "old_name": "CROWNICORP",
-      "new_name": "SINOPROS CORP",
-      "source_key": "hkex_securities_list",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://www.hkex.com.hk/eng/services/trading/securities/securitieslists/ListOfSecurities.xlsx",
-      "observation_id": "a632cdb4775cc24b875e7c8c",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {

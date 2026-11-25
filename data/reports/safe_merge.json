@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97733,
-    "after_rows": 97737,
+    "before_rows": 97723,
+    "after_rows": 97723,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 10,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,68 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "Bursa::5249",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "HKEX::00727",
+      "field_name": "name",
+      "old_value": "CROWNICORP",
+      "new_value": "SINOPROS CORP"
+    },
+    {
+      "listing_key": "KRX::066970",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "LSE::0EEV",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Energy"
+    },
+    {
+      "listing_key": "NSE_IN::ICICIAMC",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "NYSE::ANDG",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Consumer Discretionary"
+    },
+    {
+      "listing_key": "SGX::JCO",
+      "field_name": "stock_sector",
+      "old_value": "",
+      "new_value": "Real Estate"
+    },
+    {
+      "listing_key": "TPEX::4582",
+      "field_name": "isin",
+      "old_value": "TW0004582B15",
+      "new_value": "TW0004582002"
+    },
+    {
+      "listing_key": "TPEX::6220",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "WSE::GIF",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Communication Services"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -74,8 +135,8 @@
     },
     {
       "exchange": "BATS",
-      "before_rows": 1358,
-      "after_rows": 1358,
+      "before_rows": 1354,
+      "after_rows": 1354,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -425,8 +486,8 @@
     },
     {
       "exchange": "NASDAQ",
-      "before_rows": 4786,
-      "after_rows": 4787,
+      "before_rows": 4784,
+      "after_rows": 4784,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -479,7 +540,7 @@
     },
     {
       "exchange": "NYSE",
-      "before_rows": 2026,
+      "before_rows": 2027,
       "after_rows": 2027,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -488,8 +549,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2708,
-      "after_rows": 2710,
+      "before_rows": 2703,
+      "after_rows": 2703,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
