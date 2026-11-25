@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-25T10:32:27Z`
+Generated: `2026-11-25T17:32:38Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,18 +8,18 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 122 |
-| Listings involved | 352 |
+| Collision groups | 121 |
+| Listings involved | 349 |
 | Ticker-collision groups | 31 |
-| Open groups | 11 |
-| Closed same-issuer reviewed | 111 |
+| Open groups | 12 |
+| Closed same-issuer reviewed | 109 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
 
 | Decision candidate | Groups |
 | --- | ---: |
-| isin_shared_by_distinct_issuers | 91 |
+| isin_shared_by_distinct_issuers | 90 |
 | ticker_collision_isin_misassignment_suspected | 31 |
 
 ## Next Review Batches
@@ -40,11 +40,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | Canada | 3 |
 | isin_shared_by_distinct_issuers | China | 3 |
 | isin_shared_by_distinct_issuers | Italy | 3 |
-| isin_shared_by_distinct_issuers | Mexico | 3 |
 | isin_shared_by_distinct_issuers | Bermuda | 2 |
 | isin_shared_by_distinct_issuers | India | 2 |
 | isin_shared_by_distinct_issuers | Israel | 2 |
 | isin_shared_by_distinct_issuers | Japan | 2 |
+| isin_shared_by_distinct_issuers | Mexico | 2 |
 | isin_shared_by_distinct_issuers | Netherlands | 2 |
 | ticker_collision_isin_misassignment_suspected | Canada | 2 |
 | ticker_collision_isin_misassignment_suspected | United Kingdom | 2 |
@@ -61,6 +61,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | CA5910881096 | Canada | 2 | MERG | Merger Mines Corporation \| Metal Energy Corp |
 | DE000A40ZVU2 | Germany | 5 | - | UMT UTD MOB.TECHN.AG \| WAYDEAR AG |
 | US5049221055 | United States | 5 | - | Labcorp Holdings Inc. \| Laboratory Corp. of America Holdings |
+| SG1T75931496 | Singapore | 4 | - | Singapore Telecommunications Limited \| Singtel 10 |
 | GRS298343005 | Greece | 3 | - | HELLENiQ ENERGY Holdings S.A. \| Hellenic Petroleum S.A |
 | HK1097008929 | Hong Kong | 3 | - | CTF Media & Entertainment Limited \| i-CABLE Communications Limited |
 | INE234A01025 | India | 3 | - | Evonile Pharma Limited \| Novartis India Ltd |

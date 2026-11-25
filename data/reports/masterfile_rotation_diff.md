@@ -1,31 +1,31 @@
 # Masterfile Rotation Diff
 
-- Generated at: `2026-11-24T17:34:24Z`
-- New rows: `14`
-- Vanished rows: `12`
-- Changed rows: `4`
+- Generated at: `2026-11-25T17:26:13Z`
+- New rows: `1459`
+- Vanished rows: `18`
+- Changed rows: `0`
 - Vanished policy: `feed_delisting_classifier_not_direct_deletion`
 
 ## Changed By Type
 
 | Type | Rows |
 |---|---:|
-| name_change | 4 |
 
 ## New By Source
 
 | Source | Rows |
 |---|---:|
-| bme_security_prices_directory | 3 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 5 |
-| deutsche_boerse_xetra_all_tradable_equities | 3 |
-| idx_company_profiles | 1 |
-| krx_etf_finder | 2 |
+| b3_instruments_equities | 1450 |
+| bist_kap_mkk_listed_securities | 1 |
+| nasdaq_listed | 3 |
+| nse_india_securities_available | 5 |
 
 ## Vanished By Source
 
 | Source | Rows |
 |---|---:|
-| bme_security_prices_directory | 3 |
-| deutsche_boerse_frankfurt_all_tradable_equities | 7 |
-| euronext_equities | 2 |
+| adx_market_watch | 1 |
+| cse_lk_all_security_code | 1 |
+| cse_lk_company_info_summary | 1 |
+| nasdaq_listed | 3 |
+| nse_india_securities_available | 12 |

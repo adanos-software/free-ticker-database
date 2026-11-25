@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-25T10:32:27Z",
+    "generated_at": "2026-11-25T17:32:38Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -2346,62 +2346,6 @@
           "country": "Mexico",
           "country_code": "MX",
           "exchange": "BMV",
-          "listing_key": "BMV::GAPB",
-          "name": "Grupo Aeroportuario del Pac\u00edfico S.A.B. de C.V",
-          "ticker": "GAPB"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Mexico",
-          "country_code": "MX",
-          "exchange": "FSX",
-          "listing_key": "FSX::G9N1",
-          "name": "Grupo Aeroportuario del Pac\u00edfico S.A.B. de C.V",
-          "ticker": "G9N1"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Mexico",
-          "country_code": "MX",
-          "exchange": "OTC",
-          "listing_key": "OTC::GPAEF",
-          "name": "Pacific Airport Group",
-          "ticker": "GPAEF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Mexico",
-          "country_code": "MX",
-          "exchange": "XSTU",
-          "listing_key": "XSTU::G9N1",
-          "name": "Grupo Aeroportuario del Pacifico SAB de CV",
-          "ticker": "G9N1"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "MX01GA000004",
-      "isin_valid": "true",
-      "listing_count": "4",
-      "listing_keys": "BMV::GAPB|FSX::G9N1|OTC::GPAEF|XSTU::G9N1",
-      "member_exchanges": "BMV | FSX | OTC | XSTU",
-      "member_names": "Grupo Aeroportuario del Pac\u00edfico S.A.B. de C.V | Pacific Airport Group",
-      "member_tickers": "G9N1 | GAPB | GPAEF",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Mexico",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Mexico",
-          "country_code": "MX",
-          "exchange": "BMV",
           "listing_key": "BMV::OMAB",
           "name": "Grupo Aeroportuario del Centro Norte S.A.B. de C.V",
           "ticker": "OMAB"
@@ -2615,6 +2559,62 @@
       "member_tickers": "0GB5 | 1GG | NIL-B | NLLGF",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Sweden",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "FSX",
+          "listing_key": "FSX::SIT4",
+          "name": "Singapore Telecommunications Limited",
+          "ticker": "SIT4"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "OTC",
+          "listing_key": "OTC::SNGNF",
+          "name": "Singapore Telecommunications Limited",
+          "ticker": "SNGNF"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "SGX",
+          "listing_key": "SGX::Z74",
+          "name": "Singapore Telecommunications Limited",
+          "ticker": "Z74"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "SGX",
+          "listing_key": "SGX::Z77",
+          "name": "Singtel 10",
+          "ticker": "Z77"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "SG1T75931496",
+      "isin_valid": "true",
+      "listing_count": "4",
+      "listing_keys": "FSX::SIT4|OTC::SNGNF|SGX::Z74|SGX::Z77",
+      "member_exchanges": "FSX | OTC | SGX",
+      "member_names": "Singapore Telecommunications Limited | Singtel 10",
+      "member_tickers": "SIT4 | SNGNF | Z74 | Z77",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Singapore",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -3441,53 +3441,6 @@
       "member_tickers": "9432 | NPPXF | NTT",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Japan",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "FSX",
-          "listing_key": "FSX::SIT4",
-          "name": "Singapore Telecommunications Limited",
-          "ticker": "SIT4"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "OTC",
-          "listing_key": "OTC::SNGNF",
-          "name": "Singapore Telecommunications Limited",
-          "ticker": "SNGNF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "SGX",
-          "listing_key": "SGX::Z77",
-          "name": "Singtel 10",
-          "ticker": "Z77"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "SG1T75931496",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "FSX::SIT4|OTC::SNGNF|SGX::Z77",
-      "member_exchanges": "FSX | OTC | SGX",
-      "member_names": "Singapore Telecommunications Limited | Singtel 10",
-      "member_tickers": "SIT4 | SNGNF | Z77",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Singapore",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5621,18 +5574,18 @@
     "advisory_policy": {
       "direct_identifier_apply_allowed_rows": 0,
       "identity_change_authorized": false,
-      "review_required_groups": 122,
+      "review_required_groups": 121,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 111,
-    "collision_groups": 122,
+    "closed_groups": 109,
+    "collision_groups": 121,
     "decision_candidate_totals": {
-      "isin_shared_by_distinct_issuers": 91,
+      "isin_shared_by_distinct_issuers": 90,
       "ticker_collision_isin_misassignment_suspected": 31
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-25T10:32:27Z",
-    "listings_involved": 352,
+    "generated_at": "2026-11-25T17:32:38Z",
+    "listings_involved": 349,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5705,11 +5658,6 @@
         "registered_country": "Italy"
       },
       {
-        "collision_groups": 3,
-        "decision_candidate": "isin_shared_by_distinct_issuers",
-        "registered_country": "Mexico"
-      },
-      {
         "collision_groups": 2,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Bermuda"
@@ -5728,6 +5676,11 @@
         "collision_groups": 2,
         "decision_candidate": "isin_shared_by_distinct_issuers",
         "registered_country": "Japan"
+      },
+      {
+        "collision_groups": 2,
+        "decision_candidate": "isin_shared_by_distinct_issuers",
+        "registered_country": "Mexico"
       },
       {
         "collision_groups": 2,
@@ -5795,7 +5748,7 @@
         "registered_country": "Italy"
       }
     ],
-    "open_groups": 11,
+    "open_groups": 12,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
@@ -5816,7 +5769,7 @@
       "Italy": 4,
       "Japan": 2,
       "Luxembourg": 1,
-      "Mexico": 3,
+      "Mexico": 2,
       "Netherlands": 2,
       "Norway": 1,
       "Singapore": 8,
