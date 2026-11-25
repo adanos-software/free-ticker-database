@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-24T18:13:43Z",
+  "generated_at": "2026-11-25T08:29:38Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2092,
-  "decision_rows": 6851,
+  "conflict_count": 2087,
+  "decision_rows": 6840,
   "action_counts": {
     "kept_listing_keyed_identifier": 1341,
     "proposed_clear_conflicting_identifier": 1077,
-    "quarantined_unresolved_identifier": 4433
+    "quarantined_unresolved_identifier": 4422
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1077,
-  "quarantined_rows": 4433,
+  "quarantined_rows": 4422,
   "retained_rows": 1341,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -68590,20 +68590,7 @@
       "retained_isin": "US26875P1012"
     },
     {
-      "conflict_id": "80f142e3f3e1ea8fde69",
-      "isin": "US26922A2895",
-      "listing_key": "NASDAQ::SIXG",
-      "ticker": "SIXG",
-      "exchange": "NASDAQ",
-      "name": "Defiance Connective Technologies ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US26922A2895"
-    },
-    {
-      "conflict_id": "80f142e3f3e1ea8fde69",
+      "conflict_id": "e69b4707ff7b93393edb",
       "isin": "US26922A2895",
       "listing_key": "NASDAQ::UFOX",
       "ticker": "UFOX",
@@ -68616,7 +68603,7 @@
       "retained_isin": "US26922A2895"
     },
     {
-      "conflict_id": "80f142e3f3e1ea8fde69",
+      "conflict_id": "e69b4707ff7b93393edb",
       "isin": "US26922A2895",
       "listing_key": "NYSE ARCA::FIVG",
       "ticker": "FIVG",
@@ -71684,32 +71671,6 @@
       "retained_isin": "US3873281071"
     },
     {
-      "conflict_id": "3527d3c6a8256f1571d2",
-      "isin": "US38747R6036",
-      "listing_key": "NYSE ARCA::DRUP",
-      "ticker": "DRUP",
-      "exchange": "NYSE ARCA",
-      "name": "GraniteShares ETF Trust - GraniteShares Nasdaq Select Disruptors ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US38747R6036"
-    },
-    {
-      "conflict_id": "3527d3c6a8256f1571d2",
-      "isin": "US38747R6036",
-      "listing_key": "NYSE ARCA::XOUT",
-      "ticker": "XOUT",
-      "exchange": "NYSE ARCA",
-      "name": "GraniteShares XOUT U.S. Large Cap ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US38747R6036"
-    },
-    {
       "conflict_id": "121ab8763aeddc819c11",
       "isin": "US3893751061",
       "listing_key": "FSX::GCZB",
@@ -74152,32 +74113,6 @@
       "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "US4642877967"
-    },
-    {
-      "conflict_id": "a5277ccb1e59139baa21",
-      "isin": "US46438F1012",
-      "listing_key": "NASDAQ::IBIT",
-      "ticker": "IBIT",
-      "exchange": "NASDAQ",
-      "name": "iShares Bitcoin Trust",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46438F1012"
-    },
-    {
-      "conflict_id": "a5277ccb1e59139baa21",
-      "isin": "US46438F1012",
-      "listing_key": "NYSE ARCA::LDRC",
-      "ticker": "LDRC",
-      "exchange": "NYSE ARCA",
-      "name": "iShares iBonds 1-5 Year Corporate Ladder ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US46438F1012"
     },
     {
       "conflict_id": "6b609167258c8982b9d5",
@@ -82609,7 +82544,7 @@
       "listing_key": "BMV::SPY",
       "ticker": "SPY",
       "exchange": "BMV",
-      "name": "SPDR S&P 500 ETF Trust",
+      "name": "State Street SPDR S&P 500 ETF Trust",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -82721,84 +82656,6 @@
       "retained_isin": "US78463V1070"
     },
     {
-      "conflict_id": "726417f08090d175e2cd",
-      "isin": "US78464A7147",
-      "listing_key": "BMV::XRT",
-      "ticker": "XRT",
-      "exchange": "BMV",
-      "name": "SPDR Series Trust - SPDR S&P Retail ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78464A7147"
-    },
-    {
-      "conflict_id": "726417f08090d175e2cd",
-      "isin": "US78464A7147",
-      "listing_key": "NYSE ARCA::XRT",
-      "ticker": "XRT",
-      "exchange": "NYSE ARCA",
-      "name": "State Street SPDR S&P Retail ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78464A7147"
-    },
-    {
-      "conflict_id": "072014eaf59d03f6b7b8",
-      "isin": "US78464A8624",
-      "listing_key": "BMV::XSD",
-      "ticker": "XSD",
-      "exchange": "BMV",
-      "name": "SPDR Series Trust - SPDR S&P Semiconductor ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78464A8624"
-    },
-    {
-      "conflict_id": "072014eaf59d03f6b7b8",
-      "isin": "US78464A8624",
-      "listing_key": "NYSE ARCA::XSD",
-      "ticker": "XSD",
-      "exchange": "NYSE ARCA",
-      "name": "State Street SPDR S&P Semiconductor ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78464A8624"
-    },
-    {
-      "conflict_id": "a3854165c443560b7d11",
-      "isin": "US78464A8707",
-      "listing_key": "BMV::XBI",
-      "ticker": "XBI",
-      "exchange": "BMV",
-      "name": "SPDR Series Trust - SPDR S&P Biotech ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78464A8707"
-    },
-    {
-      "conflict_id": "a3854165c443560b7d11",
-      "isin": "US78464A8707",
-      "listing_key": "NYSE ARCA::XBI",
-      "ticker": "XBI",
-      "exchange": "NYSE ARCA",
-      "name": "State Street SPDR S&P Biotech ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US78464A8707"
-    },
-    {
       "conflict_id": "6c0a04af28b309ba3ce2",
       "isin": "US78467J1007",
       "listing_key": "FSX::WGSA",
@@ -82869,7 +82726,7 @@
       "listing_key": "AMS::DIA",
       "ticker": "DIA",
       "exchange": "AMS",
-      "name": "SPDR Dow Jones Industrial Average ETF Trust",
+      "name": "State Street SPDR Dow Jones Industrial Average ETF Trust",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -82882,7 +82739,7 @@
       "listing_key": "BMV::DIA",
       "ticker": "DIA",
       "exchange": "BMV",
-      "name": "SPDR Dow Jones Industrial Average ETF Trust",
+      "name": "State Street SPDR Dow Jones Industrial Average ETF Trust",
       "asset_type": "ETF",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
