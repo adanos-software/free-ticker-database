@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-25T10:32:27Z",
+    "generated_at": "2026-11-25T17:13:59Z",
     "policy": "ISIN identity collisions are reported for review only. No ISIN, country, name, or scope change is authorized without official listing-keyed evidence.",
     "source_files": {
       "listings_csv": "data/listings.csv",
@@ -2626,6 +2626,62 @@
           "country": "Singapore",
           "country_code": "SG",
           "exchange": "FSX",
+          "listing_key": "FSX::SIT4",
+          "name": "Singapore Telecommunications Limited",
+          "ticker": "SIT4"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "OTC",
+          "listing_key": "OTC::SNGNF",
+          "name": "Singapore Telecommunications Limited",
+          "ticker": "SNGNF"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "SGX",
+          "listing_key": "SGX::Z74",
+          "name": "Singapore Telecommunications Limited",
+          "ticker": "Z74"
+        },
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "SGX",
+          "listing_key": "SGX::Z77",
+          "name": "Singtel 10",
+          "ticker": "Z77"
+        }
+      ],
+      "closure_status": "open_needs_official_identifier_evidence",
+      "cluster_count": "2",
+      "collision_signals": "name_clusters_disjoint;registered_country_known",
+      "decision_candidate": "isin_shared_by_distinct_issuers",
+      "isin": "SG1T75931496",
+      "isin_valid": "true",
+      "listing_count": "4",
+      "listing_keys": "FSX::SIT4|OTC::SNGNF|SGX::Z74|SGX::Z77",
+      "member_exchanges": "FSX | OTC | SGX",
+      "member_names": "Singapore Telecommunications Limited | Singtel 10",
+      "member_tickers": "SIT4 | SNGNF | Z74 | Z77",
+      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
+      "registered_country": "Singapore",
+      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
+      "review_queue": "manual_isin_identity_review",
+      "shared_tickers": ""
+    },
+    {
+      "_members": [
+        {
+          "asset_type": "Stock",
+          "country": "Singapore",
+          "country_code": "SG",
+          "exchange": "FSX",
           "listing_key": "FSX::B8O",
           "name": "Yangzijiang Shipbuilding (Holdings) Ltd",
           "ticker": "B8O"
@@ -3441,53 +3497,6 @@
       "member_tickers": "9432 | NPPXF | NTT",
       "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
       "registered_country": "Japan",
-      "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
-      "review_queue": "manual_isin_identity_review",
-      "shared_tickers": ""
-    },
-    {
-      "_members": [
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "FSX",
-          "listing_key": "FSX::SIT4",
-          "name": "Singapore Telecommunications Limited",
-          "ticker": "SIT4"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "OTC",
-          "listing_key": "OTC::SNGNF",
-          "name": "Singapore Telecommunications Limited",
-          "ticker": "SNGNF"
-        },
-        {
-          "asset_type": "Stock",
-          "country": "Singapore",
-          "country_code": "SG",
-          "exchange": "SGX",
-          "listing_key": "SGX::Z77",
-          "name": "Singtel 10",
-          "ticker": "Z77"
-        }
-      ],
-      "closure_status": "closed_same_issuer_reviewed",
-      "cluster_count": "2",
-      "collision_signals": "name_clusters_disjoint;registered_country_known",
-      "decision_candidate": "isin_shared_by_distinct_issuers",
-      "isin": "SG1T75931496",
-      "isin_valid": "true",
-      "listing_count": "3",
-      "listing_keys": "FSX::SIT4|OTC::SNGNF|SGX::Z77",
-      "member_exchanges": "FSX | OTC | SGX",
-      "member_names": "Singapore Telecommunications Limited | Singtel 10",
-      "member_tickers": "SIT4 | SNGNF | Z77",
-      "recommended_next_source": "Official national numbering agency (ISIN registry) or issuer/exchange security master keyed to the exact listing_key.",
-      "registered_country": "Singapore",
       "review_gate": "Do not change, blank, or reassign any ISIN, country, or name until official listing-keyed identifier evidence (national numbering agency / issuer / exchange security master) confirms which listing holds the ISIN.",
       "review_queue": "manual_isin_identity_review",
       "shared_tickers": ""
@@ -5624,15 +5633,15 @@
       "review_required_groups": 122,
       "source_gate": "ISIN identity collision rows are advisory only; apply no ISIN, country, name, scope, merge, or dedupe change without listing-keyed official identifier evidence and reviewer approval."
     },
-    "closed_groups": 111,
+    "closed_groups": 110,
     "collision_groups": 122,
     "decision_candidate_totals": {
       "isin_shared_by_distinct_issuers": 91,
       "ticker_collision_isin_misassignment_suspected": 31
     },
     "direct_identifier_apply_allowed_rows": 0,
-    "generated_at": "2026-11-25T10:32:27Z",
-    "listings_involved": 352,
+    "generated_at": "2026-11-25T17:13:59Z",
+    "listings_involved": 353,
     "next_review_batches": [
       {
         "collision_groups": 25,
@@ -5795,7 +5804,7 @@
         "registered_country": "Italy"
       }
     ],
-    "open_groups": 11,
+    "open_groups": 12,
     "policy": "An ISIN identifies exactly one issuer; an ISIN shared by distinct issuer names is a provable anomaly. This queue reports and gates the collisions and applies no ISIN, country, or name change without official listing-keyed evidence.",
     "registered_country_totals": {
       "Australia": 4,
