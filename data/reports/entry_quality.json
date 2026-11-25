@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-25T12:28:16Z",
+    "generated_at": "2026-11-25T15:40:55Z",
     "rows": 97723,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86154,
-      "source_gap": 11523,
+      "pass": 86157,
+      "source_gap": 11520,
       "warn": 36
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 13,
       "low": 10,
       "medium": 24,
-      "source_gap": 11864
+      "source_gap": 11860
     },
     "issue_counts": {
       "official_reference_gap": 7278,
       "venue_missing_official_source": 3287,
       "expected_missing_primary_isin": 654,
-      "missing_stock_sector": 558,
+      "missing_stock_sector": 554,
       "missing_etf_category": 87,
       "official_name_mismatch": 24,
       "official_isin_mismatch": 12,
@@ -91,8 +91,8 @@
       },
       {
         "exchange": "XETRA",
-        "pass": 5402,
-        "source_gap": 193
+        "pass": 5403,
+        "source_gap": 192
       },
       {
         "exchange": "BVB",
