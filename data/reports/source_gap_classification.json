@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-25T13:45:29Z",
-    "rows": 8581,
+    "generated_at": "2026-11-25T17:41:32Z",
+    "rows": 8579,
     "field_totals": {
       "missing_etf_category": 78,
       "missing_isin_primary": 654,
-      "missing_sector_stock": 571,
+      "missing_sector_stock": 569,
       "official_reference_gap": 7278
     },
     "class_totals": {
@@ -24,7 +24,7 @@
       "official_identifier_not_exposed_source_gap": 139,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 399,
+      "official_industry_taxonomy_unavailable_gap": 397,
       "official_product_taxonomy_unavailable_gap": 51,
       "official_reference_symbol_collision_gap": 1168,
       "official_reference_unmatched_source_gap": 6110,
@@ -48,7 +48,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 399,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 397,
       "missing_sector_stock:otc_sector_source_gap": 88,
       "missing_sector_stock:shell_or_cpc_sector_gap": 8,
       "official_reference_gap:official_reference_symbol_collision_gap": 1168,
@@ -145,11 +145,11 @@
           "rows": 88
         },
         {
-          "exchange": "NSE_IN",
-          "rows": 44
+          "exchange": "HKEX",
+          "rows": 43
         },
         {
-          "exchange": "HKEX",
+          "exchange": "NSE_IN",
           "rows": 43
         },
         {
@@ -170,7 +170,7 @@
         },
         {
           "exchange": "XETRA",
-          "rows": 16
+          "rows": 15
         },
         {
           "exchange": "BVB",
@@ -19380,23 +19380,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "NSE_IN::MONEYVIEW",
-      "ticker": "MONEYVIEW",
-      "exchange": "NSE_IN",
-      "asset_type": "Stock",
-      "name": "Moneyview Limited",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=NSE_IN::MONEYVIEW;exchange=NSE_IN;ticker=MONEYVIEW;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "NSE_IN::NITYAS",
       "ticker": "NITYAS",
       "exchange": "NSE_IN",
@@ -21720,23 +21703,6 @@
       "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
       "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
       "source_gap_context": "listing_key=XETRA::AGRA;exchange=XETRA;ticker=AGRA;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XETRA::AGRB",
-      "ticker": "AGRB",
-      "exchange": "XETRA",
-      "asset_type": "Stock",
-      "name": "AGROB Immobilien AG",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=XETRA::AGRB;exchange=XETRA;ticker=AGRB;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
