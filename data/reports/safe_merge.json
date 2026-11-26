@@ -7,12 +7,12 @@
   },
   "summary": {
     "before_rows": 97738,
-    "after_rows": 97738,
+    "after_rows": 97745,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 8,
+    "critical_field_changes": 2,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,52 +25,16 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "Bursa::5020",
-      "field_name": "stock_sector",
-      "old_value": "Consumer Discretionary",
-      "new_value": "Real Estate"
+      "listing_key": "Euronext::ALEUP",
+      "field_name": "isin",
+      "old_value": "FR0014011QJ8",
+      "new_value": "FR001401BHQ6"
     },
     {
-      "listing_key": "HKEX::00983",
-      "field_name": "stock_sector",
-      "old_value": "Real Estate",
-      "new_value": "Industrials"
-    },
-    {
-      "listing_key": "NASDAQ::RMSG",
-      "field_name": "stock_sector",
-      "old_value": "Communication Services",
-      "new_value": "Information Technology"
-    },
-    {
-      "listing_key": "NYSE::MAGN",
-      "field_name": "name",
-      "old_value": "Magnera Corp placeholder",
-      "new_value": "Magnera Corporation"
-    },
-    {
-      "listing_key": "SZSE::000545",
-      "field_name": "stock_sector",
-      "old_value": "Industrials",
-      "new_value": "Materials"
-    },
-    {
-      "listing_key": "TSE::3675",
-      "field_name": "stock_sector",
-      "old_value": "Industrials",
-      "new_value": "Communication Services"
-    },
-    {
-      "listing_key": "WSE::FFI",
-      "field_name": "stock_sector",
-      "old_value": "Consumer Staples",
-      "new_value": "Financials"
-    },
-    {
-      "listing_key": "XETRA::C43",
-      "field_name": "stock_sector",
-      "old_value": "",
-      "new_value": "Health Care"
+      "listing_key": "HKEX::00381",
+      "field_name": "isin",
+      "old_value": "BMG5278S5012",
+      "new_value": "BMG5278S7091"
     }
   ],
   "generated_official_change_evidence": [],
@@ -349,7 +313,7 @@
     {
       "exchange": "HKEX",
       "before_rows": 3268,
-      "after_rows": 3268,
+      "after_rows": 3271,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -565,7 +529,7 @@
     {
       "exchange": "OSL",
       "before_rows": 316,
-      "after_rows": 316,
+      "after_rows": 317,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -808,7 +772,7 @@
     {
       "exchange": "XETRA",
       "before_rows": 5595,
-      "after_rows": 5595,
+      "after_rows": 5598,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,

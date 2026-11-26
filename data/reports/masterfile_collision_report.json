@@ -1,9 +1,9 @@
 {
   "global": {
-    "official_symbols": 101087,
-    "matched": 70567,
-    "collisions": 11775,
-    "missing": 18745
+    "official_symbols": 101083,
+    "matched": 70563,
+    "collisions": 11774,
+    "missing": 18746
   },
   "exchanges": [
     {
@@ -758,11 +758,6 @@
           "exchange": "BME"
         },
         {
-          "ticker": "S0083",
-          "name": "ALAR 2.000",
-          "exchange": "BME"
-        },
-        {
           "ticker": "S0084",
           "name": "ALAVA INVERSIONES",
           "exchange": "BME"
@@ -770,6 +765,11 @@
         {
           "ticker": "S0127",
           "name": "ALLOCATION",
+          "exchange": "BME"
+        },
+        {
+          "ticker": "S0203",
+          "name": "1948 INVERSIONS",
           "exchange": "BME"
         }
       ]
@@ -1035,8 +1035,8 @@
       "exchange": "Borsa Italiana",
       "official_symbols": 2980,
       "matched": 245,
-      "collisions": 1935,
-      "missing": 800,
+      "collisions": 1936,
+      "missing": 799,
       "collision_examples": [
         {
           "ticker": "1PAS",
@@ -1403,10 +1403,10 @@
     },
     {
       "exchange": "Euronext",
-      "official_symbols": 2022,
+      "official_symbols": 2021,
       "matched": 1310,
       "collisions": 372,
-      "missing": 340,
+      "missing": 339,
       "collision_examples": [
         {
           "ticker": "26TP",
@@ -1545,10 +1545,10 @@
     },
     {
       "exchange": "FSX",
-      "official_symbols": 18199,
-      "matched": 7793,
-      "collisions": 4460,
-      "missing": 5946,
+      "official_symbols": 18202,
+      "matched": 7788,
+      "collisions": 4461,
+      "missing": 5953,
       "collision_examples": [
         {
           "ticker": "0080",
@@ -1664,7 +1664,7 @@
         },
         {
           "ticker": "03N1",
-          "name": "CRETE PLASTICS   EO 1,43",
+          "name": "PLASTIKA KRITIS   EO 1,43",
           "exchange": "FSX"
         },
         {
@@ -1686,8 +1686,8 @@
     },
     {
       "exchange": "HKEX",
-      "official_symbols": 3241,
-      "matched": 3172,
+      "official_symbols": 3242,
+      "matched": 3173,
       "collisions": 68,
       "missing": 1,
       "collision_examples": [
@@ -1893,10 +1893,10 @@
     },
     {
       "exchange": "IDX",
-      "official_symbols": 951,
-      "matched": 745,
-      "collisions": 186,
-      "missing": 20,
+      "official_symbols": 943,
+      "matched": 744,
+      "collisions": 183,
+      "missing": 16,
       "collision_examples": [
         {
           "ticker": "ABBA",
@@ -2019,11 +2019,6 @@
           "exchange": "IDX"
         },
         {
-          "ticker": "IJEE",
-          "name": "PT Integrasi Jaringan Ekosistem",
-          "exchange": "IDX"
-        },
-        {
           "ticker": "JECX",
           "name": "PT Nitrasanata Dharma Tbk",
           "exchange": "IDX"
@@ -2031,6 +2026,11 @@
         {
           "ticker": "JELI",
           "name": "PT Niramas Utama Tbk",
+          "exchange": "IDX"
+        },
+        {
+          "ticker": "KBRI",
+          "name": "Kertas Basuki Rachmat Indonesia Tbk",
           "exchange": "IDX"
         }
       ]
@@ -2192,8 +2192,8 @@
     },
     {
       "exchange": "KRX",
-      "official_symbols": 2130,
-      "matched": 1943,
+      "official_symbols": 2129,
+      "matched": 1942,
       "collisions": 14,
       "missing": 173,
       "collision_examples": [
@@ -3225,9 +3225,9 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "official_symbols": 2780,
+      "official_symbols": 2779,
       "matched": 2645,
-      "collisions": 29,
+      "collisions": 28,
       "missing": 106,
       "collision_examples": [
         {
@@ -3644,8 +3644,8 @@
     },
     {
       "exchange": "OSL",
-      "official_symbols": 293,
-      "matched": 285,
+      "official_symbols": 294,
+      "matched": 286,
       "collisions": 7,
       "missing": 1,
       "collision_examples": [
@@ -4983,9 +4983,9 @@
     },
     {
       "exchange": "TXSE",
-      "official_symbols": 25,
+      "official_symbols": 26,
       "matched": 0,
-      "collisions": 15,
+      "collisions": 16,
       "missing": 10,
       "collision_examples": [
         {
@@ -5064,14 +5064,11 @@
           ]
         },
         {
-          "ticker": "OBK",
-          "name": "Origin Bancorp, Inc. Common Stock",
+          "ticker": "NICO",
+          "name": "Hexis Active Nicotine Engagement ETF",
           "target_exchange": "TXSE",
           "existing_exchanges": [
-            "FSX",
-            "Munich",
-            "NYSE",
-            "XSTU"
+            "STO"
           ]
         }
       ],
@@ -5289,8 +5286,8 @@
     },
     {
       "exchange": "XETRA",
-      "official_symbols": 5552,
-      "matched": 5304,
+      "official_symbols": 5553,
+      "matched": 5305,
       "collisions": 246,
       "missing": 2,
       "collision_examples": [
