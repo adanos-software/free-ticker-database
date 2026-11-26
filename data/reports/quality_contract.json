@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "697460a58a18b2ca386438a9501ba8d00ebde5c80a03f365709f76258c4491bf",
+  "dataset_sha256": "88f4a76bcb1b6803efa2cd30979a721b33c6e223014c0a393a0036a8511daef3",
   "source_manifest_sha256": "b7d6982094a0f74f09e405315f28a78adb24a71e59491cc18ba6ced8d9c81fda",
-  "git_commit": "61468d7ce709dbb2531c73cb30a3d29734ee2c13",
+  "git_commit": "7e561199895004b3a40cb0e0da461f27033df6b7",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -21,9 +21,9 @@
       "status": "pass",
       "details": {
         "summary": {
-          "ticker_rows": 65680,
+          "ticker_rows": 65679,
           "listing_rows": 97738,
-          "adanos_reference_rows": 65680,
+          "adanos_reference_rows": 65679,
           "entry_quality_rows": 97738,
           "error_gates": 88,
           "failed_error_gates": 0,
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 147,
-          "source_observations": 188794,
+          "source_observations": 188813,
           "venues": 87,
-          "issuers": 75266,
-          "instruments": 75266,
+          "issuers": 75264,
+          "instruments": 75264,
           "listings": 97745,
-          "identifier_assertions": 168396,
-          "field_assertions": 223512,
-          "provenance_gaps": 293104,
-          "listing_events": 94155,
+          "identifier_assertions": 168392,
+          "field_assertions": 223520,
+          "provenance_gaps": 293095,
+          "listing_events": 94176,
           "coverage_contracts": 136
         }
       }
@@ -101,8 +101,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "decisions": 6833,
-        "current_conflict_groups": 2085,
+        "decisions": 6831,
+        "current_conflict_groups": 2084,
         "failure_count": 0,
         "sample": []
       }
@@ -131,7 +131,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "conflict_groups": 2085,
+        "conflict_groups": 2084,
         "sample": [
           "AEE000401019",
           "AN8068571086",
@@ -191,7 +191,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "proposed_rows": 1925,
+        "proposed_rows": 1921,
         "sample": [
           "ADX::GRMNY",
           "ADX::JPANI",
@@ -523,7 +523,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 293104
+        "gap_rows": 293095
       }
     },
     {

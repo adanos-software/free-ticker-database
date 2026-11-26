@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-26T09:18:40Z",
+  "generated_at": "2026-11-26T09:48:30Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2085,
-  "decision_rows": 6833,
+  "conflict_count": 2084,
+  "decision_rows": 6831,
   "action_counts": {
     "kept_listing_keyed_identifier": 1341,
     "proposed_clear_conflicting_identifier": 1077,
-    "quarantined_unresolved_identifier": 4415
+    "quarantined_unresolved_identifier": 4413
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1077,
-  "quarantined_rows": 4415,
+  "quarantined_rows": 4413,
   "retained_rows": 1341,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -36012,32 +36012,6 @@
       "retained_isin": "INE364A01020"
     },
     {
-      "conflict_id": "cd5d6b9e004e36eeed34",
-      "isin": "INE392B01011",
-      "listing_key": "BSE_IN::PNC",
-      "ticker": "PNC",
-      "exchange": "BSE_IN",
-      "name": "PNC Media and Entertainment Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "INE392B01011"
-    },
-    {
-      "conflict_id": "cd5d6b9e004e36eeed34",
-      "isin": "INE392B01011",
-      "listing_key": "NSE_IN::PNC",
-      "ticker": "PNC",
-      "exchange": "NSE_IN",
-      "name": "Pritish Nandy Communications Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "INE392B01011"
-    },
-    {
       "conflict_id": "89bd4acba10324a5ca87",
       "isin": "INE426Z01016",
       "listing_key": "BSE_IN::OBCL",
@@ -52358,7 +52332,7 @@
       "listing_key": "Euronext::ARGX",
       "ticker": "ARGX",
       "exchange": "Euronext",
-      "name": "Argen-X",
+      "name": "argenx SE",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -52371,7 +52345,7 @@
       "listing_key": "FSX::1AE",
       "ticker": "1AE",
       "exchange": "FSX",
-      "name": "Argen-X",
+      "name": "argenx SE",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -52423,7 +52397,7 @@
       "listing_key": "XSTU::1AE",
       "ticker": "1AE",
       "exchange": "XSTU",
-      "name": "Argen-X",
+      "name": "argenx SE",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
