@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T15:43:34Z",
-    "rows": 7789,
+    "generated_at": "2026-11-26T16:43:09Z",
+    "rows": 7788,
     "field_totals": {
       "missing_etf_category": 79,
-      "missing_isin_primary": 653,
+      "missing_isin_primary": 652,
       "missing_sector_stock": 570,
       "official_reference_gap": 6487
     },
@@ -21,7 +21,7 @@
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 138,
+      "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 400,
@@ -42,7 +42,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 346,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -123,11 +123,11 @@
           "rows": 32
         },
         {
-          "exchange": "NYSE",
-          "rows": 26
+          "exchange": "NEO",
+          "rows": 25
         },
         {
-          "exchange": "NEO",
+          "exchange": "NYSE",
           "rows": 25
         },
         {
@@ -7015,23 +7015,6 @@
       "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
       "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
       "source_gap_context": "listing_key=NYSE::GORO;exchange=NYSE;ticker=GORO;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::GPGI",
-      "ticker": "GPGI",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "GPGI, Inc.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NYSE::GPGI;exchange=NYSE;ticker=GPGI;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },

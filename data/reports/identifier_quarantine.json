@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-26T10:26:51Z",
+  "generated_at": "2026-11-26T16:34:03Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2084,
-  "decision_rows": 6831,
+  "decision_rows": 6832,
   "action_counts": {
     "kept_listing_keyed_identifier": 1341,
     "proposed_clear_conflicting_identifier": 1077,
-    "quarantined_unresolved_identifier": 4413
+    "quarantined_unresolved_identifier": 4414
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1077,
-  "quarantined_rows": 4413,
+  "quarantined_rows": 4414,
   "retained_rows": 1341,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -69682,7 +69682,7 @@
       "retained_isin": "US30233G2093"
     },
     {
-      "conflict_id": "c810c9dae000c747747b",
+      "conflict_id": "b4740c8c4ad5bc47c35a",
       "isin": "US30233Q1085",
       "listing_key": "FSX::7DZ",
       "ticker": "7DZ",
@@ -69695,7 +69695,7 @@
       "retained_isin": "US30233Q1085"
     },
     {
-      "conflict_id": "c810c9dae000c747747b",
+      "conflict_id": "b4740c8c4ad5bc47c35a",
       "isin": "US30233Q1085",
       "listing_key": "LSE::0R1M",
       "ticker": "0R1M",
@@ -69708,7 +69708,20 @@
       "retained_isin": "US30233Q1085"
     },
     {
-      "conflict_id": "c810c9dae000c747747b",
+      "conflict_id": "b4740c8c4ad5bc47c35a",
+      "isin": "US30233Q1085",
+      "listing_key": "NYSE::XOM",
+      "ticker": "XOM",
+      "exchange": "NYSE",
+      "name": "ExxonMobil Holdings Corporation",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "US30233Q1085"
+    },
+    {
+      "conflict_id": "b4740c8c4ad5bc47c35a",
       "isin": "US30233Q1085",
       "listing_key": "XETRA::7DZ",
       "ticker": "7DZ",

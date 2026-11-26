@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T15:43:35Z",
-    "rows": 7789,
+    "generated_at": "2026-11-26T16:43:09Z",
+    "rows": 7788,
     "outcome_totals": {
-      "accepted_source_gap": 5001,
+      "accepted_source_gap": 5000,
       "core_exclusion_candidate": 539,
       "official_fill_required": 2249
     },
@@ -20,7 +20,7 @@
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 138,
+      "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 400,
@@ -32,7 +32,7 @@
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 79,
-      "missing_isin_primary:accepted_source_gap": 155,
+      "missing_isin_primary:accepted_source_gap": 154,
       "missing_isin_primary:core_exclusion_candidate": 497,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 487,
@@ -2538,23 +2538,6 @@
       "exchange": "NYSE",
       "asset_type": "Stock",
       "name": "Goldgroup Mining Inc.",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE::GPGI",
-      "ticker": "GPGI",
-      "exchange": "NYSE",
-      "asset_type": "Stock",
-      "name": "GPGI, Inc.",
       "gap_class": "official_identifier_not_exposed_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
