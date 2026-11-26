@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T13:32:26Z",
-    "rows": 7790,
+    "generated_at": "2026-11-26T14:37:35Z",
+    "rows": 7789,
     "field_totals": {
       "missing_etf_category": 79,
-      "missing_isin_primary": 654,
+      "missing_isin_primary": 653,
       "missing_sector_stock": 570,
       "official_reference_gap": 6487
     },
@@ -21,7 +21,7 @@
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 139,
+      "official_identifier_not_exposed_source_gap": 138,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 400,
@@ -42,7 +42,7 @@
       "missing_isin_primary:fund_or_trust_identifier_gap": 346,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 139,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 138,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -104,7 +104,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 90
+          "rows": 89
         },
         {
           "exchange": "TSX",
@@ -5657,23 +5657,6 @@
       "source_gap_context": "listing_key=NASDAQ::YSKH;exchange=NASDAQ;ticker=YSKH;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::ACCL",
-      "ticker": "ACCL",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "Acco Group Holdings Limited Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::ACCL;exchange=NASDAQ;ticker=ACCL;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
     },
     {
       "field": "missing_isin_primary",
