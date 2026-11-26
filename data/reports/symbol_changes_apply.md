@@ -1,9 +1,9 @@
 # Symbol Changes Apply
 
-- Generated at: `2026-11-24T17:38:12Z`
+- Generated at: `2026-11-26T16:50:14Z`
 - Dry run: `false`
 - Accepted rows: `0`
-- Blocked/manual rows: `408`
+- Blocked/manual rows: `413`
 
 ## Accepted
 
@@ -19,8 +19,8 @@ No rename rows satisfied the official-evidence apply gate.
 | blocked_sec_cik_mismatch | 1 |
 | manual_cross_venue_ticker_reuse | 6 |
 | manual_missing_identity_evidence | 2 |
-| manual_non_us_or_unscoped_source | 55 |
+| manual_non_us_or_unscoped_source | 57 |
 | manual_official_successor_name_mismatch | 1 |
 | manual_successor_isin_mismatch | 8 |
 | manual_ticker_reuse_name_mismatch | 2 |
-| manual_transition_or_shell_name | 8 |
+| manual_transition_or_shell_name | 11 |
