@@ -4,7 +4,7 @@ AMS,official_full,exchange_directory,126,623,113,502,,euronext_equities|euronext
 ASX,official_partial,listed_companies_subset,1738,521,1843,615,,asx_investment_products|asx_listed_companies,asx_listed_companies,asx_investment_products|asx_listed_companies,empty_refresh|stale_artifact,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
 ATHEX,official_partial,listed_companies_subset,161,1,126,0,ETF,athex_sector_classification,,athex_sector_classification,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 B3,official_full,exchange_directory|listed_companies_subset,704,894,699,1856,,b3_bdr_etfs|b3_instruments_equities|b3_listed_etfs,,b3_bdr_etfs|b3_listed_etfs,stale_artifact,1998,1511,0,487,75.63,75.63,available,refresh_required,not_applicable
-BATS,official_full,exchange_directory,1,1353,4,1677,,nasdaq_other_listed,,,,1681,1332,58,291,79.24,82.07,available,maintain,not_applicable
+BATS,official_full,exchange_directory,1,1356,4,1677,,nasdaq_other_listed,,,,1681,1335,58,288,79.42,82.26,available,maintain,not_applicable
 BCBA,official_partial,security_lookup_subset,92,0,92,0,,byma_equity_details,,byma_equity_details,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 BHB,official_full,exchange_directory,31,0,41,0,,bahrain_bourse_listed_companies,,,,41,31,9,1,75.61,96.88,available,maintain,not_applicable
 BIST,official_full,exchange_directory,607,36,627,36,,bist_kap_mkk_listed_securities,,,,663,641,22,0,96.68,100.0,available,maintain,not_applicable
@@ -76,7 +76,7 @@ TSX,official_full,exchange_directory|interlisted_subset|listed_companies_subset,
 TSXV,official_full,exchange_directory|interlisted_subset|listed_companies_subset,1420,2,1572,13,,tmx_interlisted_companies|tmx_listed_issuers,,tmx_interlisted_companies|tmx_listed_issuers,stale_artifact,1518,1322,193,3,87.09,99.77,available,refresh_required,not_applicable
 TWSE,official_full,exchange_directory|listed_companies_subset,1066,222,1098,275,,twse_etf_list|twse_listed_companies,,twse_etf_list,stale_artifact,1098,1063,35,0,96.81,100.0,available,refresh_required,not_applicable
 TXSE,official_full,exchange_directory,0,0,14,11,,nasdaq_other_listed,,,,25,0,15,10,0.0,0.0,available,maintain,not_applicable
-UPCOM,official_full,exchange_directory,2,0,818,0,,upcom_registered_securities,upcom_registered_securities,upcom_registered_securities,empty_refresh,818,2,522,294,0.24,0.68,available,refresh_unavailable,not_applicable
+UPCOM,official_full,exchange_directory,2,0,818,0,,upcom_registered_securities,upcom_registered_securities,upcom_registered_securities,empty_refresh,818,2,523,293,0.24,0.68,available,refresh_unavailable,not_applicable
 USE_UG,official_partial,listed_companies_subset,7,0,7,0,,use_ug_listed_companies,,use_ug_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 VSE,official_partial,listed_companies_subset,83,5,66,0,ETF,vienna_listed_companies,,vienna_listed_companies,stale_artifact,0,0,0,0,,,denominator_missing,denominator_missing,blocked_nonfresh_source
 WSE,official_partial,listed_companies_subset,563,19,749,38,,newconnect_listed_companies|wse_etf_list|wse_listed_companies,wse_etf_list|wse_listed_companies,newconnect_listed_companies|wse_etf_list|wse_listed_companies,empty_refresh|stale_artifact,0,0,0,0,,,denominator_missing,refresh_unavailable,blocked_source_unavailable
