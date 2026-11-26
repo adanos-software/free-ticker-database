@@ -1,9 +1,9 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T11:31:19Z",
-    "rows": 7792,
+    "generated_at": "2026-11-26T12:20:35Z",
+    "rows": 7790,
     "outcome_totals": {
-      "accepted_source_gap": 5004,
+      "accepted_source_gap": 5002,
       "core_exclusion_candidate": 539,
       "official_fill_required": 2249
     },
@@ -23,11 +23,11 @@
       "official_identifier_not_exposed_source_gap": 139,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 401,
+      "official_industry_taxonomy_unavailable_gap": 400,
       "official_product_taxonomy_unavailable_gap": 51,
       "official_reference_symbol_collision_gap": 1178,
       "official_reference_unmatched_source_gap": 5309,
-      "otc_sector_source_gap": 88,
+      "otc_sector_source_gap": 87,
       "shell_or_cpc_sector_gap": 7
     },
     "field_outcomes": {
@@ -35,7 +35,7 @@
       "missing_isin_primary:accepted_source_gap": 156,
       "missing_isin_primary:core_exclusion_candidate": 497,
       "missing_isin_primary:official_fill_required": 1,
-      "missing_sector_stock:accepted_source_gap": 489,
+      "missing_sector_stock:accepted_source_gap": 487,
       "missing_sector_stock:core_exclusion_candidate": 42,
       "missing_sector_stock:official_fill_required": 41,
       "official_reference_gap:accepted_source_gap": 4280,
@@ -7735,23 +7735,6 @@
     {
       "field": "missing_sector_stock",
       "target_field": "stock_sector",
-      "listing_key": "FSX::O0C",
-      "ticker": "O0C",
-      "exchange": "FSX",
-      "asset_type": "Stock",
-      "name": "Med Life S.A.",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
       "listing_key": "FSX::ON4",
       "ticker": "ON4",
       "exchange": "FSX",
@@ -11446,23 +11429,6 @@
       "exchange": "OTC",
       "asset_type": "Stock",
       "name": "STOCKWORKS GOLD INC",
-      "gap_class": "otc_sector_source_gap",
-      "source_of_truth_outcome": "accepted_source_gap",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "leave_blank_until_source_available",
-      "review_needed": "true",
-      "decision_policy": "Keep the row as an explicit, review-gated source gap until the named source becomes available.",
-      "next_action": "Leave metadata blank, preserve the classification, and revisit only when a stronger source is found.",
-      "source_gate": "Canonical stock sector only after exchange/name gate; no ticker/name-only inference."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OTC::RVLPQ",
-      "ticker": "RVLPQ",
-      "exchange": "OTC",
-      "asset_type": "Stock",
-      "name": "RVL Pharmaceuticals plc",
       "gap_class": "otc_sector_source_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",

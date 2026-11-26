@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-26T11:31:13Z`
+Generated at: `2026-11-26T12:20:28Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,953 |
-| source_gap | 10,732 |
+| pass | 86,954 |
+| source_gap | 10,731 |
 | warn | 43 |
 
 ## Issue Counts
@@ -18,7 +18,7 @@ Generated at: `2026-11-26T11:31:13Z`
 | official_reference_gap | 6,487 |
 | venue_missing_official_source | 3,287 |
 | expected_missing_primary_isin | 654 |
-| missing_stock_sector | 556 |
+| missing_stock_sector | 555 |
 | missing_etf_category | 88 |
 | official_name_mismatch | 24 |
 | official_isin_mismatch | 19 |
@@ -31,7 +31,7 @@ Generated at: `2026-11-26T11:31:13Z`
 |---|---:|---:|---:|---:|---:|
 | OTC | 8,484 | 2 | 3,254 | 12 | 0 |
 | XSTU | 0 | 0 | 2,773 | 0 | 0 |
-| FSX | 7,629 | 0 | 514 | 0 | 0 |
+| FSX | 7,630 | 0 | 513 | 0 | 0 |
 | NASDAQ | 4,502 | 4 | 275 | 3 | 0 |
 | BMV | 91 | 0 | 253 | 0 | 0 |
 | Munich | 0 | 0 | 223 | 0 | 0 |
