@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T07:33:31Z",
-    "rows": 7794,
+    "generated_at": "2026-11-26T08:36:59Z",
+    "rows": 7793,
     "field_totals": {
       "missing_etf_category": 79,
       "missing_isin_primary": 655,
-      "missing_sector_stock": 573,
+      "missing_sector_stock": 572,
       "official_reference_gap": 6487
     },
     "class_totals": {
@@ -29,7 +29,7 @@
       "official_reference_symbol_collision_gap": 1178,
       "official_reference_unmatched_source_gap": 5309,
       "otc_sector_source_gap": 88,
-      "shell_or_cpc_sector_gap": 8
+      "shell_or_cpc_sector_gap": 7
     },
     "class_by_field": {
       "missing_etf_category:commodity_etf_category_gap": 5,
@@ -50,7 +50,7 @@
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
       "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 401,
       "missing_sector_stock:otc_sector_source_gap": 88,
-      "missing_sector_stock:shell_or_cpc_sector_gap": 8,
+      "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1178,
       "official_reference_gap:official_reference_unmatched_source_gap": 5309
     },
@@ -21552,23 +21552,6 @@
       "source_gap_context": "listing_key=SGX::UGGD;exchange=SGX;ticker=UGGD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "SGX::UXSD",
-      "ticker": "UXSD",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "name": "SpaceX US SDR 100to1",
-      "gap_class": "shell_or_cpc_sector_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require current issuer business classification; shell, SPAC, and capital-pool rows must stay unfilled without reviewed evidence.",
-      "recommended_next_source": "Current issuer business description or official industry classification.",
-      "source_gate": "Canonical sector requires active operating-business evidence.",
-      "source_gap_context": "listing_key=SGX::UXSD;exchange=SGX;ticker=UXSD;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -43320,7 +43303,7 @@
       "ticker": "RES",
       "exchange": "Euronext",
       "asset_type": "Stock",
-      "name": "Resilux Nv",
+      "name": "Recupero Etico Sostenibile S.p.A.",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",

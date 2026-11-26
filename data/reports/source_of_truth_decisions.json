@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T07:33:32Z",
-    "rows": 7794,
+    "generated_at": "2026-11-26T08:36:59Z",
+    "rows": 7793,
     "outcome_totals": {
       "accepted_source_gap": 5004,
-      "core_exclusion_candidate": 541,
+      "core_exclusion_candidate": 540,
       "official_fill_required": 2249
     },
     "class_totals": {
@@ -28,7 +28,7 @@
       "official_reference_symbol_collision_gap": 1178,
       "official_reference_unmatched_source_gap": 5309,
       "otc_sector_source_gap": 88,
-      "shell_or_cpc_sector_gap": 8
+      "shell_or_cpc_sector_gap": 7
     },
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 79,
@@ -36,7 +36,7 @@
       "missing_isin_primary:core_exclusion_candidate": 498,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 489,
-      "missing_sector_stock:core_exclusion_candidate": 43,
+      "missing_sector_stock:core_exclusion_candidate": 42,
       "missing_sector_stock:official_fill_required": 41,
       "official_reference_gap:accepted_source_gap": 4280,
       "official_reference_gap:official_fill_required": 2207
@@ -21050,7 +21050,7 @@
       "ticker": "RES",
       "exchange": "Euronext",
       "asset_type": "Stock",
-      "name": "Resilux Nv",
+      "name": "Recupero Etico Sostenibile S.p.A.",
       "gap_class": "official_reference_symbol_collision_gap",
       "source_of_truth_outcome": "accepted_source_gap",
       "core_action": "keep_in_current_scope",
@@ -94202,23 +94202,6 @@
       "exchange": "PSE",
       "asset_type": "Stock",
       "name": "F&J Prince Holdings Corporation ``B``",
-      "gap_class": "shell_or_cpc_sector_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Canonical sector requires active operating-business evidence."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "SGX::UXSD",
-      "ticker": "UXSD",
-      "exchange": "SGX",
-      "asset_type": "Stock",
-      "name": "SpaceX US SDR 100to1",
       "gap_class": "shell_or_cpc_sector_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
