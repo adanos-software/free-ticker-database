@@ -1,6 +1,6 @@
 # ISIN Identity Collision Review Queue
 
-Generated: `2026-11-25T17:51:24Z`
+Generated: `2026-11-26T10:27:18Z`
 
 Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by distinct issuer names (a provable anomaly) and applies no ISIN, country, or name change without official listing-keyed evidence.
 
@@ -8,11 +8,11 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 
 | Metric | Value |
 | --- | ---: |
-| Collision groups | 121 |
-| Listings involved | 349 |
-| Ticker-collision groups | 31 |
+| Collision groups | 120 |
+| Listings involved | 347 |
+| Ticker-collision groups | 30 |
 | Open groups | 12 |
-| Closed same-issuer reviewed | 109 |
+| Closed same-issuer reviewed | 108 |
 | Direct identifier apply allowed rows | 0 |
 
 ## Decision Candidates
@@ -20,7 +20,7 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | Decision candidate | Groups |
 | --- | ---: |
 | isin_shared_by_distinct_issuers | 90 |
-| ticker_collision_isin_misassignment_suspected | 31 |
+| ticker_collision_isin_misassignment_suspected | 30 |
 
 ## Next Review Batches
 
@@ -33,9 +33,9 @@ Policy: an ISIN identifies exactly one issuer. This report flags ISINs shared by
 | isin_shared_by_distinct_issuers | Germany | 6 |
 | isin_shared_by_distinct_issuers | Sweden | 6 |
 | isin_shared_by_distinct_issuers | Cayman Islands | 5 |
-| ticker_collision_isin_misassignment_suspected | India | 5 |
 | isin_shared_by_distinct_issuers | France | 4 |
 | isin_shared_by_distinct_issuers | Switzerland | 4 |
+| ticker_collision_isin_misassignment_suspected | India | 4 |
 | isin_shared_by_distinct_issuers | Australia | 3 |
 | isin_shared_by_distinct_issuers | Canada | 3 |
 | isin_shared_by_distinct_issuers | China | 3 |

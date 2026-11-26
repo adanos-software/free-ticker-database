@@ -5,16 +5,16 @@
     "classification_counts": {
       "alternate_listing_line": 3397,
       "ambiguous_same_venue_identifier": 194,
-      "exact_identity_conflict": 12503,
-      "exact_match": 100479,
-      "missing_from_database": 45225,
+      "exact_identity_conflict": 12499,
+      "exact_match": 100485,
+      "missing_from_database": 45223,
       "normalization_candidate": 1891,
       "out_of_scope": 8167
     },
-    "coverage_credited_keys": 100479,
+    "coverage_credited_keys": 100485,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 45225,
-    "identity_conflict_rows": 12503,
+    "in_scope_missing_rows": 45223,
+    "identity_conflict_rows": 12499,
     "mapping_candidate_rows": 1891
   },
   "rows": [
@@ -908573,10 +908573,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::RONY",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_company_profiles::IDX::ROTI",
@@ -923853,10 +923853,10 @@
       "isins": "",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "IDX::RONY",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "idx_listed_companies::IDX::ROTI",
@@ -947437,10 +947437,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "TSE::3491",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "official and current names do not form one conservative identity family"
     },
     {
       "reconciliation_key": "jpx_listed_issues::TSE::3492",
@@ -1630941,10 +1630941,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "BATS::ESGV",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::BATS::ESML",
@@ -1647773,10 +1647773,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::VDG",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::BATS::VDIG",
@@ -1647805,10 +1647805,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
-      "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "classification": "exact_match",
+      "coverage_credit": "true",
+      "matched_listing_keys": "BATS::VDV",
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::BATS::VEGN",
@@ -1671741,10 +1671741,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::IVOO",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::IVOV",
@@ -1691085,10 +1691085,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::VDE",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VDI",
@@ -1691581,10 +1691581,10 @@
       "isins": "",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "exact_identity_conflict",
-      "coverage_credit": "false",
+      "classification": "exact_match",
+      "coverage_credit": "true",
       "matched_listing_keys": "NYSE ARCA::VO",
-      "evidence": "official and current names do not form one conservative identity family"
+      "evidence": "Venue, symbol, and instrument identity match exactly."
     },
     {
       "reconciliation_key": "nasdaq_other_listed::NYSE ARCA::VOE",
@@ -2440333,10 +2440333,10 @@
       "isins": "XSAT01000466",
       "reference_scopes": "listed_companies_subset",
       "source_row_count": 1,
-      "classification": "exact_match",
-      "coverage_credit": "true",
+      "classification": "exact_identity_conflict",
+      "coverage_credit": "false",
       "matched_listing_keys": "STO::MIR",
-      "evidence": "Venue, symbol, and instrument identity match exactly."
+      "evidence": "ISIN conflict: official=XSAT01000466, current=SE0026821373"
     },
     {
       "reconciliation_key": "spotlight_companies_directory::STO::MONI",

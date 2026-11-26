@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-25T17:50:55Z",
+  "generated_at": "2026-11-26T10:26:51Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2086,
-  "decision_rows": 6835,
+  "conflict_count": 2084,
+  "decision_rows": 6831,
   "action_counts": {
-    "kept_listing_keyed_identifier": 1340,
-    "proposed_clear_conflicting_identifier": 1076,
-    "quarantined_unresolved_identifier": 4419
+    "kept_listing_keyed_identifier": 1341,
+    "proposed_clear_conflicting_identifier": 1077,
+    "quarantined_unresolved_identifier": 4413
   },
   "cleared_rows": 0,
-  "proposed_clear_rows": 1076,
-  "quarantined_rows": 4419,
-  "retained_rows": 1340,
+  "proposed_clear_rows": 1077,
+  "quarantined_rows": 4413,
+  "retained_rows": 1341,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
     {
@@ -27276,6 +27276,32 @@
       "retained_isin": "GRS343313003"
     },
     {
+      "conflict_id": "2d8c5979d06e955ae54e",
+      "isin": "HK0000046869",
+      "listing_key": "FSX::SJY",
+      "ticker": "SJY",
+      "exchange": "FSX",
+      "name": "Golden Bridge Group Holdings Limited",
+      "asset_type": "Stock",
+      "action": "proposed_clear_conflicting_identifier",
+      "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "HK0000046869"
+    },
+    {
+      "conflict_id": "2d8c5979d06e955ae54e",
+      "isin": "HK0000046869",
+      "listing_key": "HKEX::00623",
+      "ticker": "00623",
+      "exchange": "HKEX",
+      "name": "GOLDENBRIDGE GP",
+      "asset_type": "Stock",
+      "action": "kept_listing_keyed_identifier",
+      "reason": "One coherent identity family has decisive listing-keyed evidence.",
+      "evidence_status": "official_exact_listing_match",
+      "retained_isin": "HK0000046869"
+    },
+    {
       "conflict_id": "ec1d816751b49048d217",
       "isin": "HK0000051877",
       "listing_key": "HKEX::03010",
@@ -35984,32 +36010,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "INE364A01020"
-    },
-    {
-      "conflict_id": "cd5d6b9e004e36eeed34",
-      "isin": "INE392B01011",
-      "listing_key": "BSE_IN::PNC",
-      "ticker": "PNC",
-      "exchange": "BSE_IN",
-      "name": "PNC Media and Entertainment Ltd",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "INE392B01011"
-    },
-    {
-      "conflict_id": "cd5d6b9e004e36eeed34",
-      "isin": "INE392B01011",
-      "listing_key": "NSE_IN::PNC",
-      "ticker": "PNC",
-      "exchange": "NSE_IN",
-      "name": "Pritish Nandy Communications Limited",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "conflicting_official_exact_matches",
-      "retained_isin": "INE392B01011"
     },
     {
       "conflict_id": "89bd4acba10324a5ca87",
@@ -52332,7 +52332,7 @@
       "listing_key": "Euronext::ARGX",
       "ticker": "ARGX",
       "exchange": "Euronext",
-      "name": "Argen-X",
+      "name": "argenx SE",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -52345,7 +52345,7 @@
       "listing_key": "FSX::1AE",
       "ticker": "1AE",
       "exchange": "FSX",
-      "name": "Argen-X",
+      "name": "argenx SE",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -52397,7 +52397,7 @@
       "listing_key": "XSTU::1AE",
       "ticker": "1AE",
       "exchange": "XSTU",
-      "name": "Argen-X",
+      "name": "argenx SE",
       "asset_type": "Stock",
       "action": "quarantined_unresolved_identifier",
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
@@ -86515,58 +86515,6 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "US91913Y1001"
-    },
-    {
-      "conflict_id": "7e213e92253ab129384a",
-      "isin": "US9219097683",
-      "listing_key": "BMV::VXUS",
-      "ticker": "VXUS",
-      "exchange": "BMV",
-      "name": "Vanguard STAR Funds - Vanguard Total International Stock ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US9219097683"
-    },
-    {
-      "conflict_id": "7e213e92253ab129384a",
-      "isin": "US9219097683",
-      "listing_key": "NASDAQ::VXUS",
-      "ticker": "VXUS",
-      "exchange": "NASDAQ",
-      "name": "Vanguard Total International Stock Index Fund ETF Shares",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US9219097683"
-    },
-    {
-      "conflict_id": "8457edb17423c702e68e",
-      "isin": "US92204A3068",
-      "listing_key": "BMV::VDE",
-      "ticker": "VDE",
-      "exchange": "BMV",
-      "name": "Vanguard World Fund - Vanguard Energy ETF",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US92204A3068"
-    },
-    {
-      "conflict_id": "8457edb17423c702e68e",
-      "isin": "US92204A3068",
-      "listing_key": "NYSE ARCA::VDE",
-      "ticker": "VDE",
-      "exchange": "NYSE ARCA",
-      "name": "Vanguard Energy Index Fund ETF Shares",
-      "asset_type": "ETF",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "The listing identity is unresolved; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "US92204A3068"
     },
     {
       "conflict_id": "dcadeaa2398f790e655b",
