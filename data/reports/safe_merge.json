@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97723,
-    "after_rows": 97735,
+    "before_rows": 97735,
+    "after_rows": 97738,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 0,
+    "critical_field_changes": 113,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -23,7 +23,686 @@
   "unevidenced_removed_listing_keys": [],
   "evidenced_removed_listing_keys": [],
   "unevidenced_critical_field_changes": [],
-  "critical_field_changes": [],
+  "critical_field_changes": [
+    {
+      "listing_key": "BATS::ESGV",
+      "field_name": "name",
+      "old_value": "Vanguard ESG US Stock",
+      "new_value": "Vanguard ESG U.S. Stock ETF"
+    },
+    {
+      "listing_key": "BATS::MUNY",
+      "field_name": "name",
+      "old_value": "Vanguard New York Tax-Exempt Bond ETF Shares",
+      "new_value": "Vanguard New York Tax-Exempt Bond ETF"
+    },
+    {
+      "listing_key": "BATS::VDIG",
+      "field_name": "name",
+      "old_value": "Vanguard Wellesley Income Fund - Vanguard Wellington Dividend Growth Active ETF",
+      "new_value": "Vanguard Wellington Dividend Growth Active ETF"
+    },
+    {
+      "listing_key": "BATS::VEMB",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US9220206646"
+    },
+    {
+      "listing_key": "BATS::VFMF",
+      "field_name": "name",
+      "old_value": "Vanguard U.S. Multifactor Fund",
+      "new_value": "Vanguard U.S. Multifactor ETF"
+    },
+    {
+      "listing_key": "BATS::VFMO",
+      "field_name": "name",
+      "old_value": "Vanguard U.S. Momentum Factor",
+      "new_value": "Vanguard U.S. Momentum Factor ETF"
+    },
+    {
+      "listing_key": "BATS::VFMV",
+      "field_name": "name",
+      "old_value": "Vanguard U.S. Minimum Volatility",
+      "new_value": "Vanguard U.S. Minimum Volatility ETF"
+    },
+    {
+      "listing_key": "BATS::VFQY",
+      "field_name": "name",
+      "old_value": "Vanguard U.S. Quality Factor",
+      "new_value": "Vanguard U.S. Quality Factor ETF"
+    },
+    {
+      "listing_key": "BATS::VFVA",
+      "field_name": "name",
+      "old_value": "Vanguard U.S. Value Factor",
+      "new_value": "Vanguard U.S. Value Factor ETF"
+    },
+    {
+      "listing_key": "BATS::VSDB",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "BATS::VSDM",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "BATS::VSGX",
+      "field_name": "name",
+      "old_value": "Vanguard ESG International Stock",
+      "new_value": "Vanguard ESG International Stock ETF"
+    },
+    {
+      "listing_key": "BATS::VTEI",
+      "field_name": "name",
+      "old_value": "Vanguard Intermediate-Term Tax-Exempt Bond",
+      "new_value": "Vanguard Intermediate-Term Tax-Exempt Bond ETF"
+    },
+    {
+      "listing_key": "BATS::VTEL",
+      "field_name": "name",
+      "old_value": "Vanguard Long-Term Tax-Exempt Bond ETF Shares",
+      "new_value": "Vanguard Long-Term Tax-Exempt Bond ETF"
+    },
+    {
+      "listing_key": "BATS::VUSB",
+      "field_name": "name",
+      "old_value": "Vanguard Ultra-Short Bond ETF Shares",
+      "new_value": "Vanguard Ultra-Short Bond ETF"
+    },
+    {
+      "listing_key": "BATS::VUSV",
+      "field_name": "name",
+      "old_value": "Vanguard Wellesley Income Fund - Vanguard Wellington U.S. Value Active ETF",
+      "new_value": "Vanguard Wellington U.S. Value Active ETF"
+    },
+    {
+      "listing_key": "BMV::BND",
+      "field_name": "name",
+      "old_value": "Vanguard Bond Index Funds - Vanguard Total Bond Market ETF",
+      "new_value": "Vanguard Total Bond Market ETF"
+    },
+    {
+      "listing_key": "BMV::VAW",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Materials ETF",
+      "new_value": "Vanguard Materials ETF"
+    },
+    {
+      "listing_key": "BMV::VB",
+      "field_name": "name",
+      "old_value": "Vanguard Index Funds - Vanguard Small-Cap ETF",
+      "new_value": "Vanguard Morningstar Small-Cap ETF"
+    },
+    {
+      "listing_key": "BMV::VCR",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Consumer Discretionary ETF",
+      "new_value": "Vanguard Consumer Discretionary ETF"
+    },
+    {
+      "listing_key": "BMV::VCSH",
+      "field_name": "name",
+      "old_value": "Vanguard Scottsdale Funds - Vanguard Short-Term Corporate Bond ETF",
+      "new_value": "Vanguard Short-Term Corporate Bond ETF"
+    },
+    {
+      "listing_key": "BMV::VDC",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Consumer Staples ETF",
+      "new_value": "Vanguard Consumer Staples ETF"
+    },
+    {
+      "listing_key": "BMV::VDE",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Energy ETF",
+      "new_value": "Vanguard Energy ETF"
+    },
+    {
+      "listing_key": "BMV::VEA",
+      "field_name": "name",
+      "old_value": "Vanguard Tax-Managed Funds - Vanguard FTSE Developed Markets ETF",
+      "new_value": "Vanguard FTSE Developed Markets ETF"
+    },
+    {
+      "listing_key": "BMV::VEU",
+      "field_name": "name",
+      "old_value": "Vanguard International Equity Index Funds - Vanguard FTSE All-World ex-US ETF",
+      "new_value": "Vanguard FTSE All-World ex-US ETF"
+    },
+    {
+      "listing_key": "BMV::VFH",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Financials ETF",
+      "new_value": "Vanguard Financials ETF"
+    },
+    {
+      "listing_key": "BMV::VGSH",
+      "field_name": "name",
+      "old_value": "Vanguard Scottsdale Funds - Vanguard Short-Term Treasury ETF",
+      "new_value": "Vanguard Short-Term Treasury ETF"
+    },
+    {
+      "listing_key": "BMV::VGT",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Information Technology ETF",
+      "new_value": "Vanguard Information Technology ETF"
+    },
+    {
+      "listing_key": "BMV::VHT",
+      "field_name": "name",
+      "old_value": "Vanguard World Fund - Vanguard Health Care ETF",
+      "new_value": "Vanguard Health Care ETF"
+    },
+    {
+      "listing_key": "BMV::VNQ",
+      "field_name": "name",
+      "old_value": "Vanguard Specialized Funds - Vanguard Real Estate ETF",
+      "new_value": "Vanguard Real Estate ETF"
+    },
+    {
+      "listing_key": "BMV::VNQI",
+      "field_name": "name",
+      "old_value": "Vanguard International Equity Index Funds - Vanguard Global ex-U.S. Real Estate ETF",
+      "new_value": "Vanguard Global ex-U.S. Real Estate ETF"
+    },
+    {
+      "listing_key": "BMV::VTI",
+      "field_name": "name",
+      "old_value": "Vanguard Index Funds - Vanguard Total Stock Market ETF",
+      "new_value": "Vanguard Morningstar Total Stock Market ETF"
+    },
+    {
+      "listing_key": "BMV::VTIP",
+      "field_name": "name",
+      "old_value": "Vanguard Malvern Funds - Vanguard Short-Term Inflation-Protected Securities ETF",
+      "new_value": "Vanguard Short-Term Inflation-Protected Securities ETF"
+    },
+    {
+      "listing_key": "BMV::VTV",
+      "field_name": "name",
+      "old_value": "Vanguard Index Funds - Vanguard Value ETF",
+      "new_value": "Vanguard Morningstar Value ETF"
+    },
+    {
+      "listing_key": "BMV::VUG",
+      "field_name": "name",
+      "old_value": "Vanguard Index Funds - Vanguard Growth ETF",
+      "new_value": "Vanguard Morningstar Growth ETF"
+    },
+    {
+      "listing_key": "BMV::VWO",
+      "field_name": "name",
+      "old_value": "Vanguard International Equity Index Funds - Vanguard FTSE Emerging Markets ETF",
+      "new_value": "Vanguard FTSE Emerging Markets ETF"
+    },
+    {
+      "listing_key": "BMV::VWOB",
+      "field_name": "name",
+      "old_value": "Vanguard Whitehall Funds - Vanguard Emerging Markets Government Bond ETF",
+      "new_value": "Vanguard Emerging Markets Government Bond ETF"
+    },
+    {
+      "listing_key": "BMV::VXUS",
+      "field_name": "name",
+      "old_value": "Vanguard STAR Funds - Vanguard Total International Stock ETF",
+      "new_value": "Vanguard Total International Stock ETF"
+    },
+    {
+      "listing_key": "BMV::VYM",
+      "field_name": "name",
+      "old_value": "Vanguard Whitehall Funds - Vanguard High Dividend Yield ETF",
+      "new_value": "Vanguard High Dividend Yield ETF"
+    },
+    {
+      "listing_key": "NASDAQ::BND",
+      "field_name": "name",
+      "old_value": "Vanguard Total Bond Market Index Fund ETF Shares",
+      "new_value": "Vanguard Total Bond Market ETF"
+    },
+    {
+      "listing_key": "NASDAQ::BNDX",
+      "field_name": "name",
+      "old_value": "Vanguard Total International Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Total International Bond ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VCIT",
+      "field_name": "name",
+      "old_value": "Vanguard Intermediate-Term Corporate Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Intermediate-Term Corporate Bond ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VCLT",
+      "field_name": "name",
+      "old_value": "Vanguard Long-Term Corporate Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Long-Term Corporate Bond ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VCSH",
+      "field_name": "name",
+      "old_value": "Vanguard Short-Term Corporate Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Short-Term Corporate Bond ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VGIT",
+      "field_name": "name",
+      "old_value": "Vanguard Intermediate-Term Treasury Index Fund ETF Shares",
+      "new_value": "Vanguard Intermediate-Term Treasury ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VGLT",
+      "field_name": "name",
+      "old_value": "Vanguard Long-Term Treasury Index Fund ETF Shares",
+      "new_value": "Vanguard Long-Term Treasury ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VGSH",
+      "field_name": "name",
+      "old_value": "Vanguard Short-Term Treasury Index Fund ETF Shares",
+      "new_value": "Vanguard Short-Term Treasury ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VGUS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NASDAQ::VIGI",
+      "field_name": "name",
+      "old_value": "Vanguard International Dividend Appreciation Index Fund ETF Shares",
+      "new_value": "Vanguard International Dividend Appreciation ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VMBS",
+      "field_name": "name",
+      "old_value": "Vanguard Mortgage-Backed Securities Index Fund ETF Shares",
+      "new_value": "Vanguard Mortgage-Backed Securities ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VNQI",
+      "field_name": "name",
+      "old_value": "Vanguard Global ex-U.S. Real Estate Index Fund ETF Shares",
+      "new_value": "Vanguard Global ex-U.S. Real Estate ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VONE",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 1000 Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 1000 ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VONG",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 1000 Growth Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 1000 Growth ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VONV",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 1000 Value Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 1000 Value ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VTHR",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 3000 Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 3000 ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VTIP",
+      "field_name": "name",
+      "old_value": "Vanguard Short-Term Inflation-Protected Securities Index Fund ETF Shares",
+      "new_value": "Vanguard Short-Term Inflation-Protected Securities ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VTWG",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 2000 Growth Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 2000 Growth ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VTWO",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 2000 Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 2000 ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VTWV",
+      "field_name": "name",
+      "old_value": "Vanguard Russell 2000 Value Index Fund ETF Shares",
+      "new_value": "Vanguard Russell 2000 Value ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VWOB",
+      "field_name": "name",
+      "old_value": "Vanguard Emerging Markets Government Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Emerging Markets Government Bond ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VXUS",
+      "field_name": "name",
+      "old_value": "Vanguard Total International Stock Index Fund ETF Shares",
+      "new_value": "Vanguard Total International Stock ETF"
+    },
+    {
+      "listing_key": "NASDAQ::VYMI",
+      "field_name": "name",
+      "old_value": "Vanguard International High Dividend Yield Index Fund ETF Shares",
+      "new_value": "Vanguard International High Dividend Yield ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::BIV",
+      "field_name": "name",
+      "old_value": "Vanguard Intermediate-Term Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Intermediate-Term Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::BLV",
+      "field_name": "name",
+      "old_value": "Vanguard Long-Term Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Long-Term Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::BSV",
+      "field_name": "name",
+      "old_value": "Vanguard Short-Term Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Short-Term Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::BSV",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::EDV",
+      "field_name": "name",
+      "old_value": "Vanguard Extended Duration Treasury Index Fund ETF Shares",
+      "new_value": "Vanguard Extended Duration Treasury ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EDV",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::IVOG",
+      "field_name": "name",
+      "old_value": "Vanguard S&P Mid-Cap 400 Growth Index Fund ETF Shares",
+      "new_value": "Vanguard S&P Mid-Cap 400 Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::IVOO",
+      "field_name": "name",
+      "old_value": "Vanguard S&P Mid-Cap 400 Index Fund ETF Shares",
+      "new_value": "Vanguard S&P Mid-Cap 400 ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::IVOV",
+      "field_name": "name",
+      "old_value": "Vanguard S&P Mid-Cap 400 Value Index Fund ETF Shares",
+      "new_value": "Vanguard S&P Mid-Cap 400 Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::MGC",
+      "field_name": "name",
+      "old_value": "Vanguard Mega Cap Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Mega Cap ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::MGK",
+      "field_name": "name",
+      "old_value": "Vanguard Mega Cap Growth Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Mega Cap Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::MGV",
+      "field_name": "name",
+      "old_value": "Vanguard Mega Cap Value Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Mega Cap Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VAW",
+      "field_name": "name",
+      "old_value": "Vanguard Materials Index Fund ETF Shares",
+      "new_value": "Vanguard Materials ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VB",
+      "field_name": "name",
+      "old_value": "Vanguard Small-Cap Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Small-Cap ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VBK",
+      "field_name": "name",
+      "old_value": "Vanguard Small-Cap Growth Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Small-Cap Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VBR",
+      "field_name": "name",
+      "old_value": "Vanguard Small-Cap Value Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Small-Cap Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VCR",
+      "field_name": "name",
+      "old_value": "Vanguard Consumer Discretionary Index Fund ETF Shares",
+      "new_value": "Vanguard Consumer Discretionary ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VDC",
+      "field_name": "name",
+      "old_value": "Vanguard Consumer Staples Index Fund ETF Shares",
+      "new_value": "Vanguard Consumer Staples ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VDE",
+      "field_name": "name",
+      "old_value": "Vanguard Energy Index Fund ETF Shares",
+      "new_value": "Vanguard Energy ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VEA",
+      "field_name": "name",
+      "old_value": "Vanguard FTSE Developed Markets Index Fund ETF Shares",
+      "new_value": "Vanguard FTSE Developed Markets ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VEU",
+      "field_name": "name",
+      "old_value": "Vanguard FTSE All-World ex-US Index Fund ETF Shares",
+      "new_value": "Vanguard FTSE All-World ex-US ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VFH",
+      "field_name": "name",
+      "old_value": "Vanguard Financials Index Fund ETF Shares",
+      "new_value": "Vanguard Financials ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VGK",
+      "field_name": "name",
+      "old_value": "Vanguard FTSE Europe Index Fund ETF Shares",
+      "new_value": "Vanguard FTSE Europe ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VGT",
+      "field_name": "name",
+      "old_value": "Vanguard Information Technology Index Fund ETF Shares",
+      "new_value": "Vanguard Information Technology ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VHT",
+      "field_name": "name",
+      "old_value": "Vanguard Health Care Index Fund ETF Shares",
+      "new_value": "Vanguard Health Care ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VIG",
+      "field_name": "name",
+      "old_value": "Vanguard Dividend Appreciation Index Fund ETF Shares",
+      "new_value": "Vanguard Dividend Appreciation ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VIOG",
+      "field_name": "name",
+      "old_value": "Vanguard S&P Small-Cap 600 Growth Index Fund ETF Shares",
+      "new_value": "Vanguard S&P Small-Cap 600 Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VIOO",
+      "field_name": "name",
+      "old_value": "Vanguard S&P Small-Cap 600 Index Fund ETF Shares",
+      "new_value": "Vanguard S&P Small-Cap 600 ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VIOV",
+      "field_name": "name",
+      "old_value": "Vanguard S&P Small-Cap 600 Value Index Fund ETF Shares",
+      "new_value": "Vanguard S&P Small-Cap 600 Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VIS",
+      "field_name": "name",
+      "old_value": "Vanguard Industrials Index Fund ETF Shares",
+      "new_value": "Vanguard Industrials ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VNQ",
+      "field_name": "name",
+      "old_value": "Vanguard Real Estate Index Fund ETF Shares",
+      "new_value": "Vanguard Real Estate ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VO",
+      "field_name": "name",
+      "old_value": "Vanguard Mid-Cap Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Mid-Cap ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VOE",
+      "field_name": "name",
+      "old_value": "Vanguard Mid-Cap Value Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Mid-Cap Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VOOG",
+      "field_name": "name",
+      "old_value": "Vanguard S&P 500 Growth Index Fund ETF Shares",
+      "new_value": "Vanguard S&P 500 Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VOOV",
+      "field_name": "name",
+      "old_value": "Vanguard S&P 500 Value Index Fund ETF Shares",
+      "new_value": "Vanguard S&P 500 Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VOT",
+      "field_name": "name",
+      "old_value": "Vanguard Mid-Cap Growth Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Mid-Cap Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VOX",
+      "field_name": "name",
+      "old_value": "Vanguard Communication Services Index Fund ETF Shares",
+      "new_value": "Vanguard Communication Services ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VPL",
+      "field_name": "name",
+      "old_value": "Vanguard FTSE Pacific Index Fund ETF Shares",
+      "new_value": "Vanguard FTSE Pacific ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VPU",
+      "field_name": "name",
+      "old_value": "Vanguard Utilities Index Fund ETF Shares",
+      "new_value": "Vanguard Utilities ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VSS",
+      "field_name": "name",
+      "old_value": "Vanguard FTSE All-World ex-US Small-Cap Index Fund ETF Shares",
+      "new_value": "Vanguard FTSE All-World ex-US Small-Cap ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VT",
+      "field_name": "name",
+      "old_value": "Vanguard Total World Stock Index Fund ETF Shares",
+      "new_value": "Vanguard Total World Stock ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VTEB",
+      "field_name": "name",
+      "old_value": "Vanguard Tax-Exempt Bond Index Fund ETF Shares",
+      "new_value": "Vanguard Tax-Exempt Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VTES",
+      "field_name": "name",
+      "old_value": "Vanguard Short-Term Tax-Exempt Bond ETF Shares",
+      "new_value": "Vanguard Short-Term Tax-Exempt Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VTES",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::VTI",
+      "field_name": "name",
+      "old_value": "Vanguard Total Stock Market Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Total Stock Market ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VTV",
+      "field_name": "name",
+      "old_value": "Vanguard Value Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Value ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VUG",
+      "field_name": "name",
+      "old_value": "Vanguard Growth Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Growth ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VV",
+      "field_name": "name",
+      "old_value": "Vanguard Large-Cap Index Fund ETF Shares",
+      "new_value": "Vanguard Morningstar Large-Cap ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VWO",
+      "field_name": "name",
+      "old_value": "Vanguard FTSE Emerging Markets Index Fund ETF Shares",
+      "new_value": "Vanguard FTSE Emerging Markets ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VXF",
+      "field_name": "name",
+      "old_value": "Vanguard Extended Market Index Fund ETF Shares",
+      "new_value": "Vanguard Extended Market ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::VYM",
+      "field_name": "name",
+      "old_value": "Vanguard High Dividend Yield Index Fund ETF Shares",
+      "new_value": "Vanguard High Dividend Yield ETF"
+    }
+  ],
   "generated_official_change_evidence": [],
   "generated_reviewed_transition_evidence": [],
   "venue_findings": [
@@ -38,7 +717,7 @@
     },
     {
       "exchange": "AMS",
-      "before_rows": 748,
+      "before_rows": 749,
       "after_rows": 749,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -65,7 +744,7 @@
     },
     {
       "exchange": "B3",
-      "before_rows": 1594,
+      "before_rows": 1598,
       "after_rows": 1598,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -75,7 +754,7 @@
     {
       "exchange": "BATS",
       "before_rows": 1354,
-      "after_rows": 1354,
+      "after_rows": 1357,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -461,7 +1140,7 @@
     },
     {
       "exchange": "NSE_IN",
-      "before_rows": 3544,
+      "before_rows": 3549,
       "after_rows": 3549,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -686,7 +1365,7 @@
     },
     {
       "exchange": "TSX",
-      "before_rows": 2435,
+      "before_rows": 2436,
       "after_rows": 2436,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -704,7 +1383,7 @@
     },
     {
       "exchange": "TWSE",
-      "before_rows": 1287,
+      "before_rows": 1288,
       "after_rows": 1288,
       "shrink_pct": 0.0,
       "removed_rows": 0,

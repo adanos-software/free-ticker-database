@@ -15,8 +15,8 @@ Rows: `23`
 | 6 | Borsa Italiana | 23.44 | 800 | 1935 | not_in_supplement_allowlist |
 | 7 | B3 | 75.63 | 487 | 0 | collision_free_supplement |
 | 8 | Euronext | 79.39 | 340 | 372 | not_in_supplement_allowlist |
-| 9 | UPCOM | 0.68 | 294 | 522 | not_in_supplement_allowlist |
-| 10 | BATS | 82.07 | 291 | 58 | not_in_supplement_allowlist |
+| 9 | UPCOM | 0.68 | 293 | 523 | not_in_supplement_allowlist |
+| 10 | BATS | 82.26 | 288 | 58 | not_in_supplement_allowlist |
 | 11 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
 | 12 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
 | 13 | KRX | 91.82 | 173 | 14 | not_in_supplement_allowlist |
