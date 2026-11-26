@@ -1,22 +1,17 @@
 # Nasdaq US New Listings Apply
 
-- Generated at: `2026-11-25T17:26:20Z`
-- New supported rows: `3`
-- Accepted rows: `2`
-- Skipped rows: `1`
+- Generated at: `2026-11-26T16:51:06Z`
+- New supported rows: `0`
+- Accepted rows: `0`
+- Skipped rows: `0`
 - Detected symbol changes: `0`
 - Detected venue changes: `0`
 - Supported asset types: `ETF, Stock`
 
 ## Accepted
 
-| Ticker | Exchange | Name | Asset type | Target | Source |
-|---|---|---|---|---|---|
-| BFLR | NASDAQ | BlueFlare, Inc. - Common Stock | Stock | supplement | nasdaq_listed |
-| RMTX | NASDAQ | Remix Therapeutics, Inc. - Common Stock | Stock | supplement | nasdaq_listed |
+No new listings were accepted.
 
 ## Skipped
 
-| Reason | Rows |
-|---|---:|
-| already_in_listings | 1 |
+No supported new rows were skipped.

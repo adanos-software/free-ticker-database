@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-26T16:34:03Z",
+  "generated_at": "2026-11-26T17:32:23Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
-  "conflict_count": 2084,
-  "decision_rows": 6832,
+  "conflict_count": 2085,
+  "decision_rows": 6834,
   "action_counts": {
     "kept_listing_keyed_identifier": 1341,
     "proposed_clear_conflicting_identifier": 1077,
-    "quarantined_unresolved_identifier": 4414
+    "quarantined_unresolved_identifier": 4416
   },
   "cleared_rows": 0,
   "proposed_clear_rows": 1077,
-  "quarantined_rows": 4414,
+  "quarantined_rows": 4416,
   "retained_rows": 1341,
   "csv": "data/reports/identifier_quarantine.csv",
   "decisions": [
@@ -26819,6 +26819,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "conflicting_official_exact_matches",
       "retained_isin": "GB00BV9FP302"
+    },
+    {
+      "conflict_id": "7ffcdd6cb6c3e632ea4a",
+      "isin": "GB00BVBM1L91",
+      "listing_key": "XETRA::CSTC",
+      "ticker": "CSTC",
+      "exchange": "XETRA",
+      "name": "CoinShares Toncoin Staking ETP",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "GB00BVBM1L91"
+    },
+    {
+      "conflict_id": "7ffcdd6cb6c3e632ea4a",
+      "isin": "GB00BVBM1L91",
+      "listing_key": "XETRA::GR4M",
+      "ticker": "GR4M",
+      "exchange": "XETRA",
+      "name": "COINSHARES DIG.SEC.OEND",
+      "asset_type": "ETF",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "conflicting_official_exact_matches",
+      "retained_isin": "GB00BVBM1L91"
     },
     {
       "conflict_id": "b06dcb69d2f4ede9dab9",
