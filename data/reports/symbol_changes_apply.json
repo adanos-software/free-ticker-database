@@ -1,12 +1,12 @@
 {
   "summary": {
-    "generated_at": "2026-11-24T17:38:12Z",
+    "generated_at": "2026-11-26T16:50:14Z",
     "dry_run": false,
     "changes_csv": "data/corporate_actions/symbol_changes.csv",
     "reference_csv": "data/masterfiles/reference.csv",
     "accepted_rows": 0,
     "dropped_predecessor_rows": 0,
-    "blocked_rows": 408,
+    "blocked_rows": 413,
     "blocked_by_status": {
       "blocked_new_symbol_collision": 5,
       "blocked_new_symbol_not_active_in_official_master": 4,
@@ -14,17 +14,49 @@
       "blocked_sec_cik_mismatch": 1,
       "manual_cross_venue_ticker_reuse": 6,
       "manual_missing_identity_evidence": 2,
-      "manual_non_us_or_unscoped_source": 55,
+      "manual_non_us_or_unscoped_source": 57,
       "manual_official_successor_name_mismatch": 1,
       "manual_successor_isin_mismatch": 8,
       "manual_ticker_reuse_name_mismatch": 2,
-      "manual_transition_or_shell_name": 8
+      "manual_transition_or_shell_name": 11
     },
     "review_override_files_rekeyed": []
   },
   "accepted": [],
   "dropped_predecessors": [],
   "blocked": [
+    {
+      "change_id": "be56c608c7f84d95",
+      "effective_date": "2026-11-25",
+      "old_symbol": "PASG",
+      "new_symbol": "RMTX",
+      "new_company_name": "Remix Therapeutics Inc",
+      "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "252eec2a168c6cd8",
+      "effective_date": "2026-11-25",
+      "old_symbol": "FNGR",
+      "new_symbol": "BFLR",
+      "new_company_name": "Blueflare Inc",
+      "status": "manual_non_us_or_unscoped_source"
+    },
+    {
+      "change_id": "f10ac1ab1d76f188",
+      "effective_date": "2026-11-24",
+      "old_symbol": "IPFX",
+      "new_symbol": "QSPC",
+      "new_company_name": "Quantum Space Inc",
+      "status": "manual_transition_or_shell_name"
+    },
+    {
+      "change_id": "fae7b5b9db171c25",
+      "effective_date": "2026-11-24",
+      "old_symbol": "EBMT",
+      "new_symbol": "OBMT",
+      "new_company_name": "Opportunity Bancorp Inc",
+      "status": "manual_transition_or_shell_name"
+    },
     {
       "change_id": "efacab7e8d4ba358",
       "effective_date": "2026-11-23",
@@ -1147,6 +1179,14 @@
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
+      "change_id": "1e119388ce9ee326",
+      "effective_date": "2026-05-18",
+      "old_symbol": "IPFXU",
+      "new_symbol": "QSPC",
+      "new_company_name": "Quantum Space Inc",
+      "status": "manual_transition_or_shell_name"
+    },
+    {
       "change_id": "f8b51e267f3a9e12",
       "effective_date": "2026-05-18",
       "old_symbol": "CAEP",
@@ -2047,7 +2087,7 @@
       "effective_date": "2025-12-01",
       "old_symbol": "ENTO",
       "new_symbol": "GRDX",
-      "new_company_name": "Gridai Technologies Corp",
+      "new_company_name": "Gridai Power Corp",
       "status": "blocked_old_symbol_not_unique_in_us_scope"
     },
     {
