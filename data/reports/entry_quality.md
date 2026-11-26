@@ -1,14 +1,14 @@
 # Entry Quality Report
 
-Generated at: `2026-11-26T14:35:03Z`
+Generated at: `2026-11-26T15:26:54Z`
 
 ## Status Counts
 
 | Status | Rows |
 |---|---:|
 | notice | 10 |
-| pass | 86,955 |
-| source_gap | 10,730 |
+| pass | 86,956 |
+| source_gap | 10,729 |
 | warn | 43 |
 
 ## Issue Counts
@@ -17,7 +17,7 @@ Generated at: `2026-11-26T14:35:03Z`
 |---|---:|
 | official_reference_gap | 6,487 |
 | venue_missing_official_source | 3,287 |
-| expected_missing_primary_isin | 653 |
+| expected_missing_primary_isin | 652 |
 | missing_stock_sector | 555 |
 | missing_etf_category | 88 |
 | official_name_mismatch | 24 |
@@ -46,7 +46,7 @@ Generated at: `2026-11-26T14:35:03Z`
 | Euronext | 1,333 | 0 | 142 | 1 | 0 |
 | TSXV | 1,279 | 0 | 140 | 3 | 0 |
 | HKEX | 3,148 | 0 | 117 | 3 | 0 |
-| NYSE | 1,928 | 0 | 98 | 1 | 0 |
+| NYSE | 1,929 | 0 | 97 | 1 | 0 |
 | JSE | 123 | 0 | 89 | 0 | 0 |
 | NSE_IN | 3,462 | 0 | 87 | 0 | 0 |
 
