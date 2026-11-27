@@ -1,13 +1,13 @@
 # Source Gap Classification
 
-Generated at: `2026-11-27T13:46:35Z`
+Generated at: `2026-11-27T15:33:02Z`
 
 This report classifies residual metadata gaps after official and reviewed free-source backfills. It is a guardrail report: values remain empty unless a future source satisfies the listed source gate.
 
 ## Summary
 
 - Official reference-gap rows classified: `6495`
-- Missing primary ISIN rows classified: `647`
+- Missing primary ISIN rows classified: `646`
 - Missing stock-sector rows classified: `571`
 - Missing ETF-category rows classified: `78`
 
@@ -18,7 +18,7 @@ This report classifies residual metadata gaps after official and reviewed free-s
 | official_reference_unmatched_source_gap | 5316 |
 | official_reference_symbol_collision_gap | 1179 |
 | official_industry_taxonomy_unavailable_gap | 401 |
-| fund_or_trust_identifier_gap | 342 |
+| fund_or_trust_identifier_gap | 341 |
 | official_identifier_not_exposed_source_gap | 136 |
 | debt_or_securitized_identifier_gap | 88 |
 | otc_sector_source_gap | 87 |
