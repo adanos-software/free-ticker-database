@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97738,
-    "after_rows": 97745,
+    "before_rows": 97745,
+    "after_rows": 97748,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 2,
+    "critical_field_changes": 236,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,16 +25,1420 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "Euronext::ALEUP",
-      "field_name": "isin",
-      "old_value": "FR0014011QJ8",
-      "new_value": "FR001401BHQ6"
+      "listing_key": "BATS::ESG",
+      "field_name": "name",
+      "old_value": "FlexShares STOXX US ESG Select Index Fund",
+      "new_value": "Northern Trust STOXX US ESG Select ETF"
     },
     {
-      "listing_key": "HKEX::00381",
+      "listing_key": "BATS::ESGG",
+      "field_name": "name",
+      "old_value": "FlexShares STOXX Global ESG Select Index Fund",
+      "new_value": "Northern Trust STOXX Global ESG Select ETF"
+    },
+    {
+      "listing_key": "BATS::LKOR",
+      "field_name": "name",
+      "old_value": "FlexShares Credit-Scored US Long Corporate Bond Index Fund",
+      "new_value": "Northern Trust Credit-Scored US Long Corporate Bond ETF"
+    },
+    {
+      "listing_key": "BATS::QLC",
+      "field_name": "name",
+      "old_value": "FlexShares US Quality Large Cap Index Fund",
+      "new_value": "Northern Trust US Quality Large Cap ETF"
+    },
+    {
+      "listing_key": "BATS::TILT",
+      "field_name": "name",
+      "old_value": "FlexShares Morningstar US Market Factors Tilt Index Fund",
+      "new_value": "Northern Trust Morningstar U.S. Market Factor Tilt ETF"
+    },
+    {
+      "listing_key": "BMV::EDC",
+      "field_name": "name",
+      "old_value": "Direxion Shares ETF Trust - Direxion Daily MSCI Emerging Markets Bull 3X Shares",
+      "new_value": "Direxion Daily MSCI Emerging Markets Bull 3X ETF"
+    },
+    {
+      "listing_key": "BMV::EDC",
       "field_name": "isin",
-      "old_value": "BMG5278S5012",
-      "new_value": "BMG5278S7091"
+      "old_value": "US25459W3007",
+      "new_value": "US25490K2814"
+    },
+    {
+      "listing_key": "BMV::EDZ",
+      "field_name": "name",
+      "old_value": "Direxion Shares ETF Trust - Direxion Daily MSCI Emerging Markets Bear 3X Shares",
+      "new_value": "Direxion Daily MSCI Emerging Markets Bear 3X ETF"
+    },
+    {
+      "listing_key": "BMV::EDZ",
+      "field_name": "isin",
+      "old_value": "US25459W4823",
+      "new_value": "US25461H8613"
+    },
+    {
+      "listing_key": "BMV::FAS",
+      "field_name": "name",
+      "old_value": "Direxion Shares ETF Trust - Direxion Daily Financial Bull 3X Shares",
+      "new_value": "Direxion Daily Financial Bull 3X ETF"
+    },
+    {
+      "listing_key": "BMV::FAZ",
+      "field_name": "name",
+      "old_value": "Direxion Shares ETF Trust - Direxion Daily Financial Bear 3X Shares",
+      "new_value": "Direxion Daily Financial Bear 3X ETF"
+    },
+    {
+      "listing_key": "BMV::FAZ",
+      "field_name": "isin",
+      "old_value": "US25460E1331",
+      "new_value": "US25460E2164"
+    },
+    {
+      "listing_key": "NASDAQ::AAPD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::AAPU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::AMDD",
+      "field_name": "name",
+      "old_value": "Direxion Daily AMD Bear 1X Shares",
+      "new_value": "Direxion Daily AMD Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::AMDD",
+      "field_name": "isin",
+      "old_value": "US25461A3959",
+      "new_value": "US25461H2590"
+    },
+    {
+      "listing_key": "NASDAQ::AMUU",
+      "field_name": "name",
+      "old_value": "Direxion Daily AMD Bull 2X Shares",
+      "new_value": "Direxion Daily AMD Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::AMUU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::AMZD",
+      "field_name": "name",
+      "old_value": "Direxion Daily AMZN Bear 1X Shares",
+      "new_value": "Direxion Daily AMZN Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::AMZD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::AMZU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::ANTD",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US25461J8678"
+    },
+    {
+      "listing_key": "NASDAQ::ANTD",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::ANTO",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US25461J8751"
+    },
+    {
+      "listing_key": "NASDAQ::ANTO",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::ASMU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::AVL",
+      "field_name": "name",
+      "old_value": "Direxion Daily AVGO Bull 2X Shares",
+      "new_value": "Direxion Daily AVGO Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::AVL",
+      "field_name": "etf_category",
+      "old_value": "Leveraged/Inverse",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::AVS",
+      "field_name": "name",
+      "old_value": "Direxion Daily AVGO Bear 1X Shares",
+      "new_value": "Direxion Daily AVGO Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::BABU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::BOEU",
+      "field_name": "isin",
+      "old_value": "US25460G7088",
+      "new_value": "US25461A3389"
+    },
+    {
+      "listing_key": "NASDAQ::BRKU",
+      "field_name": "name",
+      "old_value": "Direxion Daily BRKB Bull 2X Shares",
+      "new_value": "Direxion Daily BRKB Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::BRKU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::CSCL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::CSCS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::ELIL",
+      "field_name": "name",
+      "old_value": "Direxion Daily LLY Bull 2X Shares",
+      "new_value": "Direxion Daily LLY Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::ELIL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::GGLL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::GGLS",
+      "field_name": "name",
+      "old_value": "Direxion Daily GOOGL Bear 1X Shares",
+      "new_value": "Direxion Daily GOOGL Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::GGLS",
+      "field_name": "isin",
+      "old_value": "US25461A6010",
+      "new_value": "US25461H2673"
+    },
+    {
+      "listing_key": "NASDAQ::GGLS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::HODU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::LINT",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::LMTL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::METD",
+      "field_name": "name",
+      "old_value": "Direxion Daily META Bear 1X Shares",
+      "new_value": "Direxion Daily META Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::METD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::METU",
+      "field_name": "name",
+      "old_value": "Direxion Daily META Bull 2X Shares",
+      "new_value": "Direxion Daily META Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::METU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::MRVU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::MSFD",
+      "field_name": "name",
+      "old_value": "Direxion Daily MSFT Bear 1X Shares",
+      "new_value": "Direxion Daily MSFT Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::MSFD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::MSFU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::MUD",
+      "field_name": "name",
+      "old_value": "Direxion Daily MU Bear 1X Shares",
+      "new_value": "Direxion Daily MU Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::MUU",
+      "field_name": "name",
+      "old_value": "Direxion Daily MU Bull 2X Shares",
+      "new_value": "Direxion Daily MU Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::MUU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::NFXL",
+      "field_name": "name",
+      "old_value": "Direxion Daily NFLX Bull 2X Shares",
+      "new_value": "Direxion Daily NFLX Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::NFXL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::NFXS",
+      "field_name": "name",
+      "old_value": "Direxion Daily NFLX Bear 1X Shares",
+      "new_value": "Direxion Daily NFLX Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::NFXS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::NVDD",
+      "field_name": "name",
+      "old_value": "Direxion Daily NVDA Bear 1X Shares",
+      "new_value": "Direxion Daily NVDA Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::NVDD",
+      "field_name": "isin",
+      "old_value": "US25461A7000",
+      "new_value": "US25461A1979"
+    },
+    {
+      "listing_key": "NASDAQ::NVDD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::NVDU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::ORCS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::ORCU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::PALD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::PALU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::PLTD",
+      "field_name": "name",
+      "old_value": "Direxion Daily PLTR Bear 1X Shares",
+      "new_value": "Direxion Daily PLTR Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::PLTD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::PLTU",
+      "field_name": "name",
+      "old_value": "Direxion Daily PLTR Bull 2X Shares",
+      "new_value": "Direxion Daily PLTR Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::PLTU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::QCMD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::QCMU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::QQQE",
+      "field_name": "name",
+      "old_value": "Direxion NASDAQ-100 Equal Weighted Index Shares",
+      "new_value": "Direxion NASDAQ-100 Equal Weighted Index ETF"
+    },
+    {
+      "listing_key": "NASDAQ::SHPU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::SKOR",
+      "field_name": "name",
+      "old_value": "FlexShares Credit-Scored US Corporate Bond Index Fund",
+      "new_value": "Northern Trust Credit-Scored US Corporate Bond ETF"
+    },
+    {
+      "listing_key": "NASDAQ::TAXS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NASDAQ::TSLL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::TSLS",
+      "field_name": "isin",
+      "old_value": "US25460G2600",
+      "new_value": "US25461H5643"
+    },
+    {
+      "listing_key": "NASDAQ::TSMX",
+      "field_name": "name",
+      "old_value": "Direxion Daily TSM Bull 2X Shares",
+      "new_value": "Direxion Daily TSM Bull 2X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::TSMX",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::TSMZ",
+      "field_name": "name",
+      "old_value": "Direxion Daily TSM Bear 1X Shares",
+      "new_value": "Direxion Daily TSM Bear 1X ETF"
+    },
+    {
+      "listing_key": "NASDAQ::TSMZ",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NASDAQ::XOMX",
+      "field_name": "isin",
+      "old_value": "US25461A8669",
+      "new_value": "US25461A3538"
+    },
+    {
+      "listing_key": "NASDAQ::XOMX",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::ADBU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::AIBD",
+      "field_name": "isin",
+      "old_value": "US25461A6929",
+      "new_value": "US25461H2756"
+    },
+    {
+      "listing_key": "NYSE ARCA::AIBD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::AIBU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::BNDC",
+      "field_name": "name",
+      "old_value": "FlexShares Core Select Bond Fund",
+      "new_value": "Northern Trust Core Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::BRZU",
+      "field_name": "name",
+      "old_value": "Direxion Daily MSCI Brazil Bull 2X Shares",
+      "new_value": "Direxion Daily MSCI Brazil Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::CHAU",
+      "field_name": "name",
+      "old_value": "Direxion Daily CSI 300 China A Share Bull 2X Shares",
+      "new_value": "Direxion Daily CSI 300 China A Share Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::CHAU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::COM",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Alternative"
+    },
+    {
+      "listing_key": "NYSE ARCA::CURE",
+      "field_name": "name",
+      "old_value": "Direxion Daily Healthcare Bull 3X Shares",
+      "new_value": "Direxion Daily Healthcare Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::CURE",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::CWEB",
+      "field_name": "name",
+      "old_value": "Direxion Daily CSI China Internet Bull 2X Shares",
+      "new_value": "Direxion Daily CSI China Internet Index Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DFEN",
+      "field_name": "name",
+      "old_value": "Direxion Daily Aerospace & Defense Bull 3X Shares Direxion Daily Aerospace",
+      "new_value": "Direxion Daily Aerospace & Defense Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DFEN",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::DPST",
+      "field_name": "name",
+      "old_value": "Direxion Daily Regional Banks Bull 3X Shares",
+      "new_value": "Direxion Daily Regional Banks Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DPST",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::DRIP",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P Oil & Gas Exp. & Prod. Bear 2X Shares",
+      "new_value": "Direxion Daily S&P Oil & Gas Exp. & Prod. Bear 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DRIP",
+      "field_name": "isin",
+      "old_value": "US25460G6585",
+      "new_value": "US25461H2830"
+    },
+    {
+      "listing_key": "NYSE ARCA::DRIP",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::DRN",
+      "field_name": "name",
+      "old_value": "Direxion Daily Real Estate Bull 3X Shares",
+      "new_value": "Direxion Daily Real Estate Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DRV",
+      "field_name": "name",
+      "old_value": "Direxion Daily Real Estate Bear 3X Shares",
+      "new_value": "Direxion Daily Real Estate Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DUSL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Industrials Bull 3X Shares Direxion Daily Industrials Bull 3",
+      "new_value": "Direxion Daily Industrials Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::DUSL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::DUST",
+      "field_name": "name",
+      "old_value": "Direxion Daily Gold Miners Index Bear 2X Shares",
+      "new_value": "Direxion Daily Gold Miners Index Bear 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EDC",
+      "field_name": "name",
+      "old_value": "Direxion Daily MSCI Emerging Markets Bull 3X Shares",
+      "new_value": "Direxion Daily MSCI Emerging Markets Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EDC",
+      "field_name": "isin",
+      "old_value": "US25459W3007",
+      "new_value": "US25490K2814"
+    },
+    {
+      "listing_key": "NYSE ARCA::EDZ",
+      "field_name": "name",
+      "old_value": "Direxion Daily MSCI Emerging Markets Bear 3X Shares",
+      "new_value": "Direxion Daily MSCI Emerging Markets Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EDZ",
+      "field_name": "isin",
+      "old_value": "US25459W4823",
+      "new_value": "US25461H8613"
+    },
+    {
+      "listing_key": "NYSE ARCA::ERX",
+      "field_name": "name",
+      "old_value": "Direxion Daily Energy Bull 2X Shares",
+      "new_value": "Direxion Daily Energy Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::ERX",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::ERY",
+      "field_name": "name",
+      "old_value": "Direxion Daily Energy Bear 2X Shares",
+      "new_value": "Direxion Daily Energy Bear 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::ERY",
+      "field_name": "isin",
+      "old_value": "US25460E5548",
+      "new_value": "US25460G1792"
+    },
+    {
+      "listing_key": "NYSE ARCA::ERY",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::EURL",
+      "field_name": "name",
+      "old_value": "Direxion Daily FTSE Europe Bull 3X Shares",
+      "new_value": "Direxion Daily FTSE Europe Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::EURL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::FAS",
+      "field_name": "name",
+      "old_value": "Direxion Daily Financial Bull 3X Shares",
+      "new_value": "Direxion Daily Financial Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FAZ",
+      "field_name": "name",
+      "old_value": "Direxion Daily Financial Bear 3X Shares",
+      "new_value": "Direxion Daily Financial Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FAZ",
+      "field_name": "isin",
+      "old_value": "US25460E1331",
+      "new_value": "US25460E2164"
+    },
+    {
+      "listing_key": "NYSE ARCA::FEDM",
+      "field_name": "name",
+      "old_value": "FlexShares ESG & Climate Developed Markets ex-US Core Index Fund",
+      "new_value": "Northern Trust ESG & Climate Developed Markets ex-US Core ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FEIG",
+      "field_name": "name",
+      "old_value": "FlexShares ESG & Climate Investment Grade Corporate Core Index Fund",
+      "new_value": "Northern Trust ESG & Climate Investment Grade Corporate Core ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FEUS",
+      "field_name": "name",
+      "old_value": "FlexShares ESG & Climate US Large Cap Core Index Fund",
+      "new_value": "Northern Trust ESG & Climate US Large Cap Core ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FNGG",
+      "field_name": "name",
+      "old_value": "Direxion Daily Select Large Caps & FANGs Bull 2X Shares",
+      "new_value": "Direxion Daily NYSE FANG+ Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::FNGG",
+      "field_name": "isin",
+      "old_value": "US25460G5751",
+      "new_value": "US25460G1610"
+    },
+    {
+      "listing_key": "NYSE ARCA::FNGG",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::GQRE",
+      "field_name": "name",
+      "old_value": "FlexShares Global Quality Real Estate Index Fund",
+      "new_value": "Northern Trust Global Quality Real Estate ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::GUNR",
+      "field_name": "name",
+      "old_value": "FlexShares Morningstar Global Upstream Natural Resources Index Fund",
+      "new_value": "Northern Trust Morningstar Global Upstream Natural Resources ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::GUSH",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P Oil & Gas Exp. & Prod. Bull 2X Shares",
+      "new_value": "Direxion Daily S&P Oil & Gas Exp. & Prod. Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::HCMT",
+      "field_name": "name",
+      "old_value": "Direxion HCM Tactical Enhanced U.S. Equity Strategy ETF",
+      "new_value": "Direxion HCM Tactical Enhanced US ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::HIBL",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P 500® High Beta Bull 3X Shares",
+      "new_value": "Direxion Daily S&P 500® High Beta Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::HIBL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::HIBS",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P 500® High Beta Bear 3X Shares",
+      "new_value": "Direxion Daily S&P 500® High Beta Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::HIBS",
+      "field_name": "isin",
+      "old_value": "US25460E3311",
+      "new_value": "US25461H5569"
+    },
+    {
+      "listing_key": "NYSE ARCA::HIBS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::HYGV",
+      "field_name": "name",
+      "old_value": "FlexShares® High Yield Value-Scored Bond Index Fund",
+      "new_value": "Northern Trust High Yield Value-Scored Bond ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::INDL",
+      "field_name": "name",
+      "old_value": "Direxion Daily MSCI India Bull 2x Shares",
+      "new_value": "Direxion Daily MSCI India Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::IQDF",
+      "field_name": "name",
+      "old_value": "FlexShares International Quality Dividend Index Fund",
+      "new_value": "Northern Trust International Quality Dividend ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::IQDY",
+      "field_name": "name",
+      "old_value": "FlexShares International Quality Dividend Dynamic Index Fund",
+      "new_value": "Northern Trust International Quality Dividend Dynamic ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::JDST",
+      "field_name": "name",
+      "old_value": "Direxion Daily Junior Gold Miners Index Bear 2X Shares",
+      "new_value": "Direxion Daily Junior Gold Miners Index Bear 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::JDST",
+      "field_name": "isin",
+      "old_value": "US25460G8078",
+      "new_value": "US25461A1714"
+    },
+    {
+      "listing_key": "NYSE ARCA::JNUG",
+      "field_name": "name",
+      "old_value": "Direxion Daily Junior Gold Miners Index Bull 2X Shares",
+      "new_value": "Direxion Daily Junior Gold Miners Index Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::JNUG",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::KORU",
+      "field_name": "name",
+      "old_value": "Direxion Daily South Korea Bull 3X Shares",
+      "new_value": "Direxion Daily MSCI South Korea Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::KORU",
+      "field_name": "isin",
+      "old_value": "US25459Y5208",
+      "new_value": "US25461A3876"
+    },
+    {
+      "listing_key": "NYSE ARCA::LABD",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P Biotech Bear 3X Shares",
+      "new_value": "Direxion Daily S&P Biotech Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::LABD",
+      "field_name": "isin",
+      "old_value": "US25460G7161",
+      "new_value": "US25461H8530"
+    },
+    {
+      "listing_key": "NYSE ARCA::LABD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::LABU",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P Biotech Bull 3X Shares",
+      "new_value": "Direxion Daily S&P Biotech Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::LABU",
+      "field_name": "isin",
+      "old_value": "US25490K3234",
+      "new_value": "US25460G1206"
+    },
+    {
+      "listing_key": "NYSE ARCA::LABU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::LOFD",
+      "field_name": "etf_category",
+      "old_value": "Leveraged/Inverse",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::MBSD",
+      "field_name": "name",
+      "old_value": "FlexShares Disciplined Duration MBS Index Fund",
+      "new_value": "Northern Trust Disciplined Duration MBS ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::MEXX",
+      "field_name": "name",
+      "old_value": "Direxion Daily MSCI Mexico Bull 3X Shares Direxion Daily MSCI Mexico Bull 3",
+      "new_value": "Direxion Daily MSCI Mexico Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::MEXX",
+      "field_name": "isin",
+      "old_value": "US25460E7528",
+      "new_value": "US25460E2818"
+    },
+    {
+      "listing_key": "NYSE ARCA::MEXX",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::MIDU",
+      "field_name": "name",
+      "old_value": "Direxion Daily Mid Cap Bull 3X Shares",
+      "new_value": "Direxion Daily Mid Cap Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::NAIL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Homebuilders & Supplies Bull 3X Shares",
+      "new_value": "Direxion Daily Homebuilders & Supplies Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::NAIL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::NFRA",
+      "field_name": "name",
+      "old_value": "FlexShares STOXX Global Broad Infrastructure Index Fund",
+      "new_value": "Northern Trust STOXX Global Broad Infrastructure ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::NUGT",
+      "field_name": "name",
+      "old_value": "Direxion Daily Gold Miners Index Bull 2X Shares",
+      "new_value": "Direxion Daily Gold Miners Index Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::NUGT",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::PILL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Pharmaceutical & Medical Bull 3X Shares ETF",
+      "new_value": "Direxion Daily Pharmaceutical & Medical Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::PILL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::PYPU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::QDEF",
+      "field_name": "name",
+      "old_value": "FlexShares Quality Dividend Defensive Index Fund",
+      "new_value": "Northern Trust Quality Dividend Defensive ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QDF",
+      "field_name": "name",
+      "old_value": "FlexShares Quality Dividend Index Fund",
+      "new_value": "Northern Trust Quality Dividend ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QLV",
+      "field_name": "name",
+      "old_value": "FlexShares US Quality Low Volatility Index Fund",
+      "new_value": "Northern Trust US Quality Low Volatility ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QLVD",
+      "field_name": "name",
+      "old_value": "FlexShares Developed Markets ex-US Quality Low Volatility Index Fund",
+      "new_value": "Northern Trust Developed Markets ex-US Quality Low Volatility ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QLVE",
+      "field_name": "name",
+      "old_value": "FlexShares Emerging Markets Quality Low Volatility Index Fund",
+      "new_value": "Northern Trust Emerging Markets Quality Low Volatility ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QQQD",
+      "field_name": "name",
+      "old_value": "Direxion Daily Magnificent 7 Bear 1X Shares",
+      "new_value": "Direxion Daily Magnificent 7 Bear 1X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QQQD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::QQQU",
+      "field_name": "name",
+      "old_value": "Direxion Daily Magnificent 7 Bull 2X Shares",
+      "new_value": "Direxion Daily Magnificent 7 Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::QQQU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::RETL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Retail Bull 3X Shares",
+      "new_value": "Direxion Daily Retail Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::RETL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SKHL",
+      "field_name": "etf_category",
+      "old_value": "Leveraged/Inverse",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SOXL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Semiconductor Bull 3X Shares",
+      "new_value": "Direxion Daily Semiconductor Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SOXL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SOXS",
+      "field_name": "name",
+      "old_value": "Direxion Daily Semiconductor Bear 3X Shares",
+      "new_value": "Direxion Daily Semiconductor Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SOXS",
+      "field_name": "isin",
+      "old_value": "US25460G6908",
+      "new_value": "US25461H2913"
+    },
+    {
+      "listing_key": "NYSE ARCA::SOXS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPDN",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P 500® Bear 1X Shares",
+      "new_value": "Direxion Daily S&P 500 Bear 1X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPDN",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPUU",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P 500® Bull 2X Shares",
+      "new_value": "Direxion Daily S&P 500 Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPXL",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P500® Bull 3X Shares",
+      "new_value": "Direxion Daily S&P 500 Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPXP",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US25461H8464"
+    },
+    {
+      "listing_key": "NYSE ARCA::SPXS",
+      "field_name": "name",
+      "old_value": "Direxion Daily S&P 500® Bear 3X Shares",
+      "new_value": "Direxion Daily S&P 500 Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TBXU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TDTF",
+      "field_name": "name",
+      "old_value": "FlexShares iBoxx 5-Year Target Duration TIPS Index Fund",
+      "new_value": "Northern Trust iBoxx 5-Year Target Duration TIPS ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TDTT",
+      "field_name": "name",
+      "old_value": "FlexShares iBoxx 3-Year Target Duration TIPS Index Fund",
+      "new_value": "Northern Trust iBoxx 3-Year Target Duration TIPS ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TECL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Technology Bull 3X Shares",
+      "new_value": "Direxion Daily Technology Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TECS",
+      "field_name": "name",
+      "old_value": "Direxion Daily Technology Bear 3X Shares",
+      "new_value": "Direxion Daily Technology Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TECS",
+      "field_name": "isin",
+      "old_value": "US25460G3939",
+      "new_value": "US25461H3176"
+    },
+    {
+      "listing_key": "NYSE ARCA::TEXU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TLTD",
+      "field_name": "name",
+      "old_value": "FlexShares Morningstar Developed Markets ex-US Factor Tilt Index Fund",
+      "new_value": "Northern Trust Morningstar Developed Markets ex-US Factor Tilt ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TLTE",
+      "field_name": "name",
+      "old_value": "FlexShares Morningstar Emerging Markets Factor Tilt Index Fund",
+      "new_value": "Northern Trust Morningstar Emerging Markets Factor Tilt ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TMF",
+      "field_name": "name",
+      "old_value": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+      "new_value": "Direxion Daily 20+ Year Treasury Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TMV",
+      "field_name": "name",
+      "old_value": "Direxion Daily 20+ Year Treasury Bear 3X Shares",
+      "new_value": "Direxion Daily 20+ Year Treasury Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TMV",
+      "field_name": "etf_category",
+      "old_value": "Equity",
+      "new_value": "Fixed Income"
+    },
+    {
+      "listing_key": "NYSE ARCA::TNA",
+      "field_name": "name",
+      "old_value": "Direxion Daily Small Cap Bull 3X Shares",
+      "new_value": "Direxion Daily Small Cap Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TPOR",
+      "field_name": "name",
+      "old_value": "Direxion Daily Transportation Bull 3X Shares",
+      "new_value": "Direxion Daily Transportation Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TPOR",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TRLL",
+      "field_name": "isin",
+      "old_value": "",
+      "new_value": "US25461J8595"
+    },
+    {
+      "listing_key": "NYSE ARCA::TRLL",
+      "field_name": "etf_category",
+      "old_value": "",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TSXD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TSXU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TTXD",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TTXU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TXNU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::TYD",
+      "field_name": "name",
+      "old_value": "Direxion Daily 7-10 Year Treasury Bull 3X Shares",
+      "new_value": "Direxion Daily 7-10 Year Treasury Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TYO",
+      "field_name": "name",
+      "old_value": "Direxion Daily 7-10 Year Treasury Bear 3X Shares",
+      "new_value": "Direxion Daily 7-10 Year Treasury Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TZA",
+      "field_name": "name",
+      "old_value": "Direxion Daily Small Cap Bear 3X Shares",
+      "new_value": "Direxion Daily Small Cap Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::TZA",
+      "field_name": "isin",
+      "old_value": "US25460E1257",
+      "new_value": "US25461H3259"
+    },
+    {
+      "listing_key": "NYSE ARCA::UBOT",
+      "field_name": "name",
+      "old_value": "Direxion Daily Robotics Artificial Intelligence & Automation Index Bull 2X Shares",
+      "new_value": "Direxion Daily Robotics, Artificial Intelligence & Automation Index Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::UBOT",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::UNHU",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::URAA",
+      "field_name": "name",
+      "old_value": "Direxion Daily Uranium Bull 2X ETF",
+      "new_value": "Direxion Daily Uranium Industry Bull 2X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::URAA",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::UTSL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Utilities Bull 3X Shares",
+      "new_value": "Direxion Daily Utilities Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::UTSL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::WANT",
+      "field_name": "name",
+      "old_value": "Direxion Daily Cnsmr Discret Bull 3XShrs",
+      "new_value": "Direxion Daily Consumer Discretionary Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::WANT",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::WEBL",
+      "field_name": "name",
+      "old_value": "Direxion Daily Dow Jones Internet Bull 3X Shares",
+      "new_value": "Direxion Daily Dow Jones Internet Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::WEBL",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::WEBS",
+      "field_name": "name",
+      "old_value": "Direxion Daily Dow Jones Internet Bear 3X Shares",
+      "new_value": "Direxion Daily Dow Jones Internet Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::WEBS",
+      "field_name": "isin",
+      "old_value": "US25460G6668",
+      "new_value": "US25461A4866"
+    },
+    {
+      "listing_key": "NYSE ARCA::WEBS",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::YANG",
+      "field_name": "name",
+      "old_value": "Direxion Daily FTSE China Bear 3X Shares",
+      "new_value": "Direxion Daily FTSE China Bear 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::YANG",
+      "field_name": "isin",
+      "old_value": "US25460E5217",
+      "new_value": "US25461A4601"
+    },
+    {
+      "listing_key": "NYSE ARCA::YANG",
+      "field_name": "etf_category",
+      "old_value": "Other",
+      "new_value": "Equity"
+    },
+    {
+      "listing_key": "NYSE ARCA::YINN",
+      "field_name": "name",
+      "old_value": "Direxion Daily FTSE China Bull 3X Shares",
+      "new_value": "Direxion Daily FTSE China Bull 3X ETF"
+    },
+    {
+      "listing_key": "NYSE ARCA::YINN",
+      "field_name": "isin",
+      "old_value": "US25459W7719",
+      "new_value": "US25460G1958"
     }
   ],
   "generated_official_change_evidence": [],
@@ -312,7 +1716,7 @@
     },
     {
       "exchange": "HKEX",
-      "before_rows": 3268,
+      "before_rows": 3271,
       "after_rows": 3271,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -502,7 +1906,7 @@
     {
       "exchange": "NYSE ARCA",
       "before_rows": 2703,
-      "after_rows": 2703,
+      "after_rows": 2706,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -528,7 +1932,7 @@
     },
     {
       "exchange": "OSL",
-      "before_rows": 316,
+      "before_rows": 317,
       "after_rows": 317,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -771,7 +2175,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5595,
+      "before_rows": 5598,
       "after_rows": 5598,
       "shrink_pct": 0.0,
       "removed_rows": 0,
