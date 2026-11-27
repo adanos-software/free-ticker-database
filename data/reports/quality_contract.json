@@ -4,9 +4,9 @@
   "merge_status": "pass",
   "stable_status": "fail",
   "complete_status": "fail",
-  "dataset_sha256": "b32c0296542af858dcabbbef4f9dbbefd95fad78cbe8b9e4910a369afef42aa6",
+  "dataset_sha256": "cf56a415a610a1ca416cb089577a82de5d5cb61c678313faa27ff9bd634a2d68",
   "source_manifest_sha256": "b7d6982094a0f74f09e405315f28a78adb24a71e59491cc18ba6ced8d9c81fda",
-  "git_commit": "9f439edf3736f421f1a5ed880e0ca1cfae0ae227",
+  "git_commit": "444b39f1477a0822c5465a8d88e5a47b84927af3",
   "summary": {
     "checks": 20,
     "merge_failures": 0,
@@ -21,9 +21,9 @@
       "status": "pass",
       "details": {
         "summary": {
-          "ticker_rows": 65687,
+          "ticker_rows": 65688,
           "listing_rows": 97748,
-          "adanos_reference_rows": 65687,
+          "adanos_reference_rows": 65688,
           "entry_quality_rows": 97748,
           "error_gates": 88,
           "failed_error_gates": 0,
@@ -48,15 +48,15 @@
         "error": "",
         "counts": {
           "sources": 147,
-          "source_observations": 189130,
+          "source_observations": 189150,
           "venues": 87,
           "issuers": 75275,
           "instruments": 75275,
           "listings": 97755,
-          "identifier_assertions": 168390,
-          "field_assertions": 223628,
-          "provenance_gaps": 293055,
-          "listing_events": 94513,
+          "identifier_assertions": 168387,
+          "field_assertions": 223635,
+          "provenance_gaps": 293050,
+          "listing_events": 94536,
           "coverage_contracts": 136
         }
       }
@@ -101,8 +101,8 @@
       "scope": "merge",
       "status": "pass",
       "details": {
-        "decisions": 6836,
-        "current_conflict_groups": 2086,
+        "decisions": 6834,
+        "current_conflict_groups": 2085,
         "failure_count": 0,
         "sample": []
       }
@@ -131,7 +131,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "conflict_groups": 2086,
+        "conflict_groups": 2085,
         "sample": [
           "AEE000401019",
           "AN8068571086",
@@ -523,7 +523,7 @@
       "scope": "stable",
       "status": "fail",
       "details": {
-        "gap_rows": 293055
+        "gap_rows": 293050
       }
     },
     {
@@ -556,7 +556,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 1454
+        "missing_rows": 1453
       }
     },
     {
@@ -572,7 +572,7 @@
       "scope": "complete",
       "status": "fail",
       "details": {
-        "missing_rows": 45217
+        "missing_rows": 45216
       }
     },
     {

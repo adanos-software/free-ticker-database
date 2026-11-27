@@ -7,15 +7,15 @@
       "ambiguous_same_venue_identifier": 194,
       "exact_identity_conflict": 12496,
       "exact_match": 100487,
-      "missing_from_database": 45217,
-      "normalization_candidate": 1894,
+      "missing_from_database": 45216,
+      "normalization_candidate": 1895,
       "out_of_scope": 8166
     },
     "coverage_credited_keys": 100487,
     "unclassified_rows": 0,
-    "in_scope_missing_rows": 45217,
+    "in_scope_missing_rows": 45216,
     "identity_conflict_rows": 12496,
-    "mapping_candidate_rows": 1894
+    "mapping_candidate_rows": 1895
   },
   "rows": [
     {
@@ -1116733,10 +1116733,10 @@
       "isins": "KR7002790004",
       "reference_scopes": "exchange_directory",
       "source_row_count": 1,
-      "classification": "missing_from_database",
+      "classification": "normalization_candidate",
       "coverage_credit": "false",
-      "matched_listing_keys": "",
-      "evidence": "No venue-specific identity-compatible listing was found."
+      "matched_listing_keys": "KRX::00279K",
+      "evidence": "Discovery-only candidate; requires an explicit reviewed one-to-one mapping before coverage credit."
     },
     {
       "reconciliation_key": "krx_listed_companies::KRX::002810",
