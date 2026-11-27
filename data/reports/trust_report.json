@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-27T08:36:36Z",
+    "generated_at": "2026-11-27T10:18:42Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -27,33 +27,33 @@
   ],
   "universe": {
     "name": "instrument_scope=core",
-    "rows": 63615,
-    "joined_listings": 63615,
-    "scope_rows": 63615
+    "rows": 63616,
+    "joined_listings": 63616,
+    "scope_rows": 63616
   },
   "completeness": {
     "isin": {
-      "n": 63615,
-      "filled": 62967,
-      "missing": 648,
+      "n": 63616,
+      "filled": 62969,
+      "missing": 647,
       "pct": 98.98,
-      "fills_needed_for_99": 12,
+      "fills_needed_for_99": 11,
       "pass": false
     },
     "country": {
-      "n": 63615,
-      "filled": 63572,
+      "n": 63616,
+      "filled": 63573,
       "missing": 43,
       "pct": 99.93,
       "fills_needed_for_99": 0,
       "pass": true
     },
     "taxonomy": {
-      "n": 63615,
-      "filled": 62972,
-      "missing": 643,
+      "n": 63616,
+      "filled": 62974,
+      "missing": 642,
       "pct": 98.99,
-      "fills_needed_for_99": 7,
+      "fills_needed_for_99": 6,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -63,7 +63,7 @@
       "TSX": 76,
       "BATS": 56,
       "TSXV": 56,
-      "SSE": 32,
+      "SSE": 31,
       "NEO": 25,
       "NYSE": 25,
       "SSE_CL": 19,
@@ -82,7 +82,7 @@
       "BVB": 15,
       "PSE": 12,
       "B3": 11,
-      "BIST": 10
+      "HNX": 10
     },
     "missing_category_by_exchange": {
       "AMS": 17,
@@ -104,8 +104,8 @@
     "quarantine_kept": 551
   },
   "entry_quality_status": {
-    "pass": 60125,
-    "source_gap": 3453,
+    "pass": 60128,
+    "source_gap": 3451,
     "warn": 29,
     "notice": 8
   },
@@ -137,11 +137,11 @@
       "name": "core_isin_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63615,
-        "filled": 62967,
-        "missing": 648,
+        "n": 63616,
+        "filled": 62969,
+        "missing": 647,
         "pct": 98.98,
-        "fills_needed_for_99": 12,
+        "fills_needed_for_99": 11,
         "pass": false
       }
     },
@@ -149,11 +149,11 @@
       "name": "core_taxonomy_coverage_99",
       "status": "fail",
       "details": {
-        "n": 63615,
-        "filled": 62972,
-        "missing": 643,
+        "n": 63616,
+        "filled": 62974,
+        "missing": 642,
         "pct": 98.99,
-        "fills_needed_for_99": 7,
+        "fills_needed_for_99": 6,
         "pass": false
       }
     },
@@ -161,8 +161,8 @@
       "name": "core_country_coverage_99",
       "status": "pass",
       "details": {
-        "n": 63615,
-        "filled": 63572,
+        "n": 63616,
+        "filled": 63573,
         "missing": 43,
         "pct": 99.93,
         "fills_needed_for_99": 0,
