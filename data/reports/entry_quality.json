@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-27T08:36:33Z",
+    "generated_at": "2026-11-27T09:35:21Z",
     "rows": 97748,
     "csv_out": "data/reports/entry_quality.csv",
     "source_files": {
@@ -15,8 +15,8 @@
   "summary": {
     "status_counts": {
       "notice": 10,
-      "pass": 86961,
-      "source_gap": 10734,
+      "pass": 86963,
+      "source_gap": 10732,
       "warn": 43
     },
     "evidence_level_counts": {
@@ -29,13 +29,13 @@
       "high": 20,
       "low": 10,
       "medium": 24,
-      "source_gap": 11073
+      "source_gap": 11071
     },
     "issue_counts": {
       "official_reference_gap": 6495,
       "venue_missing_official_source": 3287,
-      "expected_missing_primary_isin": 648,
-      "missing_stock_sector": 557,
+      "expected_missing_primary_isin": 647,
+      "missing_stock_sector": 556,
       "missing_etf_category": 86,
       "official_name_mismatch": 24,
       "official_isin_mismatch": 19,
@@ -17654,24 +17654,6 @@
       ]
     },
     {
-      "listing_key": "SSE::688615",
-      "ticker": "688615",
-      "exchange": "SSE",
-      "asset_type": "Stock",
-      "quality_status": "source_gap",
-      "quality_score": 90,
-      "recommended_action": "find_source_or_keep_scoped_gap",
-      "issues": [
-        {
-          "issue_type": "expected_missing_primary_isin",
-          "severity": "source_gap",
-          "field": "isin",
-          "value": "",
-          "message": "Core primary listing is explicitly scoped as missing ISIN."
-        }
-      ]
-    },
-    {
       "listing_key": "SSE::688638",
       "ticker": "688638",
       "exchange": "SSE",
@@ -18509,6 +18491,24 @@
           "severity": "source_gap",
           "field": "exchange",
           "value": "XDUS",
+          "message": "Venue has no official source coverage in the current masterfile layer."
+        }
+      ]
+    },
+    {
+      "listing_key": "XHAN::6MK",
+      "ticker": "6MK",
+      "exchange": "XHAN",
+      "asset_type": "Stock",
+      "quality_status": "source_gap",
+      "quality_score": 90,
+      "recommended_action": "find_source_or_keep_scoped_gap",
+      "issues": [
+        {
+          "issue_type": "venue_missing_official_source",
+          "severity": "source_gap",
+          "field": "exchange",
+          "value": "XHAN",
           "message": "Venue has no official source coverage in the current masterfile layer."
         }
       ]
