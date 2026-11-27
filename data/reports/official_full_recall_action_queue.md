@@ -20,7 +20,7 @@ Rows: `23`
 | 11 | KOSDAQ | 87.34 | 230 | 3 | not_in_supplement_allowlist |
 | 12 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
 | 13 | KRX | 91.82 | 173 | 14 | not_in_supplement_allowlist |
-| 14 | NEO | 54.47 | 173 | 71 | not_in_supplement_allowlist |
+| 14 | NEO | 55.26 | 166 | 71 | not_in_supplement_allowlist |
 | 15 | NYSE ARCA | 96.22 | 104 | 27 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 81.82 | 50 | 34 | not_in_supplement_allowlist |

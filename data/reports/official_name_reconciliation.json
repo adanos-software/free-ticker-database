@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-27T10:12:06Z",
+  "generated_at": "2026-11-27T16:35:54Z",
   "policy": "canonical names are changed only by active official evidence matching listing_key, asset_type and the current valid ISIN",
-  "reconciled_rows": 1921,
+  "reconciled_rows": 1920,
   "applied_rows": 0,
-  "proposed_rows": 1921,
+  "proposed_rows": 1920,
   "csv": "data/reports/official_name_reconciliation.csv",
   "rows": [
     {
@@ -16879,21 +16879,6 @@
       "reference_scope": "exchange_directory",
       "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
       "observation_id": "b083c5ec0b70a56a8c572927",
-      "evidence_status": "active_official_exact_listing_isin_name"
-    },
-    {
-      "listing_key": "KRX::260870",
-      "action": "proposed",
-      "ticker": "260870",
-      "exchange": "KRX",
-      "asset_type": "Stock",
-      "isin": "KR7260870001",
-      "old_name": "Signet EV Inc",
-      "new_name": "SK Signet",
-      "source_key": "krx_listed_companies",
-      "reference_scope": "exchange_directory",
-      "source_url": "https://global.krx.co.kr/contents/GLB/03/0308/0308010000/GLB0308010000.jsp",
-      "observation_id": "9a4ef2120cec103211744ca8",
       "evidence_status": "active_official_exact_listing_isin_name"
     },
     {
