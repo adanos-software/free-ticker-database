@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-27T15:33:03Z",
-    "rows": 7790,
+    "generated_at": "2026-11-27T16:41:30Z",
+    "rows": 7795,
     "outcome_totals": {
       "accepted_source_gap": 5000,
       "core_exclusion_candidate": 534,
-      "official_fill_required": 2256
+      "official_fill_required": 2261
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
@@ -26,7 +26,7 @@
       "official_industry_taxonomy_unavailable_gap": 401,
       "official_product_taxonomy_unavailable_gap": 50,
       "official_reference_symbol_collision_gap": 1179,
-      "official_reference_unmatched_source_gap": 5316,
+      "official_reference_unmatched_source_gap": 5321,
       "otc_sector_source_gap": 87,
       "shell_or_cpc_sector_gap": 7
     },
@@ -39,7 +39,7 @@
       "missing_sector_stock:core_exclusion_candidate": 42,
       "missing_sector_stock:official_fill_required": 41,
       "official_reference_gap:accepted_source_gap": 4281,
-      "official_reference_gap:official_fill_required": 2214
+      "official_reference_gap:official_fill_required": 2219
     },
     "policy": {
       "source_of_truth_program": "Every residual gap must have exactly one outcome: official_fill_required, accepted_source_gap, or core_exclusion_candidate.",
@@ -119833,6 +119833,40 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "NEO::CSBG",
+      "ticker": "CSBG",
+      "exchange": "NEO",
+      "asset_type": "ETF",
+      "name": "CIBC Sustainable Balanced Growth Solution ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "NEO::CSGE",
+      "ticker": "CSGE",
+      "exchange": "NEO",
+      "asset_type": "ETF",
+      "name": "CIBC Sustainable Global Equity ETF",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "NEO::MAXQ",
       "ticker": "MAXQ",
       "exchange": "NEO",
@@ -124287,6 +124321,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "STO::DOXA",
+      "ticker": "DOXA",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Doxa AB",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "STO::ECC-B",
       "ticker": "ECC-B",
       "exchange": "STO",
@@ -124491,6 +124542,23 @@
     {
       "field": "official_reference_gap",
       "target_field": "official_reference",
+      "listing_key": "STO::INFREA",
+      "ticker": "INFREA",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Infrea AB",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
       "listing_key": "STO::KDV B",
       "ticker": "KDV B",
       "exchange": "STO",
@@ -124649,6 +124717,23 @@
       "exchange": "STO",
       "asset_type": "Stock",
       "name": "Lipigon Pharmaceuticals AB",
+      "gap_class": "official_reference_unmatched_source_gap",
+      "source_of_truth_outcome": "official_fill_required",
+      "core_action": "keep_in_current_scope",
+      "fill_action": "fill_from_source",
+      "review_needed": "true",
+      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
+      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
+      "source_gate": "Require an active official reference match for the listing key, or a documented blocker/out-of-scope decision."
+    },
+    {
+      "field": "official_reference_gap",
+      "target_field": "official_reference",
+      "listing_key": "STO::MAGLE",
+      "ticker": "MAGLE",
+      "exchange": "STO",
+      "asset_type": "Stock",
+      "name": "Magle Chemoswed Holding Ab",
       "gap_class": "official_reference_unmatched_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
