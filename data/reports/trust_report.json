@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-27T09:21:07Z",
+    "generated_at": "2026-11-27T10:18:42Z",
     "source_files": {
       "listings_csv": "data/listings.csv",
       "instrument_scopes_csv": "data/instrument_scopes.csv",
@@ -34,10 +34,10 @@
   "completeness": {
     "isin": {
       "n": 63616,
-      "filled": 62968,
-      "missing": 648,
+      "filled": 62969,
+      "missing": 647,
       "pct": 98.98,
-      "fills_needed_for_99": 12,
+      "fills_needed_for_99": 11,
       "pass": false
     },
     "country": {
@@ -50,10 +50,10 @@
     },
     "taxonomy": {
       "n": 63616,
-      "filled": 62973,
-      "missing": 643,
+      "filled": 62974,
+      "missing": 642,
       "pct": 98.99,
-      "fills_needed_for_99": 7,
+      "fills_needed_for_99": 6,
       "pass": false
     },
     "missing_isin_by_exchange": {
@@ -63,7 +63,7 @@
       "TSX": 76,
       "BATS": 56,
       "TSXV": 56,
-      "SSE": 32,
+      "SSE": 31,
       "NEO": 25,
       "NYSE": 25,
       "SSE_CL": 19,
@@ -82,7 +82,7 @@
       "BVB": 15,
       "PSE": 12,
       "B3": 11,
-      "BIST": 10
+      "HNX": 10
     },
     "missing_category_by_exchange": {
       "AMS": 17,
@@ -104,8 +104,8 @@
     "quarantine_kept": 551
   },
   "entry_quality_status": {
-    "pass": 60126,
-    "source_gap": 3453,
+    "pass": 60128,
+    "source_gap": 3451,
     "warn": 29,
     "notice": 8
   },
@@ -138,10 +138,10 @@
       "status": "fail",
       "details": {
         "n": 63616,
-        "filled": 62968,
-        "missing": 648,
+        "filled": 62969,
+        "missing": 647,
         "pct": 98.98,
-        "fills_needed_for_99": 12,
+        "fills_needed_for_99": 11,
         "pass": false
       }
     },
@@ -150,10 +150,10 @@
       "status": "fail",
       "details": {
         "n": 63616,
-        "filled": 62973,
-        "missing": 643,
+        "filled": 62974,
+        "missing": 642,
         "pct": 98.99,
-        "fills_needed_for_99": 7,
+        "fills_needed_for_99": 6,
         "pass": false
       }
     },
