@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T17:32:23Z",
+  "generated_at": "2026-11-27T09:17:23Z",
   "policy": "retain supported identity families; propose or quarantine every unresolved assertion; destructive clears occur only in explicit apply mode",
   "conflict_count": 2085,
   "decision_rows": 6834,
@@ -6721,6 +6721,32 @@
       "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
       "evidence_status": "no_decisive_listing_keyed_evidence",
       "retained_isin": "CA88100M2040"
+    },
+    {
+      "conflict_id": "ea0e3942e2b88c423bff",
+      "isin": "CA8829282034",
+      "listing_key": "OTC::TNGMF",
+      "ticker": "TNGMF",
+      "exchange": "OTC",
+      "name": "TGX ENERGY & RES INC.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA8829282034"
+    },
+    {
+      "conflict_id": "ea0e3942e2b88c423bff",
+      "isin": "CA8829282034",
+      "listing_key": "TSXV::TGX",
+      "ticker": "TGX",
+      "exchange": "TSXV",
+      "name": "TGX Energy & Resources Inc.",
+      "asset_type": "Stock",
+      "action": "quarantined_unresolved_identifier",
+      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
+      "evidence_status": "no_decisive_listing_keyed_evidence",
+      "retained_isin": "CA8829282034"
     },
     {
       "conflict_id": "42aee1cf558b5f606df9",
@@ -44629,32 +44655,6 @@
       "reason": "A different full-name identity family is detected, but destructive changes require explicit apply mode.",
       "evidence_status": "official_exact_listing_match",
       "retained_isin": "KYG1145N1144"
-    },
-    {
-      "conflict_id": "74ea14f9a0c30fecbe2a",
-      "isin": "KYG1148A1013",
-      "listing_key": "NASDAQ::AVZO",
-      "ticker": "AVZO",
-      "exchange": "NASDAQ",
-      "name": "Avenzo Therapeutics, Inc. - Common Stock",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "KYG1148A1013"
-    },
-    {
-      "conflict_id": "74ea14f9a0c30fecbe2a",
-      "isin": "KYG1148A1013",
-      "listing_key": "NASDAQ::VESI",
-      "ticker": "VESI",
-      "exchange": "NASDAQ",
-      "name": "Vesicor Therapeutics Holdings, Inc. - Class A Ordinary Shares",
-      "asset_type": "Stock",
-      "action": "quarantined_unresolved_identifier",
-      "reason": "No single identity family has decisive listing-keyed evidence; the existing assertion is quarantined without mutation.",
-      "evidence_status": "no_decisive_listing_keyed_evidence",
-      "retained_isin": "KYG1148A1013"
     },
     {
       "conflict_id": "231f450279dc5657d426",

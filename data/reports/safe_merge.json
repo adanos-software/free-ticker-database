@@ -6,13 +6,13 @@
     "large_evidenced_removal_override": false
   },
   "summary": {
-    "before_rows": 97738,
-    "after_rows": 97745,
+    "before_rows": 97748,
+    "after_rows": 97748,
     "overall_shrink_pct": 0.0,
     "removed_rows": 0,
     "evidenced_removed_rows": 0,
     "unevidenced_removed_rows": 0,
-    "critical_field_changes": 2,
+    "critical_field_changes": 18,
     "unevidenced_critical_field_changes": 0,
     "before_duplicate_listing_keys": 0,
     "after_duplicate_listing_keys": 0,
@@ -25,16 +25,112 @@
   "unevidenced_critical_field_changes": [],
   "critical_field_changes": [
     {
-      "listing_key": "Euronext::ALEUP",
-      "field_name": "isin",
-      "old_value": "FR0014011QJ8",
-      "new_value": "FR001401BHQ6"
+      "listing_key": "BSE_IN::AUDROC",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Consumer Discretionary"
     },
     {
-      "listing_key": "HKEX::00381",
+      "listing_key": "BSE_IN::GATECH",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "BSE_IN::VESUVIUS",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "Bursa::0111",
+      "field_name": "stock_sector",
+      "old_value": "Financials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "Bursa::7113",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Health Care"
+    },
+    {
+      "listing_key": "FSX::OA2",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "NASDAQ::EBON",
       "field_name": "isin",
-      "old_value": "BMG5278S5012",
-      "new_value": "BMG5278S7091"
+      "old_value": "KYG3R33A1063",
+      "new_value": "KYG3R33A2053"
+    },
+    {
+      "listing_key": "NSE_IN::GATECH",
+      "field_name": "stock_sector",
+      "old_value": "Information Technology",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "NSE_IN::VESUVIUS",
+      "field_name": "stock_sector",
+      "old_value": "Materials",
+      "new_value": "Industrials"
+    },
+    {
+      "listing_key": "NYSE::EFOR",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
+    },
+    {
+      "listing_key": "OTC::SIPC",
+      "field_name": "country",
+      "old_value": "Egypt",
+      "new_value": "United States"
+    },
+    {
+      "listing_key": "OTC::SIPC",
+      "field_name": "country_code",
+      "old_value": "EG",
+      "new_value": "US"
+    },
+    {
+      "listing_key": "OTC::SIPC",
+      "field_name": "isin",
+      "old_value": "EGS382M1C011",
+      "new_value": "US7842762061"
+    },
+    {
+      "listing_key": "TASE::HROD",
+      "field_name": "stock_sector",
+      "old_value": "Health Care",
+      "new_value": "Financials"
+    },
+    {
+      "listing_key": "TSX::HRMS",
+      "field_name": "isin",
+      "old_value": "CA42751V1040",
+      "new_value": "CA42751W1023"
+    },
+    {
+      "listing_key": "WSE::QNA",
+      "field_name": "name",
+      "old_value": "QNATECHNO",
+      "new_value": "QNA Technology S.A."
+    },
+    {
+      "listing_key": "WSE::TBL",
+      "field_name": "stock_sector",
+      "old_value": "Consumer Discretionary",
+      "new_value": "Communication Services"
+    },
+    {
+      "listing_key": "XSTU::OA2",
+      "field_name": "stock_sector",
+      "old_value": "Industrials",
+      "new_value": "Information Technology"
     }
   ],
   "generated_official_change_evidence": [],
@@ -312,7 +408,7 @@
     },
     {
       "exchange": "HKEX",
-      "before_rows": 3268,
+      "before_rows": 3271,
       "after_rows": 3271,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -501,8 +597,8 @@
     },
     {
       "exchange": "NYSE ARCA",
-      "before_rows": 2703,
-      "after_rows": 2703,
+      "before_rows": 2706,
+      "after_rows": 2706,
       "shrink_pct": 0.0,
       "removed_rows": 0,
       "unevidenced_removed_rows": 0,
@@ -528,7 +624,7 @@
     },
     {
       "exchange": "OSL",
-      "before_rows": 316,
+      "before_rows": 317,
       "after_rows": 317,
       "shrink_pct": 0.0,
       "removed_rows": 0,
@@ -771,7 +867,7 @@
     },
     {
       "exchange": "XETRA",
-      "before_rows": 5595,
+      "before_rows": 5598,
       "after_rows": 5598,
       "shrink_pct": 0.0,
       "removed_rows": 0,
