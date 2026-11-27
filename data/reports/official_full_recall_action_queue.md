@@ -21,7 +21,7 @@ Rows: `23`
 | 12 | PSX | 67.13 | 191 | 143 | not_in_supplement_allowlist |
 | 13 | KRX | 91.82 | 173 | 14 | not_in_supplement_allowlist |
 | 14 | NEO | 54.47 | 173 | 71 | not_in_supplement_allowlist |
-| 15 | NYSE ARCA | 96.15 | 106 | 28 | not_in_supplement_allowlist |
+| 15 | NYSE ARCA | 96.22 | 104 | 27 | not_in_supplement_allowlist |
 | 16 | PSE | 64.26 | 94 | 121 | collision_free_supplement |
 | 17 | NYSE MKT | 81.82 | 50 | 34 | not_in_supplement_allowlist |
 | 18 | SET | 95.3 | 38 | 135 | not_in_supplement_allowlist |

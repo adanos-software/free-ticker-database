@@ -1,10 +1,10 @@
 {
   "summary": {
-    "generated_at": "2026-11-27T06:33:44Z",
-    "rows": 7800,
+    "generated_at": "2026-11-27T08:19:39Z",
+    "rows": 7794,
     "field_totals": {
-      "missing_etf_category": 80,
-      "missing_isin_primary": 652,
+      "missing_etf_category": 78,
+      "missing_isin_primary": 648,
       "missing_sector_stock": 573,
       "official_reference_gap": 6495
     },
@@ -17,7 +17,7 @@
       "equity_etf_category_gap": 18,
       "exchange_industry_source_gap": 41,
       "fixed_income_etf_category_gap": 5,
-      "fund_or_trust_identifier_gap": 346,
+      "fund_or_trust_identifier_gap": 342,
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
@@ -25,7 +25,7 @@
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 403,
-      "official_product_taxonomy_unavailable_gap": 52,
+      "official_product_taxonomy_unavailable_gap": 50,
       "official_reference_symbol_collision_gap": 1179,
       "official_reference_unmatched_source_gap": 5316,
       "otc_sector_source_gap": 87,
@@ -35,11 +35,11 @@
       "missing_etf_category:commodity_etf_category_gap": 5,
       "missing_etf_category:equity_etf_category_gap": 18,
       "missing_etf_category:fixed_income_etf_category_gap": 5,
-      "missing_etf_category:official_product_taxonomy_unavailable_gap": 52,
+      "missing_etf_category:official_product_taxonomy_unavailable_gap": 50,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 88,
-      "missing_isin_primary:fund_or_trust_identifier_gap": 346,
+      "missing_isin_primary:fund_or_trust_identifier_gap": 342,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
       "missing_isin_primary:official_identifier_not_exposed_source_gap": 137,
@@ -66,14 +66,14 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 13
-        },
-        {
-          "exchange": "NYSE ARCA",
           "rows": 12
         },
         {
           "exchange": "BATS",
+          "rows": 11
+        },
+        {
+          "exchange": "NYSE ARCA",
           "rows": 11
         },
         {
@@ -96,7 +96,7 @@
       "missing_isin_primary": [
         {
           "exchange": "NYSE ARCA",
-          "rows": 112
+          "rows": 110
         },
         {
           "exchange": "ASX",
@@ -104,7 +104,7 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 89
+          "rows": 87
         },
         {
           "exchange": "TSX",
@@ -297,7 +297,7 @@
         "field": "missing_isin_primary",
         "gap_class": "fund_or_trust_identifier_gap",
         "exchange": "NYSE ARCA",
-        "rows": 106,
+        "rows": 104,
         "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
         "source_gate": "Exact fund/trust symbol and product name with checksum."
       },
@@ -935,23 +935,6 @@
     {
       "field": "missing_etf_category",
       "target_field": "etf_category",
-      "listing_key": "NASDAQ::ANTD",
-      "ticker": "ANTD",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "name": "Direxion Daily Anthropic Bear 2X ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=NASDAQ::ANTD;exchange=NASDAQ;ticker=ANTD;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
       "listing_key": "NASDAQ::ANTQ",
       "ticker": "ANTQ",
       "exchange": "NASDAQ",
@@ -1201,23 +1184,6 @@
       "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
       "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
       "source_gap_context": "listing_key=NYSE ARCA::SHLA;exchange=NYSE ARCA;ticker=SHLA;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
-      "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
-    },
-    {
-      "field": "missing_etf_category",
-      "target_field": "etf_category",
-      "listing_key": "NYSE ARCA::TRLL",
-      "ticker": "TRLL",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "name": "Direxion Trillions ETF",
-      "gap_class": "official_product_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An official venue/product source validates the ETF row, but the reachable source does not expose a canonical product category; keep blank until a stronger fund taxonomy appears.",
-      "recommended_next_source": "Official fund taxonomy, asset-class feed, or reviewed product provider profile.",
-      "source_gate": "Keep etf_category blank until an official or reviewed source exposes a canonical mappable category.",
-      "source_gap_context": "listing_key=NYSE ARCA::TRLL;exchange=NYSE ARCA;ticker=TRLL;asset_type=ETF;field=missing_etf_category;target_field=etf_category",
       "classification_context": "gap_class=official_product_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=etf_category;gap_class=official_product_taxonomy_unavailable_gap"
     },
@@ -5032,40 +4998,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::ANTD",
-      "ticker": "ANTD",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "name": "Direxion Daily Anthropic Bear 2X ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NASDAQ::ANTD;exchange=NASDAQ;ticker=ANTD;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NASDAQ::ANTO",
-      "ticker": "ANTO",
-      "exchange": "NASDAQ",
-      "asset_type": "ETF",
-      "name": "Direxion Daily Anthropic Bull 2X ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NASDAQ::ANTO;exchange=NASDAQ;ticker=ANTO;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::ANTQ",
       "ticker": "ANTQ",
       "exchange": "NASDAQ",
@@ -8738,23 +8670,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NYSE ARCA::SPXP",
-      "ticker": "SPXP",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "name": "Direxion U.S. 500 Plus ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NYSE ARCA::SPXP;exchange=NYSE ARCA;ticker=SPXP;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NYSE ARCA::SULR",
       "ticker": "SULR",
       "exchange": "NYSE ARCA",
@@ -8817,23 +8732,6 @@
       "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
       "source_gate": "Exact fund/trust symbol and product name with checksum.",
       "source_gap_context": "listing_key=NYSE ARCA::TOAK;exchange=NYSE ARCA;ticker=TOAK;asset_type=ETF;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "NYSE ARCA::TRLL",
-      "ticker": "TRLL",
-      "exchange": "NYSE ARCA",
-      "asset_type": "ETF",
-      "name": "Direxion Trillions ETF",
-      "gap_class": "fund_or_trust_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require fund/trust prospectus, exchange fund masterfile, or reviewed identifier feed; do not propagate from manager or parent-company ISINs.",
-      "recommended_next_source": "Official fund/trust masterfile, prospectus, or reviewed identifier feed.",
-      "source_gate": "Exact fund/trust symbol and product name with checksum.",
-      "source_gap_context": "listing_key=NYSE ARCA::TRLL;exchange=NYSE ARCA;ticker=TRLL;asset_type=ETF;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=fund_or_trust_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=fund_or_trust_identifier_gap"
     },
@@ -29754,7 +29652,7 @@
       "ticker": "EDC",
       "exchange": "BMV",
       "asset_type": "ETF",
-      "name": "Direxion Shares ETF Trust - Direxion Daily MSCI Emerging Markets Bull 3X Shares",
+      "name": "Direxion Daily MSCI Emerging Markets Bull 3X ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -29771,7 +29669,7 @@
       "ticker": "EDZ",
       "exchange": "BMV",
       "asset_type": "ETF",
-      "name": "Direxion Shares ETF Trust - Direxion Daily MSCI Emerging Markets Bear 3X Shares",
+      "name": "Direxion Daily MSCI Emerging Markets Bear 3X ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -30077,7 +29975,7 @@
       "ticker": "FAS",
       "exchange": "BMV",
       "asset_type": "ETF",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Financial Bull 3X Shares",
+      "name": "Direxion Daily Financial Bull 3X ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
@@ -30094,7 +29992,7 @@
       "ticker": "FAZ",
       "exchange": "BMV",
       "asset_type": "ETF",
-      "name": "Direxion Shares ETF Trust - Direxion Daily Financial Bear 3X Shares",
+      "name": "Direxion Daily Financial Bear 3X ETF",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",

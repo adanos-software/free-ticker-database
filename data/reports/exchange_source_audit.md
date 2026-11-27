@@ -1,6 +1,6 @@
 # Exchange Source Audit
 
-Generated at: `2026-11-26T17:39:36Z`
+Generated at: `2026-11-27T08:20:30Z`
 
 - Venues: `88`
 - Venue status: `{"missing": 5, "official_full": 50, "official_partial": 33}`
@@ -59,7 +59,7 @@ Generated at: `2026-11-26T17:39:36Z`
 | NSE_IN | official_full | nse_india_securities_available |  | 3579 | 97.96 |  | maintain | not_applicable |
 | NSE_KE | official_full | nse_ke_listed_companies |  | 69 | 65.22 |  | maintain | not_applicable |
 | NYSE | official_full | nasdaq_other_listed|sec_company_tickers_exchange |  | 3834 | 50.99 |  | maintain | not_applicable |
-| NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2779 | 95.18 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
+| NYSE ARCA | official_full | nasdaq_other_listed|nasdaq_trading_system_adds_deletes |  | 2779 | 95.29 | nasdaq_trading_system_adds_deletes | refresh_required | not_applicable |
 | NYSE MKT | official_full | nasdaq_other_listed | ETF | 309 | 72.82 |  | maintain | not_applicable |
 | NZX | official_full | nzx_instruments |  | 172 | 49.42 |  | maintain | not_applicable |
 | OSL | official_full | euronext_equities|euronext_etfs |  | 294 | 97.28 | euronext_etfs | refresh_required | not_applicable |
