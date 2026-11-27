@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-26T17:39:51Z",
-    "rows": 7801,
+    "generated_at": "2026-11-27T06:33:44Z",
+    "rows": 7800,
     "field_totals": {
       "missing_etf_category": 80,
       "missing_isin_primary": 652,
-      "missing_sector_stock": 574,
+      "missing_sector_stock": 573,
       "official_reference_gap": 6495
     },
     "class_totals": {
@@ -24,7 +24,7 @@
       "official_identifier_not_exposed_source_gap": 137,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
-      "official_industry_taxonomy_unavailable_gap": 404,
+      "official_industry_taxonomy_unavailable_gap": 403,
       "official_product_taxonomy_unavailable_gap": 52,
       "official_reference_symbol_collision_gap": 1179,
       "official_reference_unmatched_source_gap": 5316,
@@ -48,7 +48,7 @@
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
       "missing_sector_stock:exchange_industry_source_gap": 41,
       "missing_sector_stock:fundlike_stock_sector_gap": 30,
-      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 404,
+      "missing_sector_stock:official_industry_taxonomy_unavailable_gap": 403,
       "missing_sector_stock:otc_sector_source_gap": 87,
       "missing_sector_stock:shell_or_cpc_sector_gap": 7,
       "official_reference_gap:official_reference_symbol_collision_gap": 1179,
@@ -19886,23 +19886,6 @@
       "source_gap_context": "listing_key=NYSE MKT::NSTR;exchange=NYSE MKT;ticker=NSTR;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
       "classification_context": "gap_class=shell_or_cpc_sector_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=shell_or_cpc_sector_gap"
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "OSL::HEDER",
-      "ticker": "HEDER",
-      "exchange": "OSL",
-      "asset_type": "Stock",
-      "name": "HEDER BANK",
-      "gap_class": "official_industry_taxonomy_unavailable_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source already covers the listing, but the residual row has no canonical stock-sector value exposed or safely mappable; keep blank until a stronger official taxonomy source appears.",
-      "recommended_next_source": "Implemented official venue source layer; residual row needs a stronger official taxonomy/detail source.",
-      "source_gate": "Keep stock_sector blank until an official taxonomy source exposes a canonical mappable industry value.",
-      "source_gap_context": "listing_key=OSL::HEDER;exchange=OSL;ticker=HEDER;asset_type=Stock;field=missing_sector_stock;target_field=stock_sector",
-      "classification_context": "gap_class=official_industry_taxonomy_unavailable_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=stock_sector;gap_class=official_industry_taxonomy_unavailable_gap"
     },
     {
       "field": "missing_sector_stock",
@@ -118035,7 +118018,7 @@
       "ticker": "WEBB",
       "exchange": "OTC",
       "asset_type": "Stock",
-      "name": "Web Global Holdings Inc",
+      "name": "Web Blockchain Media, Inc.",
       "gap_class": "official_reference_symbol_collision_gap",
       "review_needed": "true",
       "confidence_policy": "The ticker exists in official evidence for a different exchange or security; do not resolve by symbol alone. Require listing-keyed official evidence or keep the row as a documented collision-hidden gap.",
