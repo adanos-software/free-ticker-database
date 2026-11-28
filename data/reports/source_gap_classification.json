@@ -1,17 +1,17 @@
 {
   "summary": {
-    "generated_at": "2026-11-28T06:18:36Z",
-    "rows": 7795,
+    "generated_at": "2026-11-28T07:34:58Z",
+    "rows": 7794,
     "field_totals": {
       "missing_etf_category": 78,
-      "missing_isin_primary": 646,
+      "missing_isin_primary": 645,
       "missing_sector_stock": 571,
       "official_reference_gap": 6500
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
       "adr_cdr_or_depositary_sector_gap": 5,
-      "capital_pool_or_halted_identifier_gap": 30,
+      "capital_pool_or_halted_identifier_gap": 29,
       "commodity_etf_category_gap": 5,
       "debt_or_securitized_identifier_gap": 88,
       "equity_etf_category_gap": 18,
@@ -37,7 +37,7 @@
       "missing_etf_category:fixed_income_etf_category_gap": 5,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 50,
       "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
-      "missing_isin_primary:capital_pool_or_halted_identifier_gap": 30,
+      "missing_isin_primary:capital_pool_or_halted_identifier_gap": 29,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 88,
       "missing_isin_primary:fund_or_trust_identifier_gap": 341,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
@@ -116,7 +116,7 @@
         },
         {
           "exchange": "TSXV",
-          "rows": 56
+          "rows": 55
         },
         {
           "exchange": "SSE",
@@ -12185,23 +12185,6 @@
       "source_gap_context": "listing_key=TSXV::LLG;exchange=TSXV;ticker=LLG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSXV::LRC-H",
-      "ticker": "LRC-H",
-      "exchange": "TSXV",
-      "asset_type": "Stock",
-      "name": "Lovitt Resources Inc",
-      "gap_class": "capital_pool_or_halted_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Require current exchange status and a direct identifier source; keep unresolved if the symbol is halted, suspended, or a capital-pool shell without a current ISIN source.",
-      "recommended_next_source": "Current exchange issuer/status file or CPC/shell prospectus.",
-      "source_gate": "Exact halted/CPC symbol and direct current identifier evidence.",
-      "source_gap_context": "listing_key=TSXV::LRC-H;exchange=TSXV;ticker=LRC-H;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=capital_pool_or_halted_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=capital_pool_or_halted_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
