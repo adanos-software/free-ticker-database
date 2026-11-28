@@ -1,15 +1,15 @@
 {
   "summary": {
-    "generated_at": "2026-11-28T09:23:30Z",
-    "rows": 7793,
+    "generated_at": "2026-11-28T11:21:13Z",
+    "rows": 7791,
     "field_totals": {
       "missing_etf_category": 78,
-      "missing_isin_primary": 645,
+      "missing_isin_primary": 643,
       "missing_sector_stock": 570,
       "official_reference_gap": 6500
     },
     "class_totals": {
-      "adr_cdr_or_depositary_identifier_gap": 16,
+      "adr_cdr_or_depositary_identifier_gap": 15,
       "adr_cdr_or_depositary_sector_gap": 5,
       "capital_pool_or_halted_identifier_gap": 29,
       "commodity_etf_category_gap": 5,
@@ -21,7 +21,7 @@
       "fundlike_stock_sector_gap": 30,
       "inactive_or_legacy_identifier_gap": 17,
       "official_current_directory_absent_identifier_gap": 2,
-      "official_identifier_not_exposed_source_gap": 136,
+      "official_identifier_not_exposed_source_gap": 135,
       "official_identifier_reference_unmatched_gap": 15,
       "official_identifier_source_gap": 1,
       "official_industry_taxonomy_unavailable_gap": 401,
@@ -36,13 +36,13 @@
       "missing_etf_category:equity_etf_category_gap": 18,
       "missing_etf_category:fixed_income_etf_category_gap": 5,
       "missing_etf_category:official_product_taxonomy_unavailable_gap": 50,
-      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 16,
+      "missing_isin_primary:adr_cdr_or_depositary_identifier_gap": 15,
       "missing_isin_primary:capital_pool_or_halted_identifier_gap": 29,
       "missing_isin_primary:debt_or_securitized_identifier_gap": 88,
       "missing_isin_primary:fund_or_trust_identifier_gap": 341,
       "missing_isin_primary:inactive_or_legacy_identifier_gap": 17,
       "missing_isin_primary:official_current_directory_absent_identifier_gap": 2,
-      "missing_isin_primary:official_identifier_not_exposed_source_gap": 136,
+      "missing_isin_primary:official_identifier_not_exposed_source_gap": 135,
       "missing_isin_primary:official_identifier_reference_unmatched_gap": 15,
       "missing_isin_primary:official_identifier_source_gap": 1,
       "missing_sector_stock:adr_cdr_or_depositary_sector_gap": 5,
@@ -104,11 +104,11 @@
         },
         {
           "exchange": "NASDAQ",
-          "rows": 87
+          "rows": 86
         },
         {
           "exchange": "TSX",
-          "rows": 75
+          "rows": 74
         },
         {
           "exchange": "BATS",
@@ -6307,23 +6307,6 @@
     {
       "field": "missing_isin_primary",
       "target_field": "isin",
-      "listing_key": "NASDAQ::WFF",
-      "ticker": "WFF",
-      "exchange": "NASDAQ",
-      "asset_type": "Stock",
-      "name": "WF Holding Limited Ordinary Shares",
-      "gap_class": "official_identifier_not_exposed_source_gap",
-      "review_needed": "true",
-      "confidence_policy": "An implemented official venue source covers the listing universe but does not expose ISIN for this residual identifier class; require a separate CSD/security registry before filling.",
-      "recommended_next_source": "Separate official CSD/security registry or exchange detail feed with ISIN.",
-      "source_gate": "Exact symbol/name and direct ISIN evidence; do not infer from issuer name or exchange membership.",
-      "source_gap_context": "listing_key=NASDAQ::WFF;exchange=NASDAQ;ticker=WFF;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
       "listing_key": "NASDAQ::WSE",
       "ticker": "WSE",
       "exchange": "NASDAQ",
@@ -11420,23 +11403,6 @@
       "source_gap_context": "listing_key=TSX::GCG;exchange=TSX;ticker=GCG;asset_type=Stock;field=missing_isin_primary;target_field=isin",
       "classification_context": "gap_class=official_identifier_not_exposed_source_gap;review_needed=true;confidence_policy_present=true;name_present=true",
       "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=official_identifier_not_exposed_source_gap"
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSX::INGS",
-      "ticker": "INGS",
-      "exchange": "TSX",
-      "asset_type": "Stock",
-      "name": "ING CDR (CAD Hedged)",
-      "gap_class": "adr_cdr_or_depositary_identifier_gap",
-      "review_needed": "true",
-      "confidence_policy": "Do not infer ISIN from the underlying issuer; require the depositary/CDR program ISIN from an official listing, prospectus, depository, or reviewed identifier feed.",
-      "recommended_next_source": "Depositary/CDR program identifier source, not underlying equity ISIN.",
-      "source_gate": "Exact program symbol, issuer/program name, expected country prefix, and ISIN checksum.",
-      "source_gap_context": "listing_key=TSX::INGS;exchange=TSX;ticker=INGS;asset_type=Stock;field=missing_isin_primary;target_field=isin",
-      "classification_context": "gap_class=adr_cdr_or_depositary_identifier_gap;review_needed=true;confidence_policy_present=true;name_present=true",
-      "evidence_gate_context": "recommended_next_source_present=true;source_gate_present=true;target_field=isin;gap_class=adr_cdr_or_depositary_identifier_gap"
     },
     {
       "field": "missing_isin_primary",
