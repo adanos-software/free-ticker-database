@@ -1,16 +1,16 @@
 {
   "summary": {
-    "generated_at": "2026-11-28T06:18:36Z",
-    "rows": 7795,
+    "generated_at": "2026-11-28T07:34:58Z",
+    "rows": 7794,
     "outcome_totals": {
       "accepted_source_gap": 5000,
-      "core_exclusion_candidate": 534,
+      "core_exclusion_candidate": 533,
       "official_fill_required": 2261
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
       "adr_cdr_or_depositary_sector_gap": 5,
-      "capital_pool_or_halted_identifier_gap": 30,
+      "capital_pool_or_halted_identifier_gap": 29,
       "commodity_etf_category_gap": 5,
       "debt_or_securitized_identifier_gap": 88,
       "equity_etf_category_gap": 18,
@@ -33,7 +33,7 @@
     "field_outcomes": {
       "missing_etf_category:accepted_source_gap": 78,
       "missing_isin_primary:accepted_source_gap": 153,
-      "missing_isin_primary:core_exclusion_candidate": 492,
+      "missing_isin_primary:core_exclusion_candidate": 491,
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 488,
       "missing_sector_stock:core_exclusion_candidate": 42,
@@ -93012,23 +93012,6 @@
       "exchange": "TSXV",
       "asset_type": "Stock",
       "name": "Kalon Acquisition Corp.",
-      "gap_class": "capital_pool_or_halted_identifier_gap",
-      "source_of_truth_outcome": "core_exclusion_candidate",
-      "core_action": "review_for_core_exclusion",
-      "fill_action": "do_not_fill_until_scope_review",
-      "review_needed": "true",
-      "decision_policy": "Do not remove automatically; create a reviewed drop/scope decision only after official status or instrument-kind evidence confirms it is outside core stock/ETF scope.",
-      "next_action": "Review official listing status/instrument type; if confirmed non-core, add a reviewed drop entry or future scope override.",
-      "source_gate": "Exact halted/CPC symbol and direct current identifier evidence."
-    },
-    {
-      "field": "missing_isin_primary",
-      "target_field": "isin",
-      "listing_key": "TSXV::LRC-H",
-      "ticker": "LRC-H",
-      "exchange": "TSXV",
-      "asset_type": "Stock",
-      "name": "Lovitt Resources Inc",
       "gap_class": "capital_pool_or_halted_identifier_gap",
       "source_of_truth_outcome": "core_exclusion_candidate",
       "core_action": "review_for_core_exclusion",
