@@ -1,11 +1,11 @@
 {
   "summary": {
-    "generated_at": "2026-11-28T07:34:58Z",
-    "rows": 7794,
+    "generated_at": "2026-11-28T08:47:03Z",
+    "rows": 7793,
     "outcome_totals": {
       "accepted_source_gap": 5000,
       "core_exclusion_candidate": 533,
-      "official_fill_required": 2261
+      "official_fill_required": 2260
     },
     "class_totals": {
       "adr_cdr_or_depositary_identifier_gap": 16,
@@ -14,7 +14,7 @@
       "commodity_etf_category_gap": 5,
       "debt_or_securitized_identifier_gap": 88,
       "equity_etf_category_gap": 18,
-      "exchange_industry_source_gap": 41,
+      "exchange_industry_source_gap": 40,
       "fixed_income_etf_category_gap": 5,
       "fund_or_trust_identifier_gap": 341,
       "fundlike_stock_sector_gap": 30,
@@ -37,7 +37,7 @@
       "missing_isin_primary:official_fill_required": 1,
       "missing_sector_stock:accepted_source_gap": 488,
       "missing_sector_stock:core_exclusion_candidate": 42,
-      "missing_sector_stock:official_fill_required": 41,
+      "missing_sector_stock:official_fill_required": 40,
       "official_reference_gap:accepted_source_gap": 4281,
       "official_reference_gap:official_fill_required": 2219
     },
@@ -94389,23 +94389,6 @@
       "exchange": "XSTU",
       "asset_type": "Stock",
       "name": "ARC Resources Ltd",
-      "gap_class": "exchange_industry_source_gap",
-      "source_of_truth_outcome": "official_fill_required",
-      "core_action": "keep_in_current_scope",
-      "fill_action": "fill_from_source",
-      "review_needed": "true",
-      "decision_policy": "Keep the row in scope and fill only from an official or reviewed source that satisfies the source gate.",
-      "next_action": "Prioritize source acquisition or parser work for this class before any manual override.",
-      "source_gate": "Exact exchange/symbol/name mapped to canonical stock sector."
-    },
-    {
-      "field": "missing_sector_stock",
-      "target_field": "stock_sector",
-      "listing_key": "XSTU::9RV",
-      "ticker": "9RV",
-      "exchange": "XSTU",
-      "asset_type": "Stock",
-      "name": "Versarien PLC",
       "gap_class": "exchange_industry_source_gap",
       "source_of_truth_outcome": "official_fill_required",
       "core_action": "keep_in_current_scope",
